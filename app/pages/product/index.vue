@@ -1,11 +1,29 @@
 <script setup>
-import { useFetch } from '#app'
-defineOptions({ name: 'ProductIndexPage' })
+// import { useI18n } from 'vue-i18n'
+// import { useFetch } from '#app'
+import PAGE_ROUTER from '~/consts/PAGE_ROUTER'
+// defineOptions({ name: 'ProductIndexPage' })
 
-const config = useRuntimeConfig()
-const endpoint = `${config.public.apiBase}/api/products/`
+definePageMeta({
+  name: PAGE_ROUTER.PRODUCT.LIST,
+})
 
-const { data: produtos, pending, error } = await useFetch(endpoint)
+// const { t } = useI18n()
+
+// useSeoMeta({
+//   title: t('pages.product-list.title'),
+//   ogTitle: t('pages.product-list.title'),
+// })
+debugger
+const { productService } = useServices()
+
+const { data: produtos, pending, error } = await productService.getAllProducts()
+
+// const config = useRuntimeConfig()
+// const endpoint = `${config.public.apiBase}/api/products/`
+
+// const { data: produtos, pending, error } = await useFetch(endpoint)
+console.log('Produtos carregados:', produtos)
 
 </script>
 
