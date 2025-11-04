@@ -1,6 +1,6 @@
 // import { useDayjs } from '#dayjs'
 
-export const useUseMapEndpointResponse = () => {
+export const useMapEndpointResponse = () => {
   // const dayjs = useDayjs()
 
   const mapProductFromEndpointBody = (product) => ({

@@ -4,7 +4,7 @@ export const useServices = () => {
     const baseUrl = useRuntimeConfig().public.apiBase
 
     const entityServices = {
-        productService: new ProductService(`${baseUrl}/api/products`),
+        productService: new ProductService(`${baseUrl}/api/products/`),
     }
 
     return {

@@ -1,8 +1,6 @@
 <script setup>
 // import { useI18n } from 'vue-i18n'
-// import { useFetch } from '#app'
 import PAGE_ROUTER from '~/consts/PAGE_ROUTER'
-// defineOptions({ name: 'ProductIndexPage' })
 
 definePageMeta({
   name: PAGE_ROUTER.PRODUCT.LIST,
@@ -14,16 +12,27 @@ definePageMeta({
 //   title: t('pages.product-list.title'),
 //   ogTitle: t('pages.product-list.title'),
 // })
-debugger
+
 const { productService } = useServices()
 
-const { data: produtos, pending, error } = await productService.getAllProducts()
+const config = useRuntimeConfig()
 
-// const config = useRuntimeConfig()
-// const endpoint = `${config.public.apiBase}/api/products/`
+const baseUrl = config.public.apiBase
 
-// const { data: produtos, pending, error } = await useFetch(endpoint)
+const produtos = ref([])                                                                                                                 
+const pending = ref(true)                                                                                                                
+const error = ref(null)
+
+produtos.value = await productService.getAllProducts()
+
 console.log('Produtos carregados:', produtos)
+
+if (produtos.value) {
+  pending.value = false
+} else {
+  error.value = new Error('Falha ao carregar produtos.')
+  pending.value = false
+}
 
 </script>
 
@@ -38,7 +47,7 @@ console.log('Produtos carregados:', produtos)
       <div v-for="produto in produtos" :key="produto.uuid" class="product-item">
         
         <img 
-          :src="`${config.public.apiBase}/${produto.image}`" 
+          :src="`${baseUrl}/${produto.image}`" 
           :alt="produto.name" 
           class="product-image"
         />
