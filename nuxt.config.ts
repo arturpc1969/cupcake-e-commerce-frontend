@@ -9,6 +9,7 @@ export default defineNuxtConfig({
   },
 
   modules: [
+    '@nuxtjs/i18n',
     '@nuxt/eslint',
     '@nuxt/image',
     '@nuxt/scripts',
