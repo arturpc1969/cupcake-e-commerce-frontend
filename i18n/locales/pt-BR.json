@@ -1,0 +1,10 @@
+{
+  
+  "composables_use-requests_unauthorized": "Não autorizado",
+  "composables_use-requests_request-error": "Erro na requisição:",
+
+  "pages_product-list_title": "Produtos",
+  "pages_product-list_loading": "Carregando produtos...",
+  "pages_product-list_error": "Falha ao carregar produtos."
+
+}
