@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  srcDir: 'app/',
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   runtimeConfig: {
@@ -9,6 +10,7 @@ export default defineNuxtConfig({
   },
 
   modules: [
+    '@nuxtjs/i18n',
     '@nuxt/eslint',
     '@nuxt/image',
     '@nuxt/scripts',
@@ -16,9 +18,20 @@ export default defineNuxtConfig({
     '@nuxt/ui'
   ],
 
+
+  i18n: {                                                                                                                                
+    locales: [                                                                                                                           
+      { code: 'pt-BR', file: 'pt-BR.json' },                                                                 
+      { code: 'en-US', file: 'en-US.json' }                                                                        
+    ],                                                                                                                                   
+    langDir: 'locales',                                                                                                                  
+    defaultLocale: 'pt-BR',                                                                                                              
+    strategy: 'no_prefix',
+  },
+
   routeRules: {
-    // Redireciona a rota raiz '/' para a rota '/product'
-    // O 'statusCode: 301' indica um redirecionamento permanente, ideal para SEO.
+    // Redirects the root route '/' to the '/product' route.
+    // The 'statusCode: 301' Indicates a permanent redirect, ideal for SEO.
     '/': { redirect: { to: '/product', statusCode: 301 } }
   },
 

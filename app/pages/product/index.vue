@@ -1,17 +1,17 @@
 <script setup>
-// import { useI18n } from 'vue-i18n'
+import { useI18n } from 'vue-i18n'
 import PAGE_ROUTER from '~/consts/PAGE_ROUTER'
 
 definePageMeta({
   name: PAGE_ROUTER.PRODUCT.LIST,
 })
 
-// const { t } = useI18n()
+const { t } = useI18n()
 
-// useSeoMeta({
-//   title: t('pages.product-list.title'),
-//   ogTitle: t('pages.product-list.title'),
-// })
+useSeoMeta({
+  title: t('pages_product-list_title'),
+  ogTitle: t('pages_product-list_title'),
+})
 
 const { productService } = useServices()
 
@@ -25,12 +25,10 @@ const error = ref(null)
 
 produtos.value = await productService.getAllProducts()
 
-console.log('Produtos carregados:', produtos)
-
 if (produtos.value) {
   pending.value = false
 } else {
-  error.value = new Error('Falha ao carregar produtos.')
+  error.value = new Error(t('pages_product-list_error'))
   pending.value = false
 }
 
@@ -38,10 +36,10 @@ if (produtos.value) {
 
 <template>
   <div>
-    <h1>Lista de Produtos</h1>
+    <h1>{{ t('pages_product-list_title') }}</h1>
 
-    <div v-if="pending">Carregando produtos...</div>
-    <div v-else-if="error">Erro ao buscar produtos: {{ error.message }}</div>
+    <div v-if="pending">{{ t('pages_product-list_loading') }}</div>
+    <div v-else-if="error">{{ error.message }}</div>
     
     <div v-else class="product-list">
       <div v-for="produto in produtos" :key="produto.uuid" class="product-item">

@@ -1,4 +1,8 @@
+import { useI18n } from 'vue-i18n'
 export const useRequests = () => {
+
+    const { t } = useI18n()
+
     const responseTypeOptions = {
         JSON: 'json',
         TEXT: 'text',
@@ -29,9 +33,9 @@ export const useRequests = () => {
             return response
         } catch (error) {
             if (error.response?.status === 401) {
-                throw new Error('Não autorizado')
+                throw new Error(t('composables_use-requests_unauthorized'))
             }
-            console.error('Erro na requisição:', error)                                                                                      
+            console.error(t('composables_use-requests_request-error'), error)                                                                                      
             throw error
         }
     }

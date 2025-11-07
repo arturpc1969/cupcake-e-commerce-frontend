@@ -1,9 +1,0 @@
-{
-  "pages": {
-    "product-list": {
-      "title": "Produtos",
-      "loading": "Carregando produtos...",
-      "error": "Erro ao carregar produtos."
-    }
-  }
-}
