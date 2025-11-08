@@ -49,20 +49,26 @@ export const useRequests = () => {
     }
 
     async function post(url, body, responseTypeOption) {
+        const isFormData = body instanceof FormData
+
         return makeRequest({
             method: 'POST',
             url,
-            body: body ? JSON.stringify(body) : null,
+            body: isFormData ? body : (body ? JSON.stringify(body) : null),
             responseType: responseTypeOption || responseTypeOptions.JSON,
+            headers: isFormData ? {} : undefined,
         })
     }
 
     async function put(url, body) {
+        const isFormData = body instanceof FormData
+
         return makeRequest({
             method: 'PUT',
             url,
-            body: body ? JSON.stringify(body) : null,
+            body: isFormData ? body : (body ? JSON.stringify(body) : null),
             responseType: responseTypeOptions.JSON,
+            headers: isFormData ? {} : undefined,
         })
     }
 
