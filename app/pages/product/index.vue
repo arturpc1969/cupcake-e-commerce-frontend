@@ -1,4 +1,5 @@
 <script setup>
+// import { decodeJWT, getUserInfoFromToken } from '~/utils/jwt.js'
 import { useI18n } from 'vue-i18n'
 import PAGE_ROUTER from '~/consts/PAGE_ROUTER'
 
@@ -22,6 +23,14 @@ const baseUrl = config.public.apiBase
 const produtos = ref([])                                                                                                                 
 const pending = ref(true)                                                                                                                
 const error = ref(null)
+
+// const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo4LCJ0eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYyNjU1MTM0LCJpYXQiOjE3NjI2NTE1MzR9.4WvIMPD11ZZ0EsAgEEDFaqkYwN4ZkWlffc6SXwd2rSQ"
+
+// const tokenContent = decodeJWT(token)
+// console.log("TOKEN CONTENT:", tokenContent)
+
+// const userInfo = getUserInfoFromToken(token)
+// console.log("USER INFO FROM TOKEN:", userInfo)
 
 produtos.value = await productService.getAllProducts()
 
