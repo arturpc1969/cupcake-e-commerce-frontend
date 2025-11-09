@@ -1,15 +1,8 @@
+import { responseTypeOptions } from '~/consts/responseTypeOptions'
 import { useI18n } from 'vue-i18n'
 export const useRequests = () => {
 
     const { t } = useI18n()
-
-    const responseTypeOptions = {
-        JSON: 'json',
-        TEXT: 'text',
-        BLOB: 'blob',
-        ARRAY_BUFFER: 'arrayBuffer',
-        FORM_DATA: 'formData'
-    }
 
     async function makeRequest({
         method,
@@ -95,6 +88,5 @@ export const useRequests = () => {
         put,
         del,
         patch,
-        responseTypeOptions,
     }
 }

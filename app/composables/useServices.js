@@ -1,3 +1,4 @@
+import AuthService from "~/services/authService"
 import ProductService from "~/services/entity/productService"
 
 export const useServices = () => {
@@ -8,6 +9,7 @@ export const useServices = () => {
     }
 
     return {
+        authService: new AuthService(`${baseUrl}/api/auth/`),
         ...entityServices
     }
 }
