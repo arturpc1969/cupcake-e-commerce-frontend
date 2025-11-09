@@ -1,10 +1,54 @@
 {
-  
+  "composables_use-auth_login_tokens-not-received-error": "Tokens não recebidos",
+  "composables_use-auth_login_error-message": "Erro ao fazer login",
+  "composables_use-auth_signup_error-message": "Erro ao criar usuário",
+  "composables_use-auth_refresh-access-token_no-refresh-token-error": "Refresh token não disponível",
+  "composables_use-auth_refresh-access-token_not-received-new-access-token-error": "Novo access token não recebido",
+
   "composables_use-requests_unauthorized": "Não autorizado",
   "composables_use-requests_request-error": "Erro na requisição:",
+  "composables_use-requests_get-auth-token_use-auth-access-error": "useRequests: não foi possível acessar useAuth",
+  "composables_use-requests_make-request_use-auth-access-in-logout-error": "useRequests: não foi possível acessar useAuth para realizar o logout",
+
+  "middleware_staff_access-denied": "Acesso negado. Esta área é restrita a funcionários.",
+
+  "pages_login_title": "Entre com sua conta:",
+  "pages_login_error-generic": "Erro no login",
+  "pages_login_username": "Usuário",
+  "pages_login_username-placeholder": "Digite seu nome de usuário",
+  "pages_login_password": "Senha",
+  "pages_login_password-placeholder": "Digite a sua senha",
+  "pages_login_loading": "Carregando...",
+  "pages_login_submit": "Entrar",
+  "pages_login_no-account": "Ainda não tem cadastro?",
+  "pages_login_signup-link": "Cadastre-se aqui!",
+
+  "pages_signup_title": "Faça seu cadastro:",
+  "pages_signup_password-mismatch-error": "As senhas não coincidem",
+  "pages_signup_generic-error": "Erro no cadastro",
+  "pages_signup_username": "Usuário:",
+  "pages_signup_username-placeholder": "Entre com seu nome de usuário",
+  "pages_signup_first-name": "Primeiro nome:",
+  "pages_signup_first-name-placeholder": "Entre com seu primeiro nome",
+  "pages_signup_last-name": "Sobrenome:",
+  "pages_signup_last-name-placeholder": "Entre com seu sobrenome",
+  "pages_signup_email": "E-mail:",
+  "pages_signup_email-placeholder": "Entre com seu e-mail",
+  "pages_signup_cpf": "CPF:",
+  "pages_signup_cpf-placeholder": "Entre com seu CPF",
+  "pages_signup_password": "Senha:",
+  "pages_signup_password-placeholder": "Crie sua senha",
+  "pages_signup_confirm-password": "Confirmação de senha:",
+  "pages_signup_confirm-password-placeholder": "Repita a senha criada",
+  "pages_signup_loading": "Carregando...",
+  "pages_signup_submit": "Criar conta",
+  "pages_signup_have-account": "Já é cadastrado?",
+  "pages_signup_login-link": "Acesse sua conta aqui!",
 
   "pages_product-list_title": "Produtos",
   "pages_product-list_loading": "Carregando produtos...",
-  "pages_product-list_error": "Falha ao carregar produtos."
+  "pages_product-list_error": "Falha ao carregar produtos.",
 
+  "utils_jwt_decode-jwt_invalid-token-error": "Token JWT inválido",
+  "utils_jwt_decode-jwt_decode-jwt-error": "Erro ao decodificar JWT:"
 }

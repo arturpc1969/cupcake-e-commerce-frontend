@@ -2,6 +2,10 @@ const PAGE_ROUTER = {
     HOME: {
         INDEX: 'home'
     },
+    AUTH: {                                                                                                                                                                   
+        LOGIN: 'login',                                                                                                                                                       
+        SIGNUP: 'signup',                                                                                                                                                     
+    },
     PRODUCT: {
         CREATE: 'product-create',
         UPDATE: 'product-update',
