@@ -1,11 +1,14 @@
 import { isTokenExpired, isTokenExpiringSoon } from '~/utils/jwt'
+import { useMapEndpointResponse } from '~/composables/useMapEndpointResponse'
 import { useI18n } from 'vue-i18n'                                                                            
-                                                                                                                                                                              
-export const useAuth = () => {
-    
-    const { t } = useI18n()
 
-    // const { userService } = useServices()
+export const useAuth = () => {
+
+    const { t } = useI18n()
+    const config = useRuntimeConfig()                                                                                                                                         
+    const baseUrl = config.public.apiBase
+
+    const { mapUserFromEndpointBody } = useMapEndpointResponse()
 
     // Estado reativo para autenticação                                                                                                                                       
     const accessToken = useState('auth_access_token', () => null)                                                                                                             
@@ -13,9 +16,6 @@ export const useAuth = () => {
     const user = useState('auth_user', () => null)                                                                                                                            
     const isAuthenticated = computed(() => !!accessToken.value && !!user.value)                                                                                               
     const isStaff = computed(() => user.value?.isStaff || false)                                                                                                             
-                                                                                                                                                                              
-    const config = useRuntimeConfig()                                                                                                                                         
-    const baseUrl = config.public.apiBase                                                                                                                                     
                                                                                                                                                                               
     /**                                                                                                                                                                       
      * Salva os tokens no estado e no localStorage                                                                                                                            
@@ -47,23 +47,30 @@ export const useAuth = () => {
     /**                                                                                                                                                                       
      * Busca os dados do usuário autenticado                                                                                                                                  
      */                                                                                                                                                                       
-    const fetchUserData = async () => {                                                                                                                                       
+    const fetchUserData = async (token = null) => {                                                                                                                                       
         try {                                                                                                                                                                 
-            const endpoint = `${baseUrl}/api/users/me`                                                                                                                        
+            const endpoint = `${baseUrl}/api/users/me`
+            const authToken = token || accessToken.value
+            
+            if (!authToken) {                                                                                                                                                 
+                throw new Error('Token não disponível')                                                                                                                       
+            }
+
             const userData = await $fetch(endpoint, {                                                                                                                         
                 method: 'GET',                                                                                                                                                
                 headers: {                                                                                                                                                    
-                    'Authorization': `Bearer ${accessToken.value}`                                                                                                            
+                    'Authorization': `Bearer ${authToken}`                                                                                                            
                 }                                                                                                                                                             
-            })                                                                                                                                                                
-            user.value = userData                                                                                                                                             
-            return userData                                                                                                                                                   
+            })
+
+            user.value = mapUserFromEndpointBody(userData)
+            return user.value                                                                                                                                                                
         } catch (error) {                                                                                                                                                     
-            console.error(error)                                                                                                          
+            console.error('Erro ao buscar dados do usuário:', error)                                                                                                          
             clearTokens()                                                                                                                                                     
             throw error                                                                                                                                                       
         }                                                                                                                                                                     
-    }                                                                                                                                                                         
+    }                                                                                                                                                                     
                                                                                                                                                                               
     /**                                                                                                                                                                       
      * Faz login do usuário                                                                                                                                                   
@@ -80,8 +87,7 @@ export const useAuth = () => {
             })                                                                                                                                                                
             if (response.access && response.refresh) {                                                                                                                        
                 setTokens(response.access, response.refresh)                                                                                                                  
-                // user.value = await userService.fetchUserData()
-                await fetchUserData()                                                                                                                                         
+                await fetchUserData(response.access)                                                                                                                                         
                 return { success: true, user: user.value }                                                                                                                    
             }                                                                                                                                                                 
                                                                                                                                                                               
@@ -126,7 +132,7 @@ export const useAuth = () => {
                                                                                                                                                                               
             return { success: false, error: t('composables_use-auth_signup_error-message') }                                                                                                         
         } catch (error) {                                                                                                                                                     
-            console.error(error)                                                                                                                           
+            console.error('Erro no signup:', error)                                                                                                                           
             return { success: false, error: error.message || t('composables_use-auth_signup_error-message') }                                                                                          
         }                                                                                                                                                                     
     }                                                                                                                                                                         
@@ -161,7 +167,7 @@ export const useAuth = () => {
                                                                                                                                                                               
             throw new Error(t('composables_use-auth_refresh-access-token_not-received-new-access-token-error'))                                                                                                                 
         } catch (error) {                                                                                                                                                     
-            console.error(error)                                                                                                                    
+            console.error('Erro ao renovar token:', error)                                                                                                                    
             clearTokens()                                                                                                                                                     
             navigateTo('/login')                                                                                                                                              
             throw error                                                                                                                                                       
@@ -186,7 +192,7 @@ export const useAuth = () => {
             try {                                                                                                                                                             
                 return await refreshAccessToken()                                                                                                                             
             } catch (error) {
-                console.error(error)                                                                                                                                        
+                console.error('Erro ao renovar token proativamente:', error)                                                                                                                                        
                 // Se falhar, usa o token atual até expirar                                                                                                                   
                 return accessToken.value                                                                                                                                      
             }                                                                                                                                                                 
@@ -210,21 +216,19 @@ export const useAuth = () => {
                 // Verifica se o token ainda é válido                                                                                                                         
                 if (!isTokenExpired(storedAccessToken)) {                                                                                                                     
                     try {                                                                                                                                                     
-                        // user.value = await userService.fetchUserData()
-                        await fetchUserData()                                                                                                                                 
+                        await fetchUserData(storedAccessToken)                                                                                                                                 
                     } catch (error) {
-                        console.error(error)                                                                                                                                         
+                        console.error('Erro ao buscar dados do usuário na inicialização:', error)                                                                                                                                         
                         // Se falhar ao buscar dados, limpa tudo                                                                                                              
                         clearTokens()                                                                                                                                         
                     }                                                                                                                                                         
                 } else {                                                                                                                                                      
                     // Token expirado, tenta renovar                                                                                                                          
                     try {                                                                                                                                                     
-                        await refreshAccessToken()                                                                                                                            
-                        // user.value = await userService.fetchUserData()
-                        await fetchUserData()                                                                                                                                 
+                        const newToken = await refreshAccessToken()                                                                                                           
+                        await fetchUserData(newToken)                                                                                                                                 
                     } catch (error) {
-                        console.error(error)                                                                                                                                         
+                        console.error('Erro ao renovar token na inicialização:', error)                                                                                                                                         
                         clearTokens()                                                                                                                                         
                     }                                                                                                                                                         
                 }                                                                                                                                                             
