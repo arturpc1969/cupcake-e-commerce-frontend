@@ -11,7 +11,20 @@ export const useMapEndpointResponse = () => {
     image: product.image,
   })
 
+  const mapUserFromEndpointBody = (user) => ({
+    uuid: user?.uuid,
+    username: user?.username,
+    firstName: user?.first_name,
+    lastName: user?.last_name,
+    fullName: user?.full_name,
+    cpf: user?.cpf,
+    email: user?.email,
+    isStaff: user?.is_staff,
+  })
+
   return {
     mapProductFromEndpointBody,
+    mapUserFromEndpointBody,
   }
+
 }

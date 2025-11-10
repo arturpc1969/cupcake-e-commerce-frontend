@@ -5,12 +5,14 @@ export const useAuth = () => {
     
     const { t } = useI18n()
 
+    // const { userService } = useServices()
+
     // Estado reativo para autenticação                                                                                                                                       
     const accessToken = useState('auth_access_token', () => null)                                                                                                             
     const refreshToken = useState('auth_refresh_token', () => null)                                                                                                           
     const user = useState('auth_user', () => null)                                                                                                                            
     const isAuthenticated = computed(() => !!accessToken.value && !!user.value)                                                                                               
-    const isStaff = computed(() => user.value?.is_staff || false)                                                                                                             
+    const isStaff = computed(() => user.value?.isStaff || false)                                                                                                             
                                                                                                                                                                               
     const config = useRuntimeConfig()                                                                                                                                         
     const baseUrl = config.public.apiBase                                                                                                                                     
@@ -76,9 +78,9 @@ export const useAuth = () => {
                     'Content-Type': 'application/json',                                                                                                                       
                 }                                                                                                                                                             
             })                                                                                                                                                                
-                                                                                                                                                                              
             if (response.access && response.refresh) {                                                                                                                        
                 setTokens(response.access, response.refresh)                                                                                                                  
+                // user.value = await userService.fetchUserData()
                 await fetchUserData()                                                                                                                                         
                 return { success: true, user: user.value }                                                                                                                    
             }                                                                                                                                                                 
@@ -208,6 +210,7 @@ export const useAuth = () => {
                 // Verifica se o token ainda é válido                                                                                                                         
                 if (!isTokenExpired(storedAccessToken)) {                                                                                                                     
                     try {                                                                                                                                                     
+                        // user.value = await userService.fetchUserData()
                         await fetchUserData()                                                                                                                                 
                     } catch (error) {
                         console.error(error)                                                                                                                                         
@@ -218,6 +221,7 @@ export const useAuth = () => {
                     // Token expirado, tenta renovar                                                                                                                          
                     try {                                                                                                                                                     
                         await refreshAccessToken()                                                                                                                            
+                        // user.value = await userService.fetchUserData()
                         await fetchUserData()                                                                                                                                 
                     } catch (error) {
                         console.error(error)                                                                                                                                         

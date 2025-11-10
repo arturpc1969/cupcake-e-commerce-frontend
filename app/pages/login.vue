@@ -51,7 +51,7 @@ const handleLogin = async () => {
 }                                                                                                                                                                             
                                                                                                                                                                               
 // Redireciona se já estiver autenticado                                                                                                                                      
-onMounted(() => {                                                                                                                                                             
+onMounted(() => {     
   if (auth.isAuthenticated.value) {                                                                                                                                           
     router.push('/product')                                                                                                                                                   
   }                                                                                                                                                                           
