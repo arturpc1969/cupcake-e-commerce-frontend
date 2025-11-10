@@ -11,8 +11,7 @@ export default class ProductService {
     async getAllProducts() {
         const endpoint = `${this.baseUrl}`
         const products = await this.requests.get(endpoint)
-        return products.map(product => this.deserialize(product)
-        )
+        return products.map(product => this.deserialize(product))
     }
 
     async getProductByUuid(uuid) {

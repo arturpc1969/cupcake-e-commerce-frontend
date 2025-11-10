@@ -22,9 +22,19 @@ export const useMapEndpointResponse = () => {
     isStaff: user?.is_staff,
   })
 
+  const mapDeliveryAddressFromEndpointBody = (deliveryAddress) => ({
+    uuid: deliveryAddress?.uuid,
+    addressName: deliveryAddress?.address_name,
+    addressDescription: deliveryAddress?.address_description,
+    city: deliveryAddress?.city,
+    state: deliveryAddress?.state,
+    zipCode: deliveryAddress?.zip_code,
+  })
+
   return {
     mapProductFromEndpointBody,
     mapUserFromEndpointBody,
+    mapDeliveryAddressFromEndpointBody,
   }
 
 }
