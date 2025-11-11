@@ -1,3 +1,5 @@
+import Aura from '@primeuix/themes/aura';
+
 export default defineNuxtConfig({
   srcDir: 'app/',
   compatibilityDate: '2025-07-15',
@@ -23,7 +25,23 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/scripts',
     '@nuxt/test-utils',
+    '@primevue/nuxt-module',
   ],
+
+  primevue: {
+    options: {
+      ripple: true,
+      inputVariant: 'filled',
+      theme: {
+        preset: Aura,
+        options: {
+          prefix: 'p',
+          darkModeSelector: 'system',
+          cssLayer: false
+        }
+      }
+    }
+  },
 
   i18n: {
     locales: [
