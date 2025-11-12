@@ -12,6 +12,7 @@ export const useMapEndpointResponse = () => {
     price: product?.price,
     promotion: product?.promotion,
     image: `${baseUrl}/${product.image}`,
+    quantity: product?.quantity ?? null,
   })
 
   const mapUserFromEndpointBody = (user) => ({
@@ -40,15 +41,27 @@ export const useMapEndpointResponse = () => {
     orderDate: order?.order_date,
     paymentMethod: order?.payment_method,
     status: order?.status,
-    deliveryAddress: order?.delivery_address?.mapDeliveryAddressFromEndpointBody,
-    user: order?.user?.mapUserFromEndpointBody,
+    deliveryAddress: mapDeliveryAddressFromEndpointBody(order?.delivery_address),
+    user: mapUserFromEndpointBody(order?.user),
+  })
+
+  const mapOrderItemsFromEndpointBody = (orderItems) => ({
+    orderUuid: orderItems?.order_uuid,
+    orderNumber: orderItems?.order_number,
+    orderDate: orderItems?.order_date,
+    paymentMethod: orderItems?.payment_method,
+    status: orderItems?.status,
+    deliveryAddress: mapDeliveryAddressFromEndpointBody(orderItems?.delivery_address),
+    products: orderItems?.products?.map(mapProductFromEndpointBody) || [],
+    user: mapUserFromEndpointBody(orderItems?.user),
   })
 
   return {
     mapProductFromEndpointBody,
     mapUserFromEndpointBody,
     mapDeliveryAddressFromEndpointBody,
-    mapOrderFromEndpointBody
+    mapOrderFromEndpointBody,
+    mapOrderItemsFromEndpointBody,
   }
 
 }
