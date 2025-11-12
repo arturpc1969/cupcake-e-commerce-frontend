@@ -10,6 +10,7 @@ export const useMapEndpointResponse = () => {
     name: product?.name,
     description: product?.description,
     price: product?.price,
+    promotion: product?.promotion,
     image: `${baseUrl}/${product.image}`,
   })
 
