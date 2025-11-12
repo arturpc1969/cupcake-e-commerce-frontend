@@ -1,4 +1,47 @@
 import Aura from '@primeuix/themes/aura';
+import { definePreset } from '@primevue/themes';
+
+const BrandPreset = definePreset(Aura, {                                                                                                      
+  semantic: {                                                                                                                                 
+    primary: {                                                                                                                                
+      50: '#f5f3ff',                                                                                                                          
+      100: '#ede9fe',                                                                                                                         
+      200: '#ddd6fe',                                                                                                                         
+      300: '#c4b5fd',                                                                                                                         
+      400: '#a78bfa',                                                                                                                         
+      500: '#3c0074',                                                                                                                         
+      600: '#20004b',                                                                                                                         
+      700: '#1b074b',                                                                                                                         
+      800: '#100033',                                                                                                                         
+      900: '#0a001f',                                                                                                                         
+      950: '#050010'                                                                                                                          
+    },                                                                                                                                        
+    colorScheme: {                                                                                                                            
+      light: {                                                                                                                                
+        primary: {                                                                                                                            
+          color: '{primary.600}',                                                                                                             
+          contrastColor: '#ffffff',                                                                                                           
+          hoverColor: '{primary.700}',                                                                                                        
+          activeColor: '{primary.800}'                                                                                                        
+        },                                                                                                                                    
+        surface: {                                                                                                                            
+          0: '#ffffff',                                                                                                                       
+          50: '#fafafa',                                                                                                                      
+          100: '#f5f5f5',                                                                                                                     
+          200: '#e5e5e5',                                                                                                                     
+          300: '#d4d4d4',                                                                                                                     
+          400: '#a3a3a3',                                                                                                                     
+          500: '#737373',                                                                                                                     
+          600: '#525252',                                                                                                                     
+          700: '#404040',                                                                                                                     
+          800: '#262626',                                                                                                                     
+          900: '#171717',                                                                                                                     
+          950: '#0a0a0a'                                                                                                                      
+        }                                                                                                                                     
+      }                                                                                                                                       
+    }                                                                                                                                         
+  }                                                                                                                                           
+});
 
 export default defineNuxtConfig({
   srcDir: 'app/',
@@ -33,10 +76,10 @@ export default defineNuxtConfig({
       ripple: true,
       inputVariant: 'filled',
       theme: {
-        preset: Aura,
+        preset: BrandPreset,
         options: {
           prefix: 'p',
-          darkModeSelector: 'none',
+          darkModeSelector: 'system',
           cssLayer: false
         }
       }

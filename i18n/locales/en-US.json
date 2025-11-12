@@ -1,4 +1,11 @@
 {
+  "components_nav-bar_home": "Home",
+  "components_nav-bar_about": "About us",
+  "components_nav-bar_contact": "Contact",
+  "components_nav-bar_login": "Login/Sign Up",
+
+  "components_product-data-view_buy-now": "Buy Now",
+
   "composables_use-auth_login_tokens-not-received-error": "Tokens not received",
   "composables_use-auth_login_error-message": "Error logging in",
   "composables_use-auth_signup_error-message": "Error creating user",

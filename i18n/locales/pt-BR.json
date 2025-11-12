@@ -1,4 +1,11 @@
 {
+  "components_nav-bar_home": "Home",
+  "components_nav-bar_about": "Sobre nós",
+  "components_nav-bar_contact": "Contato",
+  "components_nav-bar_login": "Entrar/Cadastrar",
+
+  "components_product-data-view_buy-now": "Comprar Agora",
+
   "composables_use-auth_login_tokens-not-received-error": "Tokens não recebidos",
   "composables_use-auth_login_error-message": "Erro ao fazer login",
   "composables_use-auth_signup_error-message": "Erro ao criar usuário",
@@ -47,7 +54,7 @@
 
   "pages_product-list_title": "Produtos",
   "pages_product-list_loading": "Carregando produtos...",
-  "pages_product-list_error": "Falha ao carregar produtos.",
+  "pages_product-list_error": "Falha ao carregar produtos.",                                                                                              
 
   "utils_jwt_decode-jwt_invalid-token-error": "Token JWT inválido",
   "utils_jwt_decode-jwt_decode-jwt-error": "Erro ao decodificar JWT:"
