@@ -59,45 +59,45 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col bg-gray-50">
+  <div class="min-h-screen flex flex-col bg-gradient-to-b from-[#20004b] to-[#3c0074]">
     <div class="flex-1 flex items-center justify-center px-4 py-12">
-      <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
-        <h1 class="text-3xl font-bold text-gray-800 text-center mb-8">
+      <div class="bg-[#ffffff11] backdrop-blur border border-[#ffffff22] rounded-lg shadow-lg p-8 w-full max-w-md">
+        <h1 class="text-3xl font-bold text-white text-center mb-8">
           {{ t('pages_login_title') }}
         </h1>
 
         <form @submit.prevent="handleLogin" class="space-y-6">
           <div>
-            <label for="username" class="block text-sm font-medium text-gray-700 mb-2">
+            <label for="username" class="block text-sm font-medium text-gray-300 mb-2">
               {{ t('pages_login_username') }}
             </label>
             <input id="username" v-model="username" type="text" :placeholder="t('pages_login_username-placeholder')"
-              required :disabled="loading" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition 
-disabled:bg-gray-100 disabled:cursor-not-allowed" />
+              required :disabled="loading" class="w-full px-4 py-3 bg-[#ffffff11] border border-[#ffffff22] text-white placeholder-gray-400 rounded-lg focus:ring-2        
+focus:ring-yellow-300 focus:border-transparent transition disabled:bg-[#ffffff05] disabled:cursor-not-allowed" />
           </div>
 
           <div>
-            <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
+            <label for="password" class="block text-sm font-medium text-gray-300 mb-2">
               {{ t('pages_login_password') }}
             </label>
             <input id="password" v-model="password" type="password" :placeholder="t('pages_login_password-placeholder')"
-              required :disabled="loading" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition 
-disabled:bg-gray-100 disabled:cursor-not-allowed" />
+              required :disabled="loading" class="w-full px-4 py-3 bg-[#ffffff11] border border-[#ffffff22] text-white placeholder-gray-400 rounded-lg focus:ring-2        
+focus:ring-yellow-300 focus:border-transparent transition disabled:bg-[#ffffff05] disabled:cursor-not-allowed" />
           </div>
 
-          <div v-if="error" class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+          <div v-if="error" class="bg-red-900/30 border border-red-500/50 text-red-200 px-4 py-3 rounded-lg text-sm">
             {{ error }}
           </div>
 
-          <button type="submit" :disabled="loading" class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition disabled:bg-gray-400         
-disabled:cursor-not-allowed">
+          <button type="submit" :disabled="loading" class="w-full bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold py-3 px-4 rounded-lg transition disabled:bg-gray-600  
+disabled:text-gray-400 disabled:cursor-not-allowed">
             {{ loading ? t('pages_login_loading') : t('pages_login_submit') }}
           </button>
         </form>
 
-        <div class="mt-6 text-center text-gray-600">
+        <div class="mt-6 text-center text-gray-300">
           {{ t('pages_login_no-account') }}
-          <NuxtLink to="/signup" class="text-green-600 hover:text-green-700 font-medium hover:underline">
+          <NuxtLink to="/signup" class="text-yellow-300 hover:text-yellow-400 font-medium hover:underline">
             {{ t('pages_login_signup-link') }}
           </NuxtLink>
         </div>
