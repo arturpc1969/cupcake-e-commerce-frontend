@@ -3,7 +3,6 @@ const PAGE_ROUTER = {
         INDEX: 'home'
     },
     AUTH: {                                                                                                                                                                   
-        LOGIN: 'login',                                                                                                                                                       
         SIGNUP: 'signup',                                                                                                                                                     
     },
     PRODUCT: {

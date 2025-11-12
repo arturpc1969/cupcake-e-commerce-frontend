@@ -1,14 +1,9 @@
 <script setup>
 import { useI18n } from 'vue-i18n';
-import PAGE_ROUTER from '~/consts/PAGE_ROUTER';
 
 const { t } = useI18n();
 
-const onLoginClick = () => {
-  // Placeholder for login/signup action
-  console.log('Login/Sign Up clicked')
-  navigateTo({ name: PAGE_ROUTER.AUTH.LOGIN})
-}
+const { openLoginModal } = useLoginModal()
 
 </script>
 
@@ -23,14 +18,15 @@ const onLoginClick = () => {
     </div>
 
     <nav class="flex items-center space-x-64 text-lg font-semibold bg-[#ffffff22] px-4 py-2 rounded-full backdrop-blur">
-      <a href="#" class="hover:text-yellow-300 mr-8">{{t("components_nav-bar_home")}}</a>
-      <a href="#" class="hover:text-yellow-300">{{t("components_nav-bar_about")}}</a>
-      <a href="#" class="hover:text-yellow-300">{{t("components_nav-bar_contact")}}</a>
+      <a href="#" class="hover:text-yellow-300 mr-8">{{ t("components_nav-bar_home") }}</a>
+      <a href="#" class="hover:text-yellow-300">{{ t("components_nav-bar_about") }}</a>
+      <a href="#" class="hover:text-yellow-300">{{ t("components_nav-bar_contact") }}</a>
     </nav>
 
     <div class="flex items-center space-x-4">
       <!-- <a href="#" class="hover:text-yellow-300">{{t("components_nav-bar_login")}}</a> -->
-      <p class="hover:text-yellow-300 cursor-pointer" @click.prevent="onLoginClick">{{ t("components_nav-bar_login") }}
+      <p class="hover:text-yellow-300 cursor-pointer" @click.prevent="openLoginModal">{{ t("components_nav-bar_login")
+      }}
       </p>
       <button class="relative">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
