@@ -34,10 +34,21 @@ export const useMapEndpointResponse = () => {
     zipCode: deliveryAddress?.zip_code,
   })
 
+  const mapOrderFromEndpointBody = (order) => ({
+    uuid: order?.uuid,
+    orderNumber: order?.order_number,
+    orderDate: order?.order_date,
+    paymentMethod: order?.payment_method,
+    status: order?.status,
+    deliveryAddress: order?.delivery_address?.mapDeliveryAddressFromEndpointBody,
+    user: order?.user?.mapUserFromEndpointBody,
+  })
+
   return {
     mapProductFromEndpointBody,
     mapUserFromEndpointBody,
     mapDeliveryAddressFromEndpointBody,
+    mapOrderFromEndpointBody
   }
 
 }
