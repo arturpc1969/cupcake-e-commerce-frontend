@@ -1,10 +1,8 @@
 import { isTokenExpired, isTokenExpiringSoon } from '~/utils/jwt'
 import { useMapEndpointResponse } from '~/composables/useMapEndpointResponse'
-import { useI18n } from 'vue-i18n'                                                                            
 
 export const useAuth = () => {
 
-    const { t } = useI18n()
     const config = useRuntimeConfig()                                                                                                                                         
     const baseUrl = config.public.apiBase
 
@@ -91,10 +89,10 @@ export const useAuth = () => {
                 return { success: true, user: user.value }                                                                                                                    
             }                                                                                                                                                                 
                                                                                                                                                                               
-            return { success: false, error: t('composables_use-auth_login_tokens-not-received-error') }                                                                                                          
+            return { success: false, error: 'Tokens não recebidos' }                                                                                                          
         } catch (error) {                                                                                                                                                     
             console.error(error)                                                                                                                            
-            return { success: false, error: error.message || t('composables_use-auth_login_error-message') }                                                                                          
+            return { success: false, error: error.message || 'Erro ao fazer login' }                                                                                          
         }                                                                                                                                                                     
     }                                                                                                                                                                         
                                                                                                                                                                               
@@ -103,7 +101,7 @@ export const useAuth = () => {
      */                                                                                                                                                                       
     const logout = () => {                                                                                                                                                    
         clearTokens()                                                                                                                                                         
-        navigateTo('/login')                                                                                                                                                  
+        navigateTo('/product')                                                                                                                                                  
     }                                                                                                                                                                         
                                                                                                                                                                               
     /**                                                                                                                                                                       
@@ -130,10 +128,10 @@ export const useAuth = () => {
                 return loginResult                                                                                                                                            
             }                                                                                                                                                                 
                                                                                                                                                                               
-            return { success: false, error: t('composables_use-auth_signup_error-message') }                                                                                                         
+            return { success: false, error: 'Erro ao criar conta' }                                                                                                         
         } catch (error) {                                                                                                                                                     
             console.error('Erro no signup:', error)                                                                                                                           
-            return { success: false, error: error.message || t('composables_use-auth_signup_error-message') }                                                                                          
+            return { success: false, error: error.message || 'Erro ao criar conta' }                                                                                          
         }                                                                                                                                                                     
     }                                                                                                                                                                         
                                                                                                                                                                               
@@ -143,7 +141,7 @@ export const useAuth = () => {
     const refreshAccessToken = async () => {                                                                                                                                  
         try {                                                                                                                                                                 
             if (!refreshToken.value) {                                                                                                                                        
-                throw new Error(t('composables_use-auth_refresh-access-token_no-refresh-token-error'))                                                                                                               
+                throw new Error('Refresh token não disponível')                                                                                                               
             }                                                                                                                                                                 
                                                                                                                                                                               
             const endpoint = `${baseUrl}/api/auth/refresh`                                                                                                                    
@@ -165,7 +163,7 @@ export const useAuth = () => {
                 return response.access                                                                                                                                        
             }                                                                                                                                                                 
                                                                                                                                                                               
-            throw new Error(t('composables_use-auth_refresh-access-token_not-received-new-access-token-error'))                                                                                                                 
+            throw new Error('Não foi possível renovar o token')                                                                                                                 
         } catch (error) {                                                                                                                                                     
             console.error('Erro ao renovar token:', error)                                                                                                                    
             clearTokens()                                                                                                                                                     

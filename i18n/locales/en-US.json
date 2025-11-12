@@ -6,12 +6,6 @@
 
   "components_product-data-view_buy-now": "Buy Now",
 
-  "composables_use-auth_login_tokens-not-received-error": "Tokens not received",
-  "composables_use-auth_login_error-message": "Error logging in",
-  "composables_use-auth_signup_error-message": "Error creating user",
-  "composables_use-auth_refresh-access-token_no-refresh-token-error": "Refresh token not available",
-  "composables_use-auth_refresh-access-token_not-received-new-access-token-error": "New access token not received",
-
   "composables_use-requests_unauthorized": "Unauthorized",
   "composables_use-requests_request-error": "Error in request:",
   "composables_use-requests_get-auth-token_use-auth-access-error": "useRequests: unable to access useAuth",
@@ -55,6 +49,16 @@
   "pages_product-list_title": "Products",
   "pages_product-list_loading": "Loading products...",
   "pages_product-list_error": "Failed to load products.",
+
+  "pages_profile_title": "My Profile",
+  "pages_profile_logout": "Logout",
+  "pages_profile_username": "Username:",
+  "pages_profile_first_name": "First name:",
+  "pages_profile_last_name": "Surname:",
+  "pages_profile_email": "E-mail:",
+  "pages_profile_cpf": "CPF:",
+  "pages_profile_my_addresses": "My addresses",
+  "pages_profile_my_orders": "My orders",
 
   "utils_jwt_decode-jwt_invalid-token-error": "Invalid JWT token",
   "utils_jwt_decode-jwt_decode-jwt-error": "Error decoding JWT:"

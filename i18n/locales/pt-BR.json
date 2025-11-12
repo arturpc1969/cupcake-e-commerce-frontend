@@ -6,17 +6,11 @@
 
   "components_product-data-view_buy-now": "Comprar Agora",
 
-  "composables_use-auth_login_tokens-not-received-error": "Tokens não recebidos",
-  "composables_use-auth_login_error-message": "Erro ao fazer login",
-  "composables_use-auth_signup_error-message": "Erro ao criar usuário",
-  "composables_use-auth_refresh-access-token_no-refresh-token-error": "Refresh token não disponível",
-  "composables_use-auth_refresh-access-token_not-received-new-access-token-error": "Novo access token não recebido",
-
   "composables_use-requests_unauthorized": "Não autorizado",
   "composables_use-requests_request-error": "Erro na requisição:",
   "composables_use-requests_get-auth-token_use-auth-access-error": "useRequests: não foi possível acessar useAuth",
   "composables_use-requests_make-request_use-auth-access-in-logout-error": "useRequests: não foi possível acessar useAuth para realizar o logout",
-
+  
   "middleware_staff_access-denied": "Acesso negado. Esta área é restrita a funcionários.",
 
   "pages_login_title": "Entre com sua conta:",
@@ -54,7 +48,17 @@
 
   "pages_product-list_title": "Produtos",
   "pages_product-list_loading": "Carregando produtos...",
-  "pages_product-list_error": "Falha ao carregar produtos.",                                                                                              
+  "pages_product-list_error": "Falha ao carregar produtos.",
+
+  "pages_profile_title": "Meu Perfil",
+  "pages_profile_logout": "Sair",
+  "pages_profile_username": "Nome de usuário:",
+  "pages_profile_first_name": "Primeiro nome:",
+  "pages_profile_last_name": "Sobrenome:",
+  "pages_profile_email": "E-mail:",
+  "pages_profile_cpf": "CPF:",
+  "pages_profile_my_addresses": "Meus endereços",
+  "pages_profile_my_orders": "Meus pedidos",
 
   "utils_jwt_decode-jwt_invalid-token-error": "Token JWT inválido",
   "utils_jwt_decode-jwt_decode-jwt-error": "Erro ao decodificar JWT:"

@@ -4,6 +4,11 @@ import { useI18n } from 'vue-i18n';
 const { t } = useI18n();
 
 const { openLoginModal } = useLoginModal()
+const { isAuthenticated, user } = useAuth()
+
+const goToProfile = () => {  
+  navigateTo('/profile')                                                                                                                      
+}
 
 </script>
 
@@ -24,9 +29,18 @@ const { openLoginModal } = useLoginModal()
     </nav>
 
     <div class="flex items-center space-x-4">
-      <p class="hover:text-yellow-300 cursor-pointer" @click.prevent="openLoginModal">{{ t("components_nav-bar_login")
+      <!-- <p class="hover:text-yellow-300 cursor-pointer" @click.prevent="openLoginModal">{{ t("components_nav-bar_login")
       }}
+      </p> -->
+
+      <!-- Mostra nome do usuário se estiver logado, senão mostra Login -->                                                                   
+      <p v-if="isAuthenticated" class="hover:text-yellow-300 cursor-pointer" @click.prevent="goToProfile">                                    
+        {{ user?.firstName || user?.username }}                                                                                               
+      </p>                                                                                                                                    
+      <p v-else class="hover:text-yellow-300 cursor-pointer" @click.prevent="openLoginModal">                                                 
+        {{ t("components_nav-bar_login") }}                                                                                                   
       </p>
+
       <button class="relative">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
           stroke-width="2">
