@@ -1,15 +1,18 @@
 {
-  "composables_use-auth_login_tokens-not-received-error": "Tokens não recebidos",
-  "composables_use-auth_login_error-message": "Erro ao fazer login",
-  "composables_use-auth_signup_error-message": "Erro ao criar usuário",
-  "composables_use-auth_refresh-access-token_no-refresh-token-error": "Refresh token não disponível",
-  "composables_use-auth_refresh-access-token_not-received-new-access-token-error": "Novo access token não recebido",
+  "components_nav-bar_home": "Home",
+  "components_nav-bar_about": "Sobre nós",
+  "components_nav-bar_contact": "Contato",
+  "components_nav-bar_login": "Entrar/Cadastrar",
+
+  "components_product-data-view_buy-now": "Comprar Agora",
+  "components_product-data-view_login-required": "Login necessário",
+  "components_product-data-view_login-required-message": "Para efetuar uma compra, você precisa estar logado.",
 
   "composables_use-requests_unauthorized": "Não autorizado",
   "composables_use-requests_request-error": "Erro na requisição:",
   "composables_use-requests_get-auth-token_use-auth-access-error": "useRequests: não foi possível acessar useAuth",
   "composables_use-requests_make-request_use-auth-access-in-logout-error": "useRequests: não foi possível acessar useAuth para realizar o logout",
-
+  
   "middleware_staff_access-denied": "Acesso negado. Esta área é restrita a funcionários.",
 
   "pages_login_title": "Entre com sua conta:",
@@ -48,6 +51,29 @@
   "pages_product-list_title": "Produtos",
   "pages_product-list_loading": "Carregando produtos...",
   "pages_product-list_error": "Falha ao carregar produtos.",
+
+  "pages_profile_title": "Meu Perfil",
+  "pages_profile_logout": "Sair",
+  "pages_profile_username": "Nome de usuário:",
+  "pages_profile_first_name": "Primeiro nome:",
+  "pages_profile_last_name": "Sobrenome:",
+  "pages_profile_email": "E-mail:",
+  "pages_profile_cpf": "CPF:",
+  "pages_profile_my_addresses": "Meus endereços",
+  "pages_profile_my_orders": "Meus pedidos",
+  
+  "pages_order_title": "Finalizar Pedido",
+  "pages_order_quantity": "Quantidade",
+  "pages_order_unit-price": "Preço unitário",
+  "pages_order_total": "Total",
+  "pages_order_confirm": "Confirmar Pedido",
+  "pages_order_cancel": "Cancelar",
+  "pages_order_no-product": "Produto não encontrado",
+  "pages_order_no-product-message": "Nenhum produto foi selecionado.",
+  "pages_order_error-loading": "Erro ao carregar",
+  "pages_order_error-loading-message": "Não foi possível carregar os dados do produto.",
+  "pages_order_order-confirmed": "Pedido confirmado",
+  "pages_order_order-confirmed-message": "Seu pedido foi realizado com sucesso!",
 
   "utils_jwt_decode-jwt_invalid-token-error": "Token JWT inválido",
   "utils_jwt_decode-jwt_decode-jwt-error": "Erro ao decodificar JWT:"
