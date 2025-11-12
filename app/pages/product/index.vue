@@ -1,39 +1,42 @@
 <script setup>
-import NavBar from '~/components/NavBar.vue'
-import HeroSection from '~/components/HeroSection.vue'
-import ProductDataView from '~/components/ProductDataView.vue';
+import NavBar from "~/components/NavBar.vue";
+import HeroSection from "~/components/HeroSection.vue";
+import ProductDataView from "~/components/ProductDataView.vue";
 
 // import { ref } from 'vue'
 
-const { isOpen, openLoginModal } = useLoginModal()
+const {
+  isOpen: isLoginOpen,
+  openLoginModal,
+  closeLoginModal,
+} = useLoginModal();
+const {
+  isOpen: isSignupOpen,
+  openSignupModal,
+  closeSignupModal,
+} = useSignupModal();
 
-// const auth = useAuth()                                                                                                                        
-// const showLoginModal = ref(false)                                                                                                             
-                                                                                                                                              
-// // Abre o modal de login                                                                                                                      
-// const openLoginModal = () => {                                                                                                                
-//   showLoginModal.value = true                                                                                                                 
-// }                                                                                                                                             
-                                                                                                                                              
-// Callback quando login for bem-sucedido                                                                                                     
-const handleLoginSuccess = () => {                                                                                                            
-  console.log('Login realizado com sucesso!')                                                                                                 
-  // Você pode adicionar lógica adicional aqui, como recarregar dados                                                                         
-}                                                                                                                                             
-                                                                                                                                              
-// Verifica se o usuário não está autenticado ao montar                                                                                       
-// onMounted(() => {                                                                                                                             
-//   if (!auth.isAuthenticated.value) {                                                                                                          
-//     // Opcional: abrir modal automaticamente se não estiver autenticado                                                                       
-//     // openLoginModal()                                                                                                                       
-//   }                                                                                                                                           
-// })                                                                                                                                            
-                                                                                                                                              
-// Expõe a função para outros componentes (ex: NavBar)                                                                                        
-// defineExpose({                                                                                                                                
-//   openLoginModal                                                                                                                              
-// })
+// Callback quando login for bem-sucedido
+const handleLoginSuccess = () => {
+  console.log("Login realizado com sucesso!");
+  // Você pode adicionar lógica adicional aqui, como recarregar dados
+};
 
+// Callback quando signup for bem-sucedido
+const handleSignupSuccess = () => {
+  console.log("Cadastro realizado com sucesso!");
+};
+
+// Troca entre modais
+const switchToSignup = () => {
+  closeLoginModal();
+  openSignupModal();
+};
+
+const switchToLogin = () => {
+  closeSignupModal();
+  openLoginModal();
+};
 </script>
 
 <template>
@@ -41,10 +44,19 @@ const handleLoginSuccess = () => {
     <NavBar @open-login="openLoginModal" />
     <HeroSection />
     <ProductDataView />
-    <!-- Modal de Login -->                                                                                                                   
-    <LoginModal                                                                                                                               
-      v-model="isOpen"                                                                                                                
-      @login-success="handleLoginSuccess"                                                                                                     
+
+    <!-- Modal de Login -->
+    <LoginModal
+      v-model="isLoginOpen"
+      @login-success="handleLoginSuccess"
+      @switch-to-signup="switchToSignup"
+    />
+
+    <!-- Modal de Signup -->
+    <SignupModal
+      v-model="isSignupOpen"
+      @signup-success="handleSignupSuccess"
+      @switch-to-login="switchToLogin"
     />
   </div>
 </template>

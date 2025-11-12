@@ -24,7 +24,6 @@ const { openLoginModal } = useLoginModal()
     </nav>
 
     <div class="flex items-center space-x-4">
-      <!-- <a href="#" class="hover:text-yellow-300">{{t("components_nav-bar_login")}}</a> -->
       <p class="hover:text-yellow-300 cursor-pointer" @click.prevent="openLoginModal">{{ t("components_nav-bar_login")
       }}
       </p>

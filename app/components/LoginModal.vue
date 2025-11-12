@@ -9,7 +9,7 @@ const props = defineProps({
   }
 })
 
-const emit = defineEmits(['update:modelValue', 'login-success'])
+const emit = defineEmits(['update:modelValue', 'login-success', 'switch-to-signup'])
 
 const { t } = useI18n()
 const auth = useAuth()
@@ -153,10 +153,12 @@ disabled:text-gray-400 disabled:cursor-not-allowed">
           <!-- Link para Signup -->
           <div class="mt-6 text-center text-gray-300">
             {{ t('pages_login_no-account') }}
-            <NuxtLink to="/signup" class="text-yellow-300 hover:text-yellow-400 font-medium hover:underline"
-              @click="closeModal">
-              {{ t('pages_login_signup-link') }}
-            </NuxtLink>
+            <button                                                                                                                                   
+              @click="$emit('switch-to-signup')"                                                                                                      
+              class="text-yellow-300 hover:text-yellow-400 font-medium hover:underline"                                                               
+            >                                                                                                                                         
+              {{ t('pages_login_signup-link') }}                                                                                                      
+            </button>
           </div>
         </div>
       </Transition>
