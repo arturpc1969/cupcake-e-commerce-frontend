@@ -4,7 +4,7 @@
       <!-- Banner principal -->
       <div class="w-full flex justify-center mt-4">
         <img
-          src="/orc-meme.jpg"
+          src="/banner.png"
           alt="Promoção"
           class="rounded-2xl shadow-2xl max-w-4xl border border-purple-600"
         />

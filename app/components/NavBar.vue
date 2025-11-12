@@ -40,11 +40,11 @@ const goToProfile = () => {
       </p>
 
       <button class="relative">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-          stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round"
-            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.3 5.2A1 1 0 007 20h10a1 1 0 00.96-.74L20 13M7 13V6m10 7V6" />
-        </svg>
+          <img
+            src="/cart.svg"
+            alt="Carrinho"
+            class="w-6 h-6"
+          >
       </button>
     </div>
   </header>

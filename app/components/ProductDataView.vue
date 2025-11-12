@@ -1,8 +1,11 @@
 <script setup>
 import { ref, onMounted } from "vue";
+import { useToast } from 'primevue/usetoast';
 
 const { productService } = useServices()
 const { t } = useI18n()
+const { isAuthenticated } = useAuth()                                                                                                         
+const toast = useToast()
 
 onMounted(() => {
   productService.getAllProducts().then((data) => (products.value = data.slice(0, 12)));
@@ -12,10 +15,29 @@ const products = ref();
 const layout = ref('grid');
 const options = ref(['list', 'grid']);
 
+const handleBuyNow = (product) => {                                                                                                           
+  if (!isAuthenticated.value) {                                                                                                               
+    toast.add({                                                                                                                               
+      severity: 'warn',                                                                                                                       
+      summary: t('components_product-data-view_login-required'),                                                                              
+      detail: t('components_product-data-view_login-required-message'),                                                                       
+      life: 3000                                                                                                                              
+    });                                                                                                                                       
+    return;                                                                                                                                   
+  }                                                                                                                                           
+                                                                                                                                              
+  // Navega para a página de pedido passando o produto                                                                                        
+  navigateTo({                                                                                                                                
+    path: '/order',                                                                                                                           
+    query: { productId: product.uuid }                                                                                                        
+  });                                                                                                                                         
+};
+
 </script>
 
 <template>
   <div class="min-h-screen bg-gradient-to-b from-[#20004b] to-[#3c0074] pb-12 px-4">
+    <Toast />
     <DataView :value="products" :layout="layout">
       <template #header>
         <div class="flex justify-end">
@@ -44,10 +66,13 @@ const options = ref(['list', 'grid']);
                   </div>
                 </div>
                 <div class="flex flex-col md:items-end gap-8">
-                  <span class="text-xl font-semibold text-yellow-300">${{ item.price }}</span>
+                  <span class="text-xl font-semibold text-yellow-300">R${{ item.price }}</span>
                   <div class="flex flex-row-reverse md:flex-row gap-2">
-                    <Button icon="pi pi-shopping-cart" :label="t('components_product-data-view_buy-now')"
-                      class="flex-auto md:flex-initial whitespace-nowrap"></Button>
+                    <Button 
+                      icon="pi pi-shopping-cart" 
+                      :label="t('components_product-data-view_buy-now')"
+                      class="flex-auto md:flex-initial whitespace-nowrap"
+                      @click="handleBuyNow(item)"/>
                   </div>
                 </div>
               </div>
@@ -58,12 +83,15 @@ const options = ref(['list', 'grid']);
 
       <template #grid="slotProps">
         <div class="grid grid-cols-12 gap-4">
-          <div v-for="(item, index) in slotProps.items" :key="index"
-            class="col-span-12 sm:col-span-6 md:col-span-4 xl:col-span-6 p-2">
+          <div 
+            v-for="(item, index) in slotProps.items" 
+            :key="index"
+            class="col-span-12 sm:col-span-6 md:col-span-4 xl:col-span-6 p-2"
+          >
             <div class="p-6 border border-[#ffffff22] bg-[#ffffff11] backdrop-blur rounded-lg flex flex-col">
               <div class="bg-[#ffffff11] flex justify-center rounded p-4">
                 <div class="relative mx-auto">
-                  <img class="rounded w-full" :src="item.image" :alt="item.name" style="max-width: 300px" />
+                  <img class="rounded w-full" :src="item.image" :alt="item.name" style="max-width: 300px" >
                 </div>
               </div>
               <div class="pt-6">
@@ -74,10 +102,13 @@ const options = ref(['list', 'grid']);
                   </div>
                 </div>
                 <div class="flex flex-col gap-6 mt-6">
-                  <span class="text-2xl font-semibold text-yellow-300">${{ item.price }}</span>
+                  <span class="text-2xl font-semibold text-yellow-300">R${{ item.price }}</span>
                   <div class="flex gap-2">
-                    <Button icon="pi pi-shopping-cart" :label="t('components_product-data-view_buy-now')"
-                      class="flex-auto whitespace-nowrap"></Button>
+                    <Button 
+                      icon="pi pi-shopping-cart" 
+                      :label="t('components_product-data-view_buy-now')"
+                      class="flex-auto whitespace-nowrap"
+                      @click="handleBuyNow(item)"/>
                   </div>
                 </div>
               </div>

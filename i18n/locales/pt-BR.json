@@ -5,6 +5,8 @@
   "components_nav-bar_login": "Entrar/Cadastrar",
 
   "components_product-data-view_buy-now": "Comprar Agora",
+  "components_product-data-view_login-required": "Login necessário",
+  "components_product-data-view_login-required-message": "Para efetuar uma compra, você precisa estar logado.",
 
   "composables_use-requests_unauthorized": "Não autorizado",
   "composables_use-requests_request-error": "Erro na requisição:",
@@ -59,6 +61,19 @@
   "pages_profile_cpf": "CPF:",
   "pages_profile_my_addresses": "Meus endereços",
   "pages_profile_my_orders": "Meus pedidos",
+  
+  "pages_order_title": "Finalizar Pedido",
+  "pages_order_quantity": "Quantidade",
+  "pages_order_unit-price": "Preço unitário",
+  "pages_order_total": "Total",
+  "pages_order_confirm": "Confirmar Pedido",
+  "pages_order_cancel": "Cancelar",
+  "pages_order_no-product": "Produto não encontrado",
+  "pages_order_no-product-message": "Nenhum produto foi selecionado.",
+  "pages_order_error-loading": "Erro ao carregar",
+  "pages_order_error-loading-message": "Não foi possível carregar os dados do produto.",
+  "pages_order_order-confirmed": "Pedido confirmado",
+  "pages_order_order-confirmed-message": "Seu pedido foi realizado com sucesso!",
 
   "utils_jwt_decode-jwt_invalid-token-error": "Token JWT inválido",
   "utils_jwt_decode-jwt_decode-jwt-error": "Erro ao decodificar JWT:"
