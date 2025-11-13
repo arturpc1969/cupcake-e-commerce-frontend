@@ -39,19 +39,41 @@ const goToCart = () => {
 </script>
 
 <template>
-  <header class="fixed top-0 left-0 right-0 z-50 text-white shadow-md">
-    <!-- Primeira linha: Logo e ações do usuário -->
-    <div
-      class="bg-gradient-to-r from-[#1b074b] to-[#100033] flex items-center justify-between px-8 py-3"
-    >
-      <div class="flex items-center space-x-2">
+  <header
+    class="fixed top-0 left-0 right-0 z-50 text-white shadow-md bg-gradient-to-r from-[#1b074b] to-[#100033] rounded-b-3xl"
+  >
+    <div class="relative px-8 py-8">
+      <!-- Logo à esquerda -->
+      <div
+        class="absolute left-8 top-1/2 -translate-y-1/2 flex items-center space-x-2"
+      >
         <img src="/logo.svg" alt="Logo" class="w-64" >
         <div class="w-16 ml-2">
           <img src="/imagotipo.svg" alt="Planet" >
         </div>
       </div>
 
-      <div class="flex items-center space-x-4">
+      <!-- Menu centralizado (independente dos outros elementos) -->
+      <div class="flex justify-center">
+        <nav
+          class="flex items-center space-x-32 text-lg font-semibold"
+        >
+          <NuxtLink to="/product" class="hover:text-yellow-300 bg-[#ffffff22] px-6 py-2 rounded-full backdrop-blur w-48 text-center">
+            {{ t("components_nav-bar_home") }}
+          </NuxtLink>
+          <a href="#" class="hover:text-yellow-300 bg-[#ffffff22] px-6 py-2 rounded-full backdrop-blur w-48 text-center">
+            {{ t("components_nav-bar_about") }}
+          </a>
+          <a href="#" class="hover:text-yellow-300 bg-[#ffffff22] px-6 py-2 rounded-full backdrop-blur w-48 text-center">
+            {{ t("components_nav-bar_contact") }}
+          </a>
+        </nav>
+      </div>
+
+      <!-- Login/Usuário e Carrinho à direita -->
+      <div
+        class="absolute right-8 top-1/2 -translate-y-1/2 flex items-center space-x-4"
+      >
         <!-- Mostra nome do usuário se estiver logado, senão mostra Login -->
         <p
           v-if="isAuthenticated"
@@ -83,23 +105,6 @@ const goToCart = () => {
           </span>
         </button>
       </div>
-    </div>
-
-    <!-- Segunda linha: Navegação (sobreposta) -->
-    <div class="flex justify-center -mt-16 relative z-10">
-      <nav
-        class="flex items-center space-x-64 text-lg font-semibold bg-[#ffffff22] px-4 py-2 rounded-full backdrop-blur"
-      >
-        <NuxtLink to="/product" class="hover:text-yellow-300 mr-8">
-          {{ t("components_nav-bar_home") }}
-        </NuxtLink>
-        <a href="#" class="hover:text-yellow-300">{{
-          t("components_nav-bar_about")
-        }}</a>
-        <a href="#" class="hover:text-yellow-300">{{
-          t("components_nav-bar_contact")
-        }}</a>
-      </nav>
     </div>
   </header>
 </template>
