@@ -14,6 +14,7 @@ onMounted(() => {
 const products = ref();
 const layout = ref('grid');
 const options = ref(['list', 'grid']);
+const quantity = ref(1);
 
 const handleBuyNow = (product) => {                                                                                                           
   if (!isAuthenticated.value) {                                                                                                               
@@ -29,7 +30,7 @@ const handleBuyNow = (product) => {
   // Navega para a página de pedido passando o produto                                                                                        
   navigateTo({                                                                                                                                
     path: '/order',                                                                                                                           
-    query: { productId: product.uuid }                                                                                                        
+    query: { productUuid: product.uuid, quantity: quantity.value }                                                                                                        
   });                                                                                                                                         
 };
 
@@ -67,6 +68,28 @@ const handleBuyNow = (product) => {
                 </div>
                 <div class="flex flex-col md:items-end gap-8">
                   <span class="text-xl font-semibold text-yellow-300">R${{ item.price }}</span>
+
+                  <div>
+                    <label class="block text-white mb-2 font-semibold">{{
+                      t("pages_order_quantity")
+                      }}</label>
+                    <InputNumber
+                      v-model="quantity"
+                      :min="1"
+                      :max="99"
+                      show-buttons
+                      button-layout="horizontal"
+                      class="w-full"
+                    >
+                      <template #incrementicon>
+                        <span class="pi pi-plus" />
+                      </template>
+                      <template #decrementicon>
+                        <span class="pi pi-minus" />
+                      </template>
+                    </InputNumber>
+                  </div>
+
                   <div class="flex flex-row-reverse md:flex-row gap-2">
                     <Button 
                       icon="pi pi-shopping-cart" 
@@ -86,7 +109,7 @@ const handleBuyNow = (product) => {
           <div 
             v-for="(item, index) in slotProps.items" 
             :key="index"
-            class="col-span-12 sm:col-span-6 md:col-span-4 xl:col-span-6 p-2"
+            class="col-span-12 sm:col-span-6 md:col-span-4 xl:col-span-3 p-2"
           >
             <div class="p-6 border border-[#ffffff22] bg-[#ffffff11] backdrop-blur rounded-lg flex flex-col">
               <div class="bg-[#ffffff11] flex justify-center rounded p-4">
@@ -103,6 +126,28 @@ const handleBuyNow = (product) => {
                 </div>
                 <div class="flex flex-col gap-6 mt-6">
                   <span class="text-2xl font-semibold text-yellow-300">R${{ item.price }}</span>
+
+                                    <div>
+                    <label class="block text-white mb-2 font-semibold">{{
+                      t("pages_order_quantity")
+                      }}</label>
+                    <InputNumber
+                      v-model="quantity"
+                      :min="1"
+                      :max="99"
+                      show-buttons
+                      button-layout="horizontal"
+                      class="w-full"
+                    >
+                      <template #incrementicon>
+                        <span class="pi pi-plus" />
+                      </template>
+                      <template #decrementicon>
+                        <span class="pi pi-minus" />
+                      </template>
+                    </InputNumber>
+                  </div>
+
                   <div class="flex gap-2">
                     <Button 
                       icon="pi pi-shopping-cart" 
