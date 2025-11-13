@@ -3,74 +3,79 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {                                                                                                                                 
-  :root {                                                                                                                                     
+@layer base {
+  :root {
     --p-dataview-content-background: transparent;
     --p-dataview-header-background: transparent;
-    --p-togglebutton-background: transparent;                                                                                            
-  }                                                                                                                                           
+    --p-togglebutton-background: transparent;
+  }
 }
 
-@layer components {                                                                                                                           
-  /* Estilo geral para componentes PrimeVue */                                                                                                
-  .p-component {                                                                                                                              
-    @apply font-sans;                                                                                                                         
-  }                                                                                                                                           
-                                                                                                                                              
-  /* DataView */                                                                                                                              
-  .p-dataview {                                                                                                                               
-    @apply bg-transparent;                                                                                                                    
+@layer components {
+  /* Estilo geral para componentes PrimeVue */
+  .p-component {
+    @apply font-sans;
   }
-  
-  /* Força transparência no conteúdo do DataView */                                                                                           
-  .p-dataview-content {                                                                                                                       
-    background: transparent !important;                                                                                                       
+
+  /* DataView */
+  .p-dataview {
+    @apply bg-transparent;
   }
-                                                                                                                                              
-  .p-dataview .p-dataview-header {                                                                                                            
-    @apply bg-transparent border-none p-4;                                                                                                    
-  }                                                                                                                                           
-                                                                                                                                              
-  .p-dataview .p-dataview-content {                                                                                                           
-    @apply bg-transparent;                                                                                                                    
-    background: transparent !important;                                                                                                       
-    --p-dataview-content-background: transparent;                                                                                             
-  }                                                                                                                                           
-                                                                                                                                              
-  /* SelectButton */                                                                                                                          
-  .p-selectbutton {                                                                                                                           
-    @apply bg-[#ffffff22] rounded-full backdrop-blur;                                                                                         
-  }                                                                                                                                           
-                                                                                                                                              
-  .p-selectbutton .p-button {                                                                                                                 
-    @apply bg-transparent text-white border-none;                                                                                             
-  }                                                                                                                                           
-                                                                                                                                              
-  .p-selectbutton .p-button.p-highlight {                                                                                                     
-    @apply bg-[#ffffff33] text-yellow-300;                                                                                                    
-  }                                                                                                                                           
-                                                                                                                                              
-  .p-selectbutton .p-button:hover {                                                                                                           
-    @apply bg-[#ffffff22];                                                                                                                    
-  }                                                                                                                                           
-                                                                                                                                              
-  /* Buttons */                                                                                                                               
-  .p-button {                                                                                                                                 
-    @apply bg-gradient-to-r from-[#1b074b] to-[#3c0074] text-white border-none;                                                               
-  }                                                                                                                                           
-                                                                                                                                              
-  .p-button:hover {                                                                                                                           
-    @apply from-[#20004b] to-[#4a0088];                                                                                                       
-  }                                                                                                                                           
-                                                                                                                                              
-  .p-button.p-button-outlined {                                                                                                               
-    @apply bg-transparent border-2 border-white text-white;                                                                                   
-  }                                                                                                                                           
-                                                                                                                                              
-  .p-button.p-button-outlined:hover {                                                                                                         
-    @apply bg-[#ffffff22] border-white text-white;                                                                                            
-  }                                                                                                                                           
-                                                                                                                                              
-  /* Cards dos produtos - NÃO aplica background aqui */                                                                                       
-  /* Deixa o Tailwind do componente controlar */                                                                                              
+
+  /* Força transparência no conteúdo do DataView */
+  .p-dataview-content {
+    background: transparent !important;
+  }
+
+  .p-dataview .p-dataview-header {
+    @apply bg-transparent border-none p-4;
+  }
+
+  .p-dataview .p-dataview-content {
+    @apply bg-transparent;
+    background: transparent !important;
+    --p-dataview-content-background: transparent;
+  }
+
+  /* SelectButton */
+  .p-selectbutton {
+    @apply bg-[#ffffff22] rounded-full backdrop-blur;
+  }
+
+  .p-selectbutton .p-button {
+    @apply bg-transparent text-white border-none;
+  }
+
+  .p-selectbutton .p-button.p-highlight {
+    @apply bg-[#ffffff33] text-yellow-300;
+  }
+
+  .p-selectbutton .p-button:hover {
+    @apply bg-[#ffffff22];
+  }
+
+  /* Buttons */
+  .p-button {
+    @apply bg-gradient-to-r from-[#1b074b] to-[#3c0074] text-white border-none;
+  }
+
+  .p-button:hover {
+    @apply from-[#20004b] to-[#4a0088];
+  }
+
+  .p-button.p-button-outlined {
+    @apply bg-transparent border-2 border-white text-white;
+  }
+
+  .p-button.p-button-outlined:hover {
+    @apply bg-[#ffffff22] border-white text-white;
+  }
+
+  /* Cards dos produtos - NÃO aplica background aqui */
+  /* Deixa o Tailwind do componente controlar */
+
+  /* Espaçamento para conteúdo com navbar fixa */
+  .page-content-with-navbar {
+    @apply pt-24;
+  }
 }

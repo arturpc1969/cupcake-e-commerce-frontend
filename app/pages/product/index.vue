@@ -40,7 +40,8 @@ const switchToLogin = () => {
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col">
+  <!-- <div class="min-h-screen flex flex-col"> -->
+  <div class="page-content-with-navbar min-h-screen flex flex-col">
     <NavBar @open-login="openLoginModal" />
     <HeroSection />
     <ProductDataView />

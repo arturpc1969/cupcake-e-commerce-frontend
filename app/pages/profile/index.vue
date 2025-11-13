@@ -31,7 +31,7 @@ const handleLogout = () => {
 </script>                                                                                                                                     
                                                                                                                                               
 <template>                                                                                                                                    
-  <div class="min-h-screen bg-gradient-to-br from-[#1b074b] to-[#100033]">                                                                    
+  <div class="page-content-with-navbar min-h-screen bg-gradient-to-br from-[#1b074b] to-[#100033]">                                                                    
     <NavBar />                                                                                                                                
                                                                                                                                               
     <div class="container mx-auto px-4 py-8">                                                                                                 
