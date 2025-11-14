@@ -104,5 +104,25 @@
   "pages_order_error-loading-addresses": "Erro ao Carregar Endereços",
   "pages_order_error-loading-addresses-message": "Não foi possível carregar os endereços de entrega",
   "pages_order_error-creating-order": "Erro ao Criar Pedido",
-  "pages_order_error-creating-order-message": "Não foi possível criar o pedido. Tente novamente."
+  "pages_order_error-creating-order-message": "Não foi possível criar o pedido. Tente novamente.",
+
+  "pages_delivery_address-title": "Meus Endereços de Entrega",
+  "pages_delivery_address-add-new": "Adicionar Endereço",
+  "pages_delivery_address-loading": "Carregando Endereços...",
+  "pages_delivery_address-edit": "Editar",
+  "pages_delivery_address-delete": "Excluir",
+  "pages_delivery_address-no-addresses": "Nenhum endereço cadastrado.",
+  "pages_delivery_address-no-addresses-message": "Você ainda não cadastrou nenhum endereço de entrega.",
+  "pages_delivery_address-add-first-address": "Adicionar Primeiro Endereço",
+  "pages_delivery_address-form-description": "Endereço",
+  "pages_delivery_address-form-city": "Cidade",
+  "pages_delivery_address-form-state": "Estado",
+  "pages_delivery_address-form-zip-code": "CEP",
+  "pages_delivery_address-delete-confirmation": "Confirmar Exclusão",
+  "pages_delivery_address-delete-confirmation-modal-message": "Tem certeza que deseja excluir o endereço ",
+  "pages_delivery_address-delete-confirmation-modal-warning": "Esta ação não pode ser desfeita.",
+  "pages_delivery_address-delete-confirmation-modal-cancel": "Cancelar",
+  "pages_delivery_address-delete-confirmation-modal-confirm": "Excluir",
+  "pages_delivery_address-error-loading": "Erro ao carregar endereços. Tente novamente.",
+  "pages_delivery_address-error-deleting": "Erro ao deletar endereço. Tente novamente."
 }
