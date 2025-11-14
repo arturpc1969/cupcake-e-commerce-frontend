@@ -172,5 +172,16 @@
   "pages_profile_orders_payment_debit_card": "Cartão de Débito",
   "pages_profile_orders_payment_pix": "PIX",
   "pages_profile_orders_payment_bank_slip": "Boleto Bancário",
-  "pages_profile_orders_payment_cash": "Dinheiro"
+  "pages_profile_orders_payment_cash": "Dinheiro",
+
+  "pages_profile_orders_details_title": "Detalhes do Pedido",
+  "pages_profile_orders_details_loading": "Carregando detalhes do pedido...",
+  "pages_profile_orders_details_load_error": "Erro ao carregar detalhes do pedido. Tente novamente.",
+  "pages_profile_orders_details_order_date": "Data do pedido",
+  "pages_profile_orders_details_products_title": "Produtos do Pedido",
+  "pages_profile_orders_details_unit_price": "Preço unitário",
+  "pages_profile_orders_details_subtotal": "Subtotal",
+  "pages_profile_orders_details_customer_info": "Informações do Cliente",
+  "pages_profile_orders_details_customer_name": "Nome",
+  "pages_profile_orders_details_customer_email": "E-mail"
 }
