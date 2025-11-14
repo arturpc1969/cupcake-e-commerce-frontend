@@ -124,5 +124,24 @@
   "pages_delivery_address-delete-confirmation-modal-cancel": "Cancelar",
   "pages_delivery_address-delete-confirmation-modal-confirm": "Excluir",
   "pages_delivery_address-error-loading": "Erro ao carregar endereços. Tente novamente.",
-  "pages_delivery_address-error-deleting": "Erro ao deletar endereço. Tente novamente."
+  "pages_delivery_address-error-deleting": "Erro ao deletar endereço. Tente novamente.",
+
+  "pages_profile_addresses_new_title": "Adicionar Endereço",
+  "pages_profile_addresses_new_address_name": "Nome do Endereço",
+  "pages_profile_addresses_new_address_name_placeholder": "Ex: Casa, Trabalho, Apartamento",
+  "pages_profile_addresses_new_address_description": "Endereço Completo",
+  "pages_profile_addresses_new_address_description_placeholder": "Rua, número, complemento, bairro",
+  "pages_profile_addresses_new_city": "Cidade",
+  "pages_profile_addresses_new_city_placeholder": "Ex: São Paulo",
+  "pages_profile_addresses_new_state": "Estado",
+  "pages_profile_addresses_new_state_placeholder": "Ex: SP",
+  "pages_profile_addresses_new_zip_code": "CEP",
+  "pages_profile_addresses_new_zip_code_placeholder": "00000-000",
+  "pages_profile_addresses_new_cancel": "Cancelar",
+  "pages_profile_addresses_new_save": "Salvar Endereço",
+  "pages_profile_addresses_new_saving": "Salvando...",
+  "pages_profile_addresses_new_saved": "Salvo!",
+  "pages_profile_addresses_new_success": "Endereço criado com sucesso!",
+  "pages_profile_addresses_new_error": "Erro ao criar endereço. Tente novamente.",
+  "pages_profile_addresses_new_info": "Todos os campos marcados com * são obrigatórios"
 }
