@@ -67,7 +67,10 @@
   "pages_profile_email": "E-mail:",
   "pages_profile_cpf": "CPF:",
   "pages_profile_my_addresses": "My addresses",
+  "pages_profile_manage_addresses": "Manage your delivery addresses",
   "pages_profile_my_orders": "My orders",
+  "pages_profile_view_orders": "View your order history",
+  "pages_profile_edit": "Edit profile",
 
   "pages_order_title": "Complete Order",
   "pages_order_quantity": "Quantity",
