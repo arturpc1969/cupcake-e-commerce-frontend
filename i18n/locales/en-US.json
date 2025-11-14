@@ -172,5 +172,16 @@
   "pages_profile_orders_payment_debit_card": "Debit Card",
   "pages_profile_orders_payment_pix": "PIX",
   "pages_profile_orders_payment_bank_slip": "Bank Slip",
-  "pages_profile_orders_payment_cash": "Cash"
+  "pages_profile_orders_payment_cash": "Cash",
+
+  "pages_profile_orders_details_title": "Order Details",
+  "pages_profile_orders_details_loading": "Loading order details...",
+  "pages_profile_orders_details_load_error": "Error loading order details. Please try again.",
+  "pages_profile_orders_details_order_date": "Order date",
+  "pages_profile_orders_details_products_title": "Order Products",
+  "pages_profile_orders_details_unit_price": "Unit price",
+  "pages_profile_orders_details_subtotal": "Subtotal",
+  "pages_profile_orders_details_customer_info": "Customer Information",
+  "pages_profile_orders_details_customer_name": "Name",
+  "pages_profile_orders_details_customer_email": "Email"
 }
