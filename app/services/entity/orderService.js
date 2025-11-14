@@ -33,7 +33,6 @@ export default class OrderService {
     }
 
     async confirmOrder(uuid) {
-        debugger
         const endpoint = `${this.baseUrl}confirm/${uuid}`
         const confirmedOrder = await this.requests.put(endpoint)
         return this.deserialize(confirmedOrder)

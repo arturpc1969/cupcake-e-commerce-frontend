@@ -33,7 +33,6 @@ export const useRequests = () => {
     headers = {},
     requiresAuth = true,
   }) {
-    debugger
     const defaultHeaders = {
       "Content-Type": "application/json",
     };
