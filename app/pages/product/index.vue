@@ -3,8 +3,6 @@ import NavBar from "~/components/NavBar.vue";
 import HeroSection from "~/components/HeroSection.vue";
 import ProductDataView from "~/components/ProductDataView.vue";
 
-// import { ref } from 'vue'
-
 const {
   isOpen: isLoginOpen,
   openLoginModal,
@@ -40,7 +38,7 @@ const switchToLogin = () => {
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col">
+  <div class="page-content-with-navbar min-h-screen flex flex-col">
     <NavBar @open-login="openLoginModal" />
     <HeroSection />
     <ProductDataView />

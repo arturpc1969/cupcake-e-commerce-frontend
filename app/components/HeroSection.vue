@@ -2,7 +2,7 @@
   <section class="relative bg-gradient-to-b from-[#20004b] to-[#3c0074] text-white pb-20">
     <div class="flex flex-col items-center">
       <!-- Banner principal -->
-      <div class="w-full flex justify-center mt-4">
+      <div class="w-full flex justify-center mt-8">
         <img
           src="/banner.png"
           alt="Promoção"
