@@ -91,6 +91,7 @@
   "pages_order_payment_method": "Payment Method",
   "pages_order_payment_credit_card": "Credit Card",
   "pages_order_payment_debit_card": "Debit Card",
+  "pages_order_payment_bank_slip": "Bank Slip",
   "pages_order_payment_pix": "PIX",
   "pages_order_payment_cash": "Money",
   "pages_order_subtotal": "Subtotal",
@@ -100,8 +101,5 @@
   "pages_order_error-loading-addresses": "Error Loading Addresses",
   "pages_order_error-loading-addresses-message": "Delivery addresses could not be loaded",
   "pages_order_error-creating-order": "Error Creating Order",
-  "pages_order_error-creating-order-message": "We were unable to create the order. Please try again.",
-
-  "utils_jwt_decode-jwt_invalid-token-error": "Invalid JWT token",
-  "utils_jwt_decode-jwt_decode-jwt-error": "Error decoding JWT:"
+  "pages_order_error-creating-order-message": "We were unable to create the order. Please try again."
 }

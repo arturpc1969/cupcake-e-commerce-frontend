@@ -23,13 +23,14 @@ const { orderService, orderItemsService, deliveryAddressService } =
 const loading = ref(false);
 const deliveryAddresses = ref([]);
 const selectedAddress = ref(null);
-const paymentMethod = ref("credit_card");
+const paymentMethod = ref("CREDIT_CARD");
 
 const paymentMethods = [
-  { label: t("pages_order_payment_credit_card"), value: "credit_card" },
-  { label: t("pages_order_payment_debit_card"), value: "debit_card" },
-  { label: t("pages_order_payment_pix"), value: "pix" },
-  { label: t("pages_order_payment_cash"), value: "cash" },
+  { label: t("pages_order_payment_credit_card"), value: "CREDIT_CARD" },
+  { label: t("pages_order_payment_debit_card"), value: "DEBIT_CARD" },
+  { label: t("pages_order_payment_bank_slip"), value: "BANK_SLIP" },
+  { label: t("pages_order_payment_pix"), value: "PIX" },
+  { label: t("pages_order_payment_cash"), value: "CASH" },
 ];
 
 onMounted(async () => {
@@ -100,9 +101,7 @@ const confirmOrder = async () => {
     const orderData = {
       delivery_address_uuid: selectedAddress.value,
       payment_method: paymentMethod.value,
-      status: "pending",
     };
-
     const createdOrder = await orderService.createOrder(orderData);
 
     // 2. Criar os order items
@@ -117,7 +116,10 @@ const confirmOrder = async () => {
       await orderItemsService.createOrderItem(orderItemData);
     }
 
-    // 3. Limpar o carrinho
+    // 3. Atualizar o status da order para CONFIRMED
+    await orderService.confirmOrder(createdOrder.uuid);
+
+    // 4. Limpar o carrinho
     clearCart();
 
     toast.add({

@@ -91,6 +91,7 @@
   "pages_order_payment_method": "Método de Pagamento",
   "pages_order_payment_credit_card": "Cartão de Crédito",
   "pages_order_payment_debit_card": "Cartão de Débito",
+  "pages_order_payment_bank_slip": "Boleto Bancário",
   "pages_order_payment_pix": "PIX",
   "pages_order_payment_cash": "Dinheiro",
   "pages_order_subtotal": "Subtotal",
@@ -100,8 +101,5 @@
   "pages_order_error-loading-addresses": "Erro ao Carregar Endereços",
   "pages_order_error-loading-addresses-message": "Não foi possível carregar os endereços de entrega",
   "pages_order_error-creating-order": "Erro ao Criar Pedido",
-  "pages_order_error-creating-order-message": "Não foi possível criar o pedido. Tente novamente.",
-
-  "utils_jwt_decode-jwt_invalid-token-error": "Token JWT inválido",
-  "utils_jwt_decode-jwt_decode-jwt-error": "Erro ao decodificar JWT:"
+  "pages_order_error-creating-order-message": "Não foi possível criar o pedido. Tente novamente."
 }
