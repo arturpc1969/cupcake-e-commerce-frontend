@@ -104,5 +104,25 @@
   "pages_order_error-loading-addresses": "Error Loading Addresses",
   "pages_order_error-loading-addresses-message": "Delivery addresses could not be loaded",
   "pages_order_error-creating-order": "Error Creating Order",
-  "pages_order_error-creating-order-message": "We were unable to create the order. Please try again."
+  "pages_order_error-creating-order-message": "We were unable to create the order. Please try again.",
+
+  "pages_delivery_address-title": "My Delivery Addresses",
+  "pages_delivery_address-add-new": "Add Address",
+  "pages_delivery_address-loading": "Loading Address...",
+  "pages_delivery_address-edit": "Edit",
+  "pages_delivery_address-delete": "Delete",
+  "pages_delivery_address-no-addresses": "No addresses registered.",
+  "pages_delivery_address-no-addresses-message": "You haven't registered any delivery addresses yet.",
+  "pages_delivery_address-add-first-address": "Add First Address",
+  "pages_delivery_address-form-description": "Address",
+  "pages_delivery_address-form-city": "City",
+  "pages_delivery_address-form-state": "State",
+  "pages_delivery_address-form-zip-code": "ZIP code",
+  "pages_delivery_address-delete-confirmation": "Confirm Deletion",
+  "pages_delivery_address-delete-confirmation-modal-message": "Are you sure you want to delete the address ",
+  "pages_delivery_address-delete-confirmation-modal-warning": "This action cannot be undone.",
+  "pages_delivery_address-delete-confirmation-modal-cancel": "Cancel",
+  "pages_delivery_address-delete-confirmation-modal-confirm": "Delete",
+  "pages_delivery_address-error-loading": "Error loading addresses. Please try again.",
+  "pages_delivery_address-error-deleting": "Error deleting address. Please try again."
 }
