@@ -163,6 +163,7 @@ const formatPriceInput = (field) => {
     class="page-content-with-navbar min-h-screen bg-gradient-to-b from-[#20004b] to-[#3c0074]"
   >
     <NavBar />
+    <Toast />
 
     <div class="container mx-auto px-4 py-8">
       <div class="max-w-4xl mx-auto">

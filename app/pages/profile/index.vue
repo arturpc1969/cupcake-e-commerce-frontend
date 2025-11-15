@@ -1,7 +1,7 @@
 <script setup>
 import { useI18n } from "vue-i18n";
 
-const { user, isAuthenticated, logout } = useAuth();
+const { user, isAuthenticated } = useAuth();
 
 const { t } = useI18n();
 
@@ -17,6 +17,11 @@ onMounted(() => {
   }
 });
 
+// Voltar para produtos
+const goBack = () => {
+  navigateTo("/product");
+};
+
 const goToAddresses = () => {
   navigateTo("/profile/addresses");
 };
@@ -27,6 +32,24 @@ const goToOrders = () => {
 
 const goToEditProfile = () => {
   navigateTo("/profile/edit");
+};
+
+// Formatar CPF para exibição                                                                                                                 
+const formatCPF = (cpf) => {                                                                                                                  
+  if (!cpf) return "-";                                                                                                                       
+                                                                                                                                              
+  // Remove qualquer formatação existente                                                                                                     
+  let cleanCPF = cpf.replace(/\D/g, "");                                                                                                      
+                                                                                                                                              
+  // Aplica a formatação                                                                                                                      
+  if (cleanCPF.length <= 11) {                                                                                                                
+    cleanCPF = cleanCPF.replace(/(\d{3})(\d)/, "$1.$2");                                                                                      
+    cleanCPF = cleanCPF.replace(/(\d{3})(\d)/, "$1.$2");                                                                                      
+    cleanCPF = cleanCPF.replace(/(\d{3})(\d{1,2})$/, "$1-$2");                                                                                
+    return cleanCPF;                                                                                                                          
+  }                                                                                                                                           
+                                                                                                                                              
+  return cpf;                                                                                                                                 
 };
 </script>
 
@@ -43,9 +66,30 @@ const goToEditProfile = () => {
           class="bg-gradient-to-b from-[#20004b] to-[#3c0074] border border-[#ffffff22] rounded-lg shadow-2xl p-8 mb-6"
         >
           <div class="flex items-center justify-between mb-6 flex-wrap gap-4">
-            <h1 class="text-3xl font-bold text-white">
-              {{ t("pages_profile_title") }}
-            </h1>
+            <div class="flex items-center gap-4">
+              <button
+                class="text-gray-300 hover:text-white transition-colors"
+                @click="goBack"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </button>
+              <h1 class="text-3xl font-bold text-white">
+                {{ t("pages_profile_title") }}
+              </h1>
+            </div>
             <div class="flex gap-3">
               <button
                 class="px-4 py-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold rounded-lg transition-colors flex items-center gap-2"
@@ -120,7 +164,7 @@ const goToEditProfile = () => {
                 <label class="block text-sm font-semibold text-gray-300 mb-1">
                   {{ t("pages_profile_cpf") }}
                 </label>
-                <p class="text-lg text-white">{{ user?.cpf || "-" }}</p>
+                <p class="text-lg text-white">{{ formatCPF(user?.cpf) }}</p>
               </div>
             </div>
           </div>

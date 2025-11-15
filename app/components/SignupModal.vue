@@ -9,7 +9,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(["update:modelValue", "signup-success"]);
+const emit = defineEmits(["update:modelValue", "signup-success", 'switch-to-login']);
 
 const { t } = useI18n();
 const auth = useAuth();
@@ -38,6 +38,18 @@ const closeModal = () => {
   emit("update:modelValue", false);
 };
 
+// Formatar CPF                                                                                                                               
+const formatCPF = () => {                                                                                                                     
+  let cpf = formData.value.cpf.replace(/\D/g, "");                                                                                            
+                                                                                                                                              
+  if (cpf.length <= 11) {                                                                                                                     
+    cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");                                                                                                
+    cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");                                                                                                
+    cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2");                                                                                          
+    formData.value.cpf = cpf;                                                                                                                 
+  }                                                                                                                                           
+};
+
 // Função de cadastro
 const handleSignup = async () => {
   error.value = "";
@@ -52,6 +64,9 @@ const handleSignup = async () => {
 
   try {
     const { confirmPassword, ...userData } = formData.value;
+
+    // Remove formatação do CPF antes de enviar                                                                                               
+    userData.cpf = userData.cpf.replace(/\D/g, "");
 
     const result = await auth.signup(userData);
 
@@ -153,9 +168,9 @@ onUnmounted(() => {
         >
           <!-- Botão Fechar -->
           <button
-            @click="closeModal"
-            class="absolute top-4 right-4 text-gray-300 hover:text-white transition z-10"
-            :disabled="loading"
+          class="absolute top-4 right-4 text-gray-300 hover:text-white transition z-10"
+          :disabled="loading"
+          @click="closeModal"
           >
             <svg
               class="w-6 h-6"
@@ -178,7 +193,7 @@ onUnmounted(() => {
           </h2>
 
           <!-- Formulário -->
-          <form @submit.prevent="handleSignup" class="space-y-5">
+          <form class="space-y-5" @submit.prevent="handleSignup" >
             <!-- Username -->
             <div>
               <label
@@ -195,7 +210,7 @@ onUnmounted(() => {
                 required
                 :disabled="loading"
                 class="w-full px-4 py-3 bg-[#ffffff11] border border-[#ffffff22] text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-transparent transition disabled:bg-[#ffffff05] disabled:cursor-not-allowed"
-              />
+              >
             </div>
 
             <!-- First Name e Last Name -->
@@ -215,7 +230,7 @@ onUnmounted(() => {
                   required
                   :disabled="loading"
                   class="w-full px-4 py-3 bg-[#ffffff11] border border-[#ffffff22] text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-transparent transition disabled:bg-[#ffffff05] disabled:cursor-not-allowed"
-                />
+                >
               </div>
 
               <div>
@@ -233,7 +248,7 @@ onUnmounted(() => {
                   required
                   :disabled="loading"
                   class="w-full px-4 py-3 bg-[#ffffff11] border border-[#ffffff22] text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-transparent transition disabled:bg-[#ffffff05] disabled:cursor-not-allowed"
-                />
+                >
               </div>
             </div>
 
@@ -253,7 +268,7 @@ onUnmounted(() => {
                 required
                 :disabled="loading"
                 class="w-full px-4 py-3 bg-[#ffffff11] border border-[#ffffff22] text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-transparent transition disabled:bg-[#ffffff05] disabled:cursor-not-allowed"
-              />
+              >
             </div>
 
             <!-- CPF -->
@@ -273,7 +288,8 @@ onUnmounted(() => {
                 :disabled="loading"
                 maxlength="14"
                 class="w-full px-4 py-3 bg-[#ffffff11] border border-[#ffffff22] text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-transparent transition disabled:bg-[#ffffff05] disabled:cursor-not-allowed"
-              />
+                @input="formatCPF"
+              >
             </div>
 
             <!-- Password e Confirm Password -->
@@ -293,7 +309,7 @@ onUnmounted(() => {
                   required
                   :disabled="loading"
                   class="w-full px-4 py-3 bg-[#ffffff11] border border-[#ffffff22] text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-transparent transition disabled:bg-[#ffffff05] disabled:cursor-not-allowed"
-                />
+                >
               </div>
 
               <div>
@@ -311,7 +327,7 @@ onUnmounted(() => {
                   required
                   :disabled="loading"
                   :class="[ 'w-full px-4 py-3 bg-[#ffffff11] border text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-transparent transition disabled:bg-[#ffffff05] disabled:cursor-not-allowed', formData.confirmPassword && !passwordsMatch ? 'border-red-500' : 'border-[#ffffff22]' ]"
-                />
+                >
                 <span
                   v-if="formData.confirmPassword && !passwordsMatch"
                   class="text-red-400 text-xs mt-1 block"
@@ -345,8 +361,8 @@ onUnmounted(() => {
           <div class="mt-6 text-center text-gray-300">
             {{ t("pages_signup_have-account") }}
             <button
-              @click="$emit('switch-to-login')"
-              class="text-yellow-300 hover:text-yellow-400 font-medium hover:underline"
+            class="text-yellow-300 hover:text-yellow-400 font-medium hover:underline"
+            @click="$emit('switch-to-login')"
             >
               {{ t("pages_signup_login-link") }}
             </button>
