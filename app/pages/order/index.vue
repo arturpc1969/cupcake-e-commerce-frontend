@@ -151,11 +151,11 @@ const cancelOrder = () => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-gradient-to-b from-[#20004b] to-[#3c0074]">
+  <div class="page-content-with-navbar min-h-screen bg-gradient-to-b from-[#20004b] to-[#3c0074]">
     <NavBar />
     <Toast />
 
-    <div class="page-content-with-navbar container mx-auto px-4 py-8">
+    <div class="container mx-auto px-4 py-8">
       <div class="max-w-6xl mx-auto">
         <Card class="bg-[#ffffff11] backdrop-blur border border-[#ffffff22]">
           <template #title>
