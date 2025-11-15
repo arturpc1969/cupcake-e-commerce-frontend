@@ -33,10 +33,8 @@ export const useRequests = () => {
     headers = {},
     requiresAuth = true,
   }) {
-    const defaultHeaders = {
-      "Content-Type": "application/json",
-    };
-
+    const isFormData = body instanceof FormData;
+    const defaultHeaders = isFormData ? {} : {"Content-Type": "application/json",};
     // Adiciona token de autenticação se necessário
     if (requiresAuth) {
       const token = await getAuthToken();

@@ -27,11 +27,12 @@ export default class ProductService {
 
     async createProduct(productData) {
         const endpoint = `${this.baseUrl}`
-
+        
         const formData = new FormData()                                                                                                                                           
         formData.append('name', productData.name)                                                                                                                                 
         formData.append('description', productData.description)                                                                                                                   
         formData.append('price', productData.price)
+        formData.append('promotion', productData.promotion)
 
         if (productData.image) {                                                                                                                                                  
             formData.append('image', productData.image)                                                                                                                           
