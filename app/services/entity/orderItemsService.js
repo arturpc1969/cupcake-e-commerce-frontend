@@ -14,8 +14,20 @@ export default class OrderService {
         return ordersItems.map(orderItems => this.deserialize(orderItems))
     }
 
+    async getAllOrdersItemsStaff() {
+        const endpoint = `${this.baseUrl}admin`
+        const ordersItems = await this.requests.get(endpoint)
+        return ordersItems.map(orderItems => this.deserialize(orderItems))
+    }
+
     async getOrderItemsByUuid(uuid) {
         const endpoint = `${this.baseUrl}${uuid}`
+        const orderItems = await this.requests.get(endpoint)
+        return this.deserialize(orderItems)
+    }
+
+    async getOrderItemsByUuidStaff(uuid) {
+        const endpoint = `${this.baseUrl}admin/${uuid}`
         const orderItems = await this.requests.get(endpoint)
         return this.deserialize(orderItems)
     }
