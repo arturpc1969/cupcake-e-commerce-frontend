@@ -140,7 +140,7 @@ const translateStatus = (status) => {
     WAITING_PAYMENT: t("pages_staff_orders_status_waiting_payment"),
     DELIVERED: t("pages_staff_orders_status_delivered"),
     FINISHED: t("pages_staff_orders_status_finished"),
-    CANCELLED: t("pages_staff_orders_status_cancelled"),
+    CANCELED: t("pages_staff_orders_status_canceled"),
   };
 
   return statusTranslations[status] || status;
