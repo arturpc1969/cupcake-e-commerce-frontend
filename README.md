@@ -1,728 +1,793 @@
 # cupcake-e-commerce-frontend
 Frontend for the cupcake e-commerce project
 
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ Documentação do Projeto Galaxy Cupcakes                                                                                                    ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-
-
-📋 Índice                                                                                                                                     
-
-  1 Visão Geral                                                                                                                                
-  2 Tecnologias Utilizadas                                                                                                                     
-  3 Estrutura do Projeto                                                                                                                      
-  4 Funcionalidades                                                                                                                           
-  5 Componentes Principais                                                                                                                    
-  6 Serviços e API                                                                                                                            
-  7 Autenticação e Autorização                                                                                                                
-  8 Internacionalização                                                                                                                       
-  9 Como Executar                                                                                                                             
-
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-🎯 Visão Geral                                                                                                                                
-
-Galaxy Cupcakes é uma plataforma de e-commerce especializada em cupcakes gourmet, desenvolvida com Nuxt 4. A aplicação oferece uma experiência
-completa de compra online, desde a navegação de produtos até o gerenciamento de pedidos, com áreas distintas para clientes e administradores.                                                                                       
-
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-🛠️ Tecnologias Utilizadas
-
-Frontend                                                                                                                                      
-
- • Nuxt 4 - Framework Vue.js para aplicações web                                                                                              
- • Vue 3 - Framework JavaScript progressivo                                                                                                   
- • PrimeVue - Biblioteca de componentes UI                                                                                                    
- • Tailwind CSS - Framework CSS utilitário                                                                                                    
- • Vue I18n - Internacionalização (PT-BR e EN-US)                                                                                             
-
-Gerenciamento de Estado                                                                                                                       
-
- • Composables - Para lógica reutilizável                                                                                                     
- • useState - Para estado reativo global                                                                                                      
-
-Autenticação                                                                                                                                  
-
- • JWT (JSON Web Tokens) - Para autenticação e autorização                                                                                    
- • LocalStorage - Para persistência de tokens                                                                                                 
-
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-📁 Estrutura do Projeto                                                                                                                       
-
-                                                                                                                                              
-app/                                                                                                                                          
-├── components/           # Componentes Vue reutilizáveis                                                                                     
-│   ├── AboutModal.vue                                                                                                                        
-│   ├── ContactModal.vue                                                                                                                      
-│   ├── HeroSection.vue                                                                                                                       
-│   ├── LoginModal.vue                                                                                                                        
-│   ├── NavBar.vue                                                                                                                            
-│   ├── ProductDataView.vue                                                                                                                   
-│   └── SignupModal.vue                                                                                                                       
-│                                                                                                                                             
-├── composables/          # Lógica reutilizável                                                                                               
-│   ├── useAboutModal.js                                                                                                                      
-│   ├── useAuth.js                                                                                                                            
-│   ├── useCart.js                                                                                                                            
-│   ├── useContactModal.js                                                                                                                    
-│   ├── useLoginModal.js                                                                                                                      
-│   ├── useMapEndpointResponse.js                                                                                                             
-│   ├── useRequests.js                                                                                                                        
-│   └── useSignupModal.js                                                                                                                     
-│                                                                                                                                             
-├── middleware/           # Middlewares de rota                                                                                               
-│   ├── auth.js                                                                                                                               
-│   └── staff.js                                                                                                                              
-│                                                                                                                                             
-├── pages/               # Páginas da aplicação                                                                                               
-│   ├── index.vue                                                                                                                             
-│   ├── product/                                                                                                                              
-│   │   └── index.vue                                                                                                                         
-│   ├── order/                                                                                                                                
-│   │   └── index.vue                                                                                                                         
-│   ├── profile/                                                                                                                              
-│   │   ├── index.vue                                                                                                                         
-│   │   ├── edit.vue                                                                                                                          
-│   │   ├── addresses/                                                                                                                        
-│   │   │   ├── index.vue                                                                                                                     
-│   │   │   └── new.vue                                                                                                                       
-│   │   └── orders/                                                                                                                           
-│   │       ├── index.vue                                                                                                                     
-│   │       └── [uuid].vue                                                                                                                    
-│   └── staff/                                                                                                                                
-│       ├── products/                                                                                                                         
-│       │   ├── index.vue                                                                                                                     
-│       │   ├── new.vue                                                                                                                       
-│       │   └── edit/                                                                                                                         
-│       │       └── [uuid].vue                                                                                                                
-│       └── orders/                                                                                                                           
-│           ├── index.vue                                                                                                                     
-│           └── [uuid].vue                                                                                                                    
-│                                                                                                                                             
-├── services/            # Serviços de API                                                                                                    
-│   ├── authService.js                                                                                                                        
-│   └── entity/                                                                                                                               
-│       ├── deliveryAddressService.js                                                                                                         
-│       ├── orderItemsService.js                                                                                                              
-│       ├── orderService.js                                                                                                                   
-│       ├── productService.js                                                                                                                 
-│       └── userService.js                                                                                                                    
-│                                                                                                                                             
-├── utils/               # Utilitários                                                                                                        
-│   └── jwt.js                                                                                                                                
-│                                                                                                                                             
-└── i18n/               # Arquivos de tradução                                                                                                
-    └── locales/                                                                                                                              
-        ├── pt-BR.json                                                                                                                        
-        └── en-US.json                                                                                                                        
-                                                                                                                                              
-
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-⚡ Funcionalidades                                                                                                                            
-
-🛍️ Área do Cliente                                                                                                                            
-
-Navegação e Visualização                                                                                                                      
-
- • Catálogo de Produtos                                                                                                                       
-    • Visualização em lista ou grid                                                                                                           
-    • Filtros e busca                                                                                                                         
-    • Detalhes completos dos produtos                                                                                                         
-    • Badge de promoção para produtos em oferta                                                                                               
-    • Imagens com altura padronizada                                                                                                          
- • Hero Section                                                                                                                               
-    • Banner promocional                                                                                                                      
-    • Destaque de produtos em promoção                                                                                                        
-    • Navegação direta para produtos                                                                                                          
-
-Autenticação                                                                                                                                  
-
- • Login                                                                                                                                      
-    • Autenticação via JWT                                                                                                                    
-    • Persistência de sessão                                                                                                                  
-    • Renovação automática de tokens                                                                                                          
- • Cadastro                                                                                                                                   
-    • Formulário completo de registro                                                                                                         
-    • Validação de dados                                                                                                                      
-    • Formatação automática de CPF                                                                                                            
-    • Validação de senhas                                                                                                                     
-
-Carrinho de Compras                                                                                                                           
-
- • Gerenciamento de Carrinho                                                                                                                  
-    • Adicionar/remover produtos                                                                                                              
-    • Ajustar quantidades                                                                                                                     
-    • Persistência em localStorage                                                                                                            
-    • Badge com contador de itens                                                                                                             
-    • Cálculo automático de totais                                                                                                            
-
-Pedidos                                                                                                                                       
-
- • Finalização de Compra                                                                                                                      
-    • Seleção de endereço de entrega                                                                                                          
-    • Escolha de método de pagamento                                                                                                          
-    • Revisão do pedido                                                                                                                       
-    • Confirmação de compra                                                                                                                   
- • Histórico de Pedidos                                                                                                                       
-    • Listagem de todos os pedidos                                                                                                            
-    • Detalhes completos de cada pedido                                                                                                       
-    • Acompanhamento de status                                                                                                                
-    • Informações de entrega                                                                                                                  
-
-Perfil do Usuário                                                                                                                             
-
- • Gerenciamento de Perfil                                                                                                                    
-    • Visualização de dados pessoais                                                                                                          
-    • Edição de informações                                                                                                                   
-    • Formatação automática de CPF                                                                                                            
-    • Validação de email                                                                                                                      
- • Endereços de Entrega                                                                                                                       
-    • Cadastro de múltiplos endereços                                                                                                         
-    • Edição de endereços                                                                                                                     
-    • Exclusão com confirmação                                                                                                                
-    • Seleção de endereço padrão                                                                                                              
-
-Informações                                                                                                                                   
-
- • Modal "Sobre Nós"                                                                                                                          
-    • História da empresa                                                                                                                     
-    • Missão e valores                                                                                                                        
-    • Localização                                                                                                                             
-    • Diferenciais                                                                                                                            
- • Modal "Contato"                                                                                                                            
-    • Informações de contato completas                                                                                                        
-    • Formulário de mensagem                                                                                                                  
-    • Validação de campos                                                                                                                     
-    • Formatação de telefone                                                                                                                  
-
-👨‍💼 Área Administrativa (Staff)                                                                                                              
-
-Gerenciamento de Produtos                                                                                                                     
-
- • Listagem de Produtos                                                                                                                       
-    • Visualização em grid                                                                                                                    
-    • Informações completas                                                                                                                   
-    • Indicadores de estoque                                                                                                                  
-    • Badge de promoção                                                                                                                       
- • Adicionar Produto                                                                                                                          
-    • Formulário completo                                                                                                                     
-    • Upload de imagem                                                                                                                        
-    • Preview de imagem                                                                                                                       
-    • Validação de campos                                                                                                                     
-    • Marcação de promoção                                                                                                                    
- • Editar Produto                                                                                                                             
-    • Pré-preenchimento de dados                                                                                                              
-    • Atualização de imagem (opcional)                                                                                                        
-    • Manutenção de imagem atual                                                                                                              
-    • Validação de alterações                                                                                                                 
- • Excluir Produto                                                                                                                            
-    • Modal de confirmação                                                                                                                    
-    • Exclusão permanente                                                                                                                     
-
-Gerenciamento de Pedidos                                                                                                                      
-
- • Listagem de Pedidos                                                                                                                        
-    • Visualização de todos os pedidos                                                                                                        
-    • Filtro por status                                                                                                                       
-    • Informações do cliente                                                                                                                  
-    • Preview de produtos                                                                                                                     
-    • Estatísticas rápidas                                                                                                                    
- • Detalhes do Pedido                                                                                                                         
-    • Informações completas                                                                                                                   
-    • Produtos do pedido                                                                                                                      
-    • Dados do cliente                                                                                                                        
-    • Endereço de entrega                                                                                                                     
-    • Atualização de status                                                                                                                   
- • Status de Pedidos                                                                                                                          
-    • DRAFT (Rascunho)                                                                                                                        
-    • PENDING (Pendente)                                                                                                                      
-    • CONFIRMED (Confirmado)                                                                                                                  
-    • PREPARATION (Em Preparação)                                                                                                             
-    • DELIVERY (Em Entrega)                                                                                                                   
-    • WAITING_PAYMENT (Aguardando Pagamento)                                                                                                  
-    • DELIVERED (Entregue)                                                                                                                    
-    • FINISHED (Finalizado)                                                                                                                   
-    • CANCELED (Cancelado)                                                                                                                    
-
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-🧩 Componentes Principais                                                                                                                     
-
-NavBar                                                                                                                                        
-
-Localização: app/components/NavBar.vue                                                                                                        
-
-Funcionalidades:                                                                                                                              
-
- • Logo e navegação principal                                                                                                                 
- • Menu dropdown do usuário                                                                                                                   
- • Links para perfil, pedidos e endereços                                                                                                     
- • Área administrativa (apenas para staff)                                                                                                    
- • Carrinho com badge de quantidade                                                                                                           
- • Modais de login e cadastro                                                                                                                 
- • Logout                                                                                                                                     
-
-ProductDataView                                                                                                                               
-
-Localização: app/components/ProductDataView.vue                                                                                               
-
-Funcionalidades:                                                                                                                              
-
- • Visualização em lista ou grid                                                                                                              
- • Adicionar ao carrinho                                                                                                                      
- • Compra direta                                                                                                                              
- • Seleção de quantidade                                                                                                                      
- • Badge de promoção                                                                                                                          
- • Imagens com altura padronizada                                                                                                             
- • Navegação por âncora                                                                                                                       
-
-HeroSection                                                                                                                                   
-
-Localização: app/components/HeroSection.vue                                                                                                   
-
-Funcionalidades:                                                                                                                              
-
- • Banner promocional                                                                                                                         
- • Destaque de 3 produtos em promoção                                                                                                         
- • Cards clicáveis                                                                                                                            
- • Loading state                                                                                                                              
- • Navegação para produtos                                                                                                                    
-
-Modais                                                                                                                                        
-
-LoginModal                                                                                                                                    
-
- • Autenticação de usuário                                                                                                                    
- • Validação de credenciais                                                                                                                   
- • Link para cadastro                                                                                                                         
-
-SignupModal                                                                                                                                   
-
- • Cadastro de novo usuário                                                                                                                   
- • Validação de campos                                                                                                                        
- • Formatação de CPF                                                                                                                          
- • Confirmação de senha                                                                                                                       
- • Link para login                                                                                                                            
-
-AboutModal                                                                                                                                    
-
- • História da empresa                                                                                                                        
- • Missão e valores                                                                                                                           
- • Localização                                                                                                                                
- • Diferenciais                                                                                                                               
-
-ContactModal                                                                                                                                  
-
- • Informações de contato                                                                                                                     
- • Formulário de mensagem                                                                                                                     
- • Validação de campos                                                                                                                        
- • Formatação de telefone                                                                                                                     
-
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-🔌 Serviços e API                                                                                                                             
-
-AuthService                                                                                                                                   
-
-Localização: app/services/authService.js                                                                                                      
-
-Métodos:                                                                                                                                      
-
- • login(userLoginData) - Autenticação                                                                                                        
- • signup(userData) - Cadastro                                                                                                                
- • logout() - Encerrar sessão                                                                                                                 
-
-ProductService                                                                                                                                
-
-Localização: app/services/entity/productService.js                                                                                            
-
-Métodos:                                                                                                                                      
-
- • getAllProducts() - Listar produtos                                                                                                         
- • getProductByUuid(uuid) - Buscar produto                                                                                                    
- • createProduct(productData) - Criar produto                                                                                                 
- • updateProduct(uuid, productData) - Atualizar produto                                                                                       
- • deleteProductByUuid(uuid) - Excluir produto                                                                                                
- • uploadProductImage(uuid, imageFile) - Upload de imagem                                                                                     
-
-OrderService                                                                                                                                  
-
-Localização: app/services/entity/orderService.js                                                                                              
-
-Métodos:                                                                                                                                      
-
- • getAllOrders() - Listar pedidos                                                                                                            
- • getOrderByUuid(uuid) - Buscar pedido                                                                                                       
- • createOrder(orderData) - Criar pedido                                                                                                      
- • updateOrder(uuid, orderData) - Atualizar pedido                                                                                            
- • confirmOrder(uuid) - Confirmar pedido                                                                                                      
- • deleteOrder(uuid) - Excluir pedido                                                                                                         
-
-OrderItemsService                                                                                                                             
-
-Localização: app/services/entity/orderItemsService.js                                                                                         
-
-Métodos:                                                                                                                                      
-
- • getAllOrdersItems() - Listar pedidos do usuário                                                                                            
- • getAllOrdersItemsStaff() - Listar todos os pedidos (staff)                                                                                 
- • getOrderItemsByUuid(uuid) - Buscar pedido do usuário                                                                                       
- • getOrderItemsByUuidStaff(uuid) - Buscar pedido (staff)                                                                                     
- • updateOrderItem(uuid, orderItemData) - Atualizar pedido                                                                                    
-
-DeliveryAddressService                                                                                                                        
-
-Localização: app/services/entity/deliveryAddressService.js                                                                                    
-
-Métodos:                                                                                                                                      
-
- • getAllDeliveryAddresses() - Listar endereços                                                                                               
- • getDeliveryAddressByUuid(uuid) - Buscar endereço                                                                                           
- • createDeliveryAddress(addressData) - Criar endereço                                                                                        
- • updateDeliveryAddress(uuid, addressData) - Atualizar endereço                                                                              
- • deleteDeliveryAddress(uuid) - Excluir endereço                                                                                             
-
-UserService                                                                                                                                   
-
-Localização: app/services/entity/userService.js                                                                                               
-
-Métodos:                                                                                                                                      
-
- • fetchMyUserData() - Buscar dados do usuário                                                                                                
- • updateMyUserData(userData) - Atualizar dados                                                                                               
- • deleteMyUser() - Excluir conta                                                                                                             
- • deactivateMyUser(userData) - Desativar conta                                                                                               
- • changeMyPassword(userData) - Alterar senha                                                                                                 
-
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-🔐 Autenticação e Autorização                                                                                                                 
-
-Sistema de Autenticação                                                                                                                       
-
-Composable: useAuth()                                                                                                                         
-
-Funcionalidades:                                                                                                                              
-
- • Gerenciamento de tokens JWT (access e refresh)                                                                                             
- • Persistência em localStorage                                                                                                               
- • Renovação automática de tokens                                                                                                             
- • Verificação de expiração                                                                                                                   
- • Logout automático em caso de erro 401                                                                                                      
-
-Estados:                                                                                                                                      
-
- • accessToken - Token de acesso                                                                                                              
- • refreshToken - Token de renovação                                                                                                          
- • user - Dados do usuário logado                                                                                                             
- • isAuthenticated - Status de autenticação                                                                                                   
- • isStaff - Indica se é usuário administrativo                                                                                               
-
-Middlewares                                                                                                                                   
-
-auth.js                                                                                                                                       
-
-Localização: app/middleware/auth.js                                                                                                           
-
-Função: Protege rotas que requerem autenticação                                                                                               
-
-Comportamento:                                                                                                                                
-
- • Verifica se o usuário está autenticado                                                                                                     
- • Redireciona para /product se não autenticado                                                                                               
-
-staff.js                                                                                                                                      
-
-Localização: app/middleware/staff.js                                                                                                          
-
-Função: Protege rotas administrativas                                                                                                         
-
-Comportamento:                                                                                                                                
-
- • Verifica se o usuário é staff                                                                                                              
- • Redireciona para /product se não for staff                                                                                                 
- • Exibe mensagem de acesso negado                                                                                                            
-
-Proteção de Rotas                                                                                                                             
-
-Rotas Protegidas (auth):                                                                                                                      
-
- • /profile/* - Perfil do usuário                                                                                                             
- • /order - Finalização de pedido                                                                                                             
-
-Rotas Protegidas (staff):                                                                                                                     
-
- • /staff/products/* - Gerenciamento de produtos                                                                                              
- • /staff/orders/* - Gerenciamento de pedidos                                                                                                 
-
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-🌍 Internacionalização                                                                                                                        
-
-Idiomas Suportados                                                                                                                            
-
- • Português (pt-BR) - Idioma padrão                                                                                                          
- • Inglês (en-US)                                                                                                                             
-
-Estrutura de Tradução                                                                                                                         
-
-Arquivos:                                                                                                                                     
-
- • i18n/locales/pt-BR.json                                                                                                                    
- • i18n/locales/en-US.json                                                                                                                    
-
-Categorias de Strings:                                                                                                                        
-
- • components_* - Componentes                                                                                                                 
- • pages_* - Páginas                                                                                                                          
- • composables_* - Composables                                                                                                                
- • middleware_* - Middlewares                                                                                                                 
-
-Uso
-
-
-const { t } = useI18n();                                                                                                                      
-                                                                                                                                              
-// Em template                                                                                                                                
-{{ t("components_nav-bar_home") }}                                                                                                            
-                                                                                                                                              
-// Em script                                                                                                                                  
-const message = t("pages_login_error-generic");                                                                                               
-                                                                                                                                              
-
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-🚀 Como Executar                                                                                                                              
-
-Pré-requisitos                                                                                                                                
-
- • Node.js 18+                                                                                                                                
- • npm ou yarn                                                                                                                                
- • Backend da API rodando                                                                                                                     
-
-Instalação                                                                                                                                    
-
-                                                                                                                                              
-# Clonar o repositório                                                                                                                        
-git clone [url-do-repositorio]                                                                                                                
-                                                                                                                                              
-# Entrar no diretório                                                                                                                         
-cd galaxy-cupcakes                                                                                                                            
-                                                                                                                                              
-# Instalar dependências                                                                                                                       
-npm install                                                                                                                                   
-                                                                                                                                              
-
-Configuração                                                                                                                                  
-
-Crie um arquivo .env na raiz do projeto:                                                                                                      
-
-                                                                                                                                              
-NUXT_PUBLIC_API_BASE=http://localhost:8000                                                                                                    
-                                                                                                                                              
-
-Executar em Desenvolvimento                                                                                                                   
-
-                                                                                                                                              
-npm run dev                                                                                                                                   
-                                                                                                                                              
-
-A aplicação estará disponível em http://localhost:3000                                                                                        
-
-Build para Produção                                                                                                                           
-
-                                                                                                                                              
-# Gerar build                                                                                                                                 
-npm run build                                                                                                                                 
-                                                                                                                                              
-# Executar em produção                                                                                                                        
-npm run start                                                                                                                                 
-                                                                                                                                              
-
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-📝 Convenções de Código                                                                                                                       
-
-Nomenclatura                                                                                                                                  
-
- • Componentes: PascalCase (ex: NavBar.vue)                                                                                                   
- • Composables: camelCase com prefixo use (ex: useAuth.js)                                                                                    
- • Páginas: kebab-case (ex: profile/edit.vue)                                                                                                 
- • Serviços: camelCase com sufixo Service (ex: productService.js)                                                                             
-
-Estrutura de Componentes                                                                                                                      
-
-                                                                                                                                              
-<script setup>                                                                                                                                
-// Imports                                                                                                                                    
-// Composables                                                                                                                                
-// Estado                                                                                                                                     
-// Funções                                                                                                                                    
-// Lifecycle hooks                                                                                                                            
-</script>                                                                                                                                     
-                                                                                                                                              
-<template>                                                                                                                                    
-  <!-- Template -->                                                                                                                           
-</template>                                                                                                                                   
-                                                                                                                                              
-<style scoped>                                                                                                                                
-/* Estilos */                                                                                                                                 
-</style>                                                                                                                                      
-                                                                                                                                              
-
-Padrão de Cores                                                                                                                               
-
- • Primária: Roxo (#20004b, #3c0074)                                                                                                          
- • Secundária: Amarelo (#fbbf24)                                                                                                              
- • Sucesso: Verde                                                                                                                             
- • Erro: Vermelho                                                                                                                             
- • Aviso: Laranja                                                                                                                             
- • Info: Azul                                                                                                                                 
-
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-🎨 Design System                                                                                                                              
-
-Componentes UI                                                                                                                                
-
- • PrimeVue - Biblioteca principal de componentes                                                                                             
- • Tailwind CSS - Estilização utilitária                                                                                                      
-
-Padrões Visuais                                                                                                                               
-
- • Gradientes: from-[#20004b] to-[#3c0074]                                                                                                    
- • Bordas: border-[#ffffff22]                                                                                                                 
- • Backgrounds: bg-[#ffffff11]                                                                                                                
- • Sombras: shadow-2xl                                                                                                                        
- • Arredondamento: rounded-lg                                                                                                                 
-
-Responsividade                                                                                                                                
-
- • Mobile First: Design otimizado para mobile                                                                                                 
- • Breakpoints: sm, md, lg, xl (Tailwind padrão)                                                                                              
- • Grid Responsivo: Ajuste automático de colunas                                                                                              
-
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-🔄 Fluxo de Dados                                                                                                                             
-
-Carrinho de Compras                                                                                                                           
-
- 1 Usuário adiciona produto ao carrinho                                                                                                       
- 2 Dados salvos em localStorage                                                                                                               
- 3 Badge atualizado na navbar                                                                                                                 
- 4 Persistência entre sessões                                                                                                                 
-
-Finalização de Pedido                                                                                                                         
-
- 1 Usuário acessa carrinho                                                                                                                    
- 2 Seleciona endereço de entrega                                                                                                              
- 3 Escolhe método de pagamento                                                                                                                
- 4 Confirma pedido                                                                                                                            
- 5 Pedido criado no backend                                                                                                                   
- 6 Carrinho limpo                                                                                                                             
- 7 Redirecionamento para histórico                                                                                                            
-
-Gerenciamento de Produtos (Staff)                                                                                                             
-
- 1 Staff acessa área administrativa                                                                                                           
- 2 Lista produtos existentes                                                                                                                  
- 3 Adiciona/edita/exclui produtos                                                                                                             
- 4 Upload de imagens                                                                                                                          
- 5 Atualização em tempo real                                                                                                                  
-
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-📊 Estados de Pedido                                                                                                                          
-
-Fluxo Normal                                                                                                                                  
-
-                                                                                                                                              
-DRAFT → PENDING → CONFIRMED → PREPARATION → DELIVERY → DELIVERED → FINISHED                                                                   
-                                                                                                                                              
-
-Fluxos Alternativos                                                                                                                           
-
-                                                                                                                                              
-PENDING → WAITING_PAYMENT → CONFIRMED                                                                                                         
-PENDING → CANCELED                                                                                                                            
-CONFIRMED → CANCELED                                                                                                                          
-                                                                                                                                              
-
-Cores por Status                                                                                                                              
-
- • DRAFT: Cinza                                                                                                                               
- • PENDING: Amarelo                                                                                                                           
- • CONFIRMED: Azul                                                                                                                            
- • PREPARATION: Roxo                                                                                                                          
- • DELIVERY: Índigo                                                                                                                           
- • WAITING_PAYMENT: Laranja                                                                                                                   
- • DELIVERED: Verde                                                                                                                           
- • FINISHED: Verde Esmeralda                                                                                                                  
- • CANCELED: Vermelho                                                                                                                         
-
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-🛡️ Segurança                                                                                                                                  
-
-Proteções Implementadas                                                                                                                       
-
- • JWT Authentication - Tokens seguros                                                                                                        
- • Middleware de Autenticação - Proteção de rotas                                                                                             
- • Validação de Formulários - Client-side e server-side                                                                                       
- • Sanitização de Dados - Prevenção de XSS                                                                                                    
- • HTTPS - Comunicação segura (produção)                                                                                                      
-
-Boas Práticas                                                                                                                                 
-
- • Tokens armazenados em localStorage                                                                                                         
- • Renovação automática de tokens                                                                                                             
- • Logout em caso de token inválido                                                                                                           
- • Validação de permissões (staff)                                                                                                            
-
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-📱 Funcionalidades Mobile                                                                                                                     
-
-Otimizações                                                                                                                                   
-
- • Design Responsivo - Adaptação automática                                                                                                   
- • Touch Friendly - Botões e áreas clicáveis adequadas                                                                                        
- • Menu Hamburguer - Navegação otimizada                                                                                                      
- • Imagens Otimizadas - Carregamento rápido                                                                                                   
- • Formulários Adaptados - Inputs mobile-friendly                                                                                             
-
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-🐛 Tratamento de Erros                                                                                                                        
-
-Estratégias                                                                                                                                   
-
- • Try-Catch - Captura de erros assíncronos                                                                                                   
- • Toast Notifications - Feedback visual ao usuário                                                                                           
- • Loading States - Indicadores de carregamento                                                                                               
- • Fallbacks - Conteúdo alternativo em caso de erro                                                                                           
- • Logs - Console.error para debugging                                                                                                        
-
-Mensagens de Erro                                                                                                                             
-
- • Traduzidas (i18n)                                                                                                                          
- • Descritivas                                                                                                                                
- • Acionáveis (sugerem solução)                                                                                                               
-
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-📄 Licença                                                                                                                                    
-
-Este projeto é proprietário da Galaxy Cupcakes.                                                                                               
-
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-👥 Equipe                                                                                                                                     
-
-Desenvolvido com ❤️ pela equipe Galaxy Cupcakes                                                                                               
-
-Galaxy Cupcakes - Sabor que vem das estrelas ⭐🧁
+                                                                                                                                                                              
+# 🧁 Galaxy Cupcakes                                                                                                                                                          
+                                                                                                                                                                              
+<div align="center">                                                                                                                                                          
+  <img src="public/logo.svg" alt="Galaxy Cupcakes Logo" width="400">                                                                                                          
+                                                                                                                                                                              
+  ### Sabor que vem das estrelas ⭐                                                                                                                                           
+                                                                                                                                                                              
+  [![Nuxt 4](https://img.shields.io/badge/Nuxt-3.x-00DC82?style=for-the-badge&logo=nuxt.js&logoColor=white)](https://nuxt.com/)                                               
+  [![Vue 3](https://img.shields.io/badge/Vue-3.x-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white)](https://vuejs.org/)                                                 
+  [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.x-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)                         
+  [![PrimeVue](https://img.shields.io/badge/PrimeVue-Latest-41B883?style=for-the-badge)](https://primevue.org/)                                                               
+</div>                                                                                                                                                                        
+                                                                                                                                                                              
+---                                                                                                                                                                           
+                                                                                                                                                                              
+## 📋 Índice                                                                                                                                                                  
+                                                                                                                                                                              
+- [Sobre o Projeto](#-sobre-o-projeto)                                                                                                                                        
+- [Funcionalidades](#-funcionalidades)                                                                                                                                        
+- [Tecnologias](#-tecnologias)                                                                                                                                                
+- [Estrutura do Projeto](#-estrutura-do-projeto)                                                                                                                              
+- [Instalação](#-instalação)                                                                                                                                                  
+- [Configuração](#-configuração)                                                                                                                                              
+- [Como Usar](#-como-usar)                                                                                                                                                    
+- [Autenticação](#-autenticação)                                                                                                                                              
+- [Internacionalização](#-internacionalização)                                                                                                                                
+- [API e Serviços](#-api-e-serviços)                                                                                                                                          
+- [Capturas de Tela](#-capturas-de-tela)                                                                                                                                      
+- [Contribuindo](#-contribuindo)                                                                                                                                              
+- [Licença](#-licença)                                                                                                                                                        
+                                                                                                                                                                              
+---                                                                                                                                                                           
+                                                                                                                                                                              
+## 🎯 Sobre o Projeto                                                                                                                                                         
+                                                                                                                                                                              
+**Galaxy Cupcakes** é uma plataforma completa de e-commerce especializada em cupcakes gourmet artesanais. Desenvolvida com as mais modernas tecnologias web, oferece uma      
+experiência de compra intuitiva e agradável.                                                                                                                                  
+                                                                                                                                                                              
+### 🏢 Sobre a Empresa                                                                                                                                                        
+                                                                                                                                                                              
+- **Nome**: Galaxy Cupcakes                                                                                                                                                   
+- **Fundação**: 2025                                                                                                                                                          
+- **Localização**: Santa Rita do Sapucaí, MG, Brasil                                                                                                                          
+- **Segmento**: E-commerce de cupcakes gourmet                                                                                                                                
+- **Missão**: Proporcionar momentos de felicidade através de cupcakes artesanais de alta qualidade                                                                            
+                                                                                                                                                                              
+---                                                                                                                                                                           
+                                                                                                                                                                              
+## ✨ Funcionalidades                                                                                                                                                         
+                                                                                                                                                                              
+### 👤 Área do Cliente                                                                                                                                                        
+                                                                                                                                                                              
+#### 🛒 Compras                                                                                                                                                               
+- [x] Catálogo de produtos com visualização em lista ou grid                                                                                                                  
+- [x] Produtos em destaque na página inicial                                                                                                                                  
+- [x] Badge visual para produtos em promoção                                                                                                                                  
+- [x] Carrinho de compras com persistência                                                                                                                                    
+- [x] Ajuste de quantidades                                                                                                                                                   
+- [x] Cálculo automático de totais                                                                                                                                            
+                                                                                                                                                                              
+#### 📦 Pedidos                                                                                                                                                               
+- [x] Finalização de compra                                                                                                                                                   
+- [x] Seleção de endereço de entrega                                                                                                                                          
+- [x] Múltiplos métodos de pagamento                                                                                                                                          
+- [x] Histórico completo de pedidos                                                                                                                                           
+- [x] Detalhes de cada pedido                                                                                                                                                 
+- [x] Acompanhamento de status                                                                                                                                                
+                                                                                                                                                                              
+#### 👨‍💼 Perfil                                                                                                                                                              
+- [x] Visualização de dados pessoais                                                                                                                                          
+- [x] Edição de perfil                                                                                                                                                        
+- [x] Gerenciamento de endereços de entrega                                                                                                                                   
+- [x] Formatação automática de CPF                                                                                                                                            
+                                                                                                                                                                              
+#### 🔐 Autenticação                                                                                                                                                          
+- [x] Login com JWT                                                                                                                                                           
+- [x] Cadastro de novos usuários                                                                                                                                              
+- [x] Renovação automática de tokens                                                                                                                                          
+- [x] Logout seguro                                                                                                                                                           
+                                                                                                                                                                              
+### 🛠️ Área Administrativa (Staff)                                                                                                                                            
+                                                                                                                                                                              
+#### 📦 Produtos                                                                                                                                                              
+- [x] Listagem completa de produtos                                                                                                                                           
+- [x] Adicionar novos produtos                                                                                                                                                
+- [x] Editar produtos existentes                                                                                                                                              
+- [x] Excluir produtos (com confirmação)                                                                                                                                      
+- [x] Upload de imagens                                                                                                                                                       
+- [x] Controle de estoque                                                                                                                                                     
+- [x] Marcação de promoções                                                                                                                                                   
+                                                                                                                                                                              
+#### 📋 Pedidos                                                                                                                                                               
+- [x] Visualização de todos os pedidos                                                                                                                                        
+- [x] Filtro por status                                                                                                                                                       
+- [x] Detalhes completos de pedidos                                                                                                                                           
+- [x] Atualização de status                                                                                                                                                   
+- [x] Informações do cliente                                                                                                                                                  
+- [x] Estatísticas rápidas                                                                                                                                                    
+                                                                                                                                                                              
+### 📱 Recursos Gerais                                                                                                                                                        
+- [x] Design responsivo (mobile-first)                                                                                                                                        
+- [x] Internacionalização (PT-BR e EN-US)                                                                                                                                     
+- [x] Notificações toast                                                                                                                                                      
+- [x] Modais informativos (Sobre, Contato)                                                                                                                                    
+- [x] Validação de formulários                                                                                                                                                
+- [x] Estados de loading                                                                                                                                                      
+- [x] Tratamento de erros                                                                                                                                                     
+                                                                                                                                                                              
+---                                                                                                                                                                           
+                                                                                                                                                                              
+## 🛠️ Tecnologias                                                                                                                                                             
+                                                                                                                                                                              
+### Frontend                                                                                                                                                                  
+- **[Nuxt 4](https://nuxt.com/)** - Framework Vue.js para aplicações web                                                                                                      
+- **[Vue 3](https://vuejs.org/)** - Framework JavaScript progressivo                                                                                                          
+- **[PrimeVue](https://primevue.org/)** - Biblioteca de componentes UI                                                                                                        
+- **[Tailwind CSS](https://tailwindcss.com/)** - Framework CSS utilitário                                                                                                     
+- **[Vue I18n](https://vue-i18n.intlify.dev/)** - Internacionalização                                                                                                         
+                                                                                                                                                                              
+### Bibliotecas Adicionais                                                                                                                                                    
+- **[VueUse](https://vueuse.org/)** - Coleção de composables Vue                                                                                                              
+- **[PrimeVue Toast](https://primevue.org/toast/)** - Sistema de notificações                                                                                                 
+                                                                                                                                                                              
+### Autenticação                                                                                                                                                              
+- **JWT (JSON Web Tokens)** - Autenticação stateless                                                                                                                          
+- **LocalStorage** - Persistência de sessão                                                                                                                                   
+                                                                                                                                                                              
+---                                                                                                                                                                           
+                                                                                                                                                                              
+## 📁 Estrutura do Projeto                                                                                                                                                    
+                                                                                                                                                                              
+
+galaxy-cupcakes/ │ ├── app/ │   ├── components/              # Componentes Vue reutilizáveis │   │   ├── AboutModal.vue       # Modal "Sobre Nós" │   │   ├── ContactModal.vue
+# Modal de contato │   │   ├── HeroSection.vue      # Seção hero com produtos em destaque │   │   ├── LoginModal.vue       # Modal de login │   │   ├── NavBar.vue           #
+Barra de navegação │   │   ├── ProductDataView.vue  # Visualização de produtos │   │   └── SignupModal.vue      # Modal de cadastro │   │ │   ├── composables/             #  
+Lógica reutilizável │   │   ├── useAboutModal.js     # Controle do modal "Sobre" │   │   ├── useAuth.js           # Autenticação e autorização │   │   ├── useCart.js         
+# Gerenciamento do carrinho │   │   ├── useContactModal.js   # Controle do modal de contato │   │   ├── useLoginModal.js     # Controle do modal de login │   │   ├──         
+useMapEndpointResponse.js  # Mapeamento de dados da API │   │   ├── useRequests.js       # Requisições HTTP │   │   ├── useServices.js       # Injeção de serviços │   │   └──
+useSignupModal.js    # Controle do modal de cadastro │   │ │   ├── middleware/              # Middlewares de rota │   │   ├── auth.js              # Proteção de rotas        
+autenticadas │   │   └── staff.js             # Proteção de rotas administrativas │   │ │   ├── pages/                   # Páginas da aplicação │   │   ├── product/ │   │   │
+└── index.vue        # Catálogo de produtos │   │   ├── order/ │   │   │   └── index.vue        # Finalização de pedido │   │   ├── profile/ │   │   │   ├── index.vue        
+# Perfil do usuário │   │   │   ├── edit.vue         # Editar perfil │   │   │   ├── addresses/ │   │   │   │   ├── index.vue    # Lista de endereços │   │   │   │   └──     
+new.vue      # Adicionar endereço │   │   │   └── orders/ │   │   │       ├── index.vue    # Histórico de pedidos │   │   │       └── [uuid].vue   # Detalhes do pedido │   │ 
+└── staff/ │   │       ├── products/ │   │       │   ├── index.vue    # Gerenciar produtos │   │       │   ├── new.vue      # Adicionar produto │   │       │   └── edit/ │   
+│       │       └── [uuid].vue  # Editar produto │   │       └── orders/ │   │           ├── index.vue    # Gerenciar pedidos │   │           └── [uuid].vue   # Editar pedido
+│   │ │   ├── services/                # Serviços de API │   │   ├── authService.js │   │   └── entity/ │   │       ├── deliveryAddressService.js │   │       ├──             
+orderItemsService.js │   │       ├── orderService.js │   │       ├── productService.js │   │       └── userService.js │   │ │   └── utils/                   # Utilitários │  
+└── jwt.js               # Funções para manipulação de JWT │ ├── i18n/                        # Internacionalização │   └── locales/ │       ├── pt-BR.json │       └──       
+en-US.json │ └── public/                      # Arquivos estáticos ├── banner.png ├── cart.svg ├── logo.svg └── imagotipo.svg                                                 
+
+                                                                                                                                                                              
+                                                                                                                                                                              
+---                                                                                                                                                                           
+                                                                                                                                                                              
+## 🚀 Instalação                                                                                                                                                              
+                                                                                                                                                                              
+### Pré-requisitos                                                                                                                                                            
+                                                                                                                                                                              
+- **Node.js** 18.x ou superior                                                                                                                                                
+- **npm** ou **yarn**                                                                                                                                                         
+- **Backend API** rodando (Django REST Framework)                                                                                                                             
+                                                                                                                                                                              
+### Passos                                                                                                                                                                    
+                                                                                                                                                                              
+```bash                                                                                                                                                                       
+# 1. Clonar o repositório                                                                                                                                                     
+git clone https://github.com/seu-usuario/galaxy-cupcakes.git                                                                                                                  
+                                                                                                                                                                              
+# 2. Entrar no diretório                                                                                                                                                      
+cd galaxy-cupcakes                                                                                                                                                            
+                                                                                                                                                                              
+# 3. Instalar dependências                                                                                                                                                    
+npm install                                                                                                                                                                   
+                                                                                                                                                                              
+# 4. Configurar variáveis de ambiente                                                                                                                                         
+cp .env.example .env                                                                                                                                                          
+                                                                                                                                                                              
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+⚙️ Configuração                                                                                                                                                               
+
+Variáveis de Ambiente                                                                                                                                                         
+
+Crie um arquivo .env na raiz do projeto:                                                                                                                                      
+
+                                                                                                                                                                              
+# URL base da API                                                                                                                                                             
+NUXT_PUBLIC_API_BASE=http://localhost:8000                                                                                                                                    
+                                                                                                                                                                              
+
+Configuração do Nuxt                                                                                                                                                          
+
+O arquivo nuxt.config.ts já está configurado com:                                                                                                                             
+
+ • PrimeVue                                                                                                                                                                   
+ • Tailwind CSS                                                                                                                                                               
+ • Vue I18n                                                                                                                                                                   
+ • Runtime config                                                                                                                                                             
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+💻 Como Usar                                                                                                                                                                  
+
+Desenvolvimento                                                                                                                                                               
+
+                                                                                                                                                                              
+# Iniciar servidor de desenvolvimento                                                                                                                                         
+npm run dev                                                                                                                                                                   
+                                                                                                                                                                              
+# Aplicação disponível em http://localhost:3000                                                                                                                               
+                                                                                                                                                                              
+
+Produção                                                                                                                                                                      
+
+                                                                                                                                                                              
+# Gerar build de produção                                                                                                                                                     
+npm run build                                                                                                                                                                 
+                                                                                                                                                                              
+# Iniciar servidor de produção                                                                                                                                                
+npm run start                                                                                                                                                                 
+                                                                                                                                                                              
+# Preview do build                                                                                                                                                            
+npm run preview                                                                                                                                                               
+                                                                                                                                                                              
+
+Linting                                                                                                                                                                       
+
+                                                                                                                                                                              
+# Verificar código                                                                                                                                                            
+npm run lint                                                                                                                                                                  
+                                                                                                                                                                              
+# Corrigir problemas automaticamente                                                                                                                                          
+npm run lint:fix                                                                                                                                                              
+                                                                                                                                                                              
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+🔐 Autenticação                                                                                                                                                               
+
+Sistema de Tokens JWT                                                                                                                                                         
+
+A aplicação utiliza um sistema de autenticação baseado em JWT com dois tipos de tokens:                                                                                       
+
+Access Token                                                                                                                                                                  
+
+ • Duração: Curta (geralmente 15-60 minutos)                                                                                                                                  
+ • Uso: Autenticação de requisições à API                                                                                                                                     
+ • Renovação: Automática quando próximo da expiração                                                                                                                          
+
+Refresh Token                                                                                                                                                                 
+
+ • Duração: Longa (geralmente 7-30 dias)                                                                                                                                      
+ • Uso: Renovar o access token                                                                                                                                                
+ • Armazenamento: LocalStorage                                                                                                                                                
+
+Fluxo de Autenticação                                                                                                                                                         
+
+                                                                                                                                                                              
+graph LR                                                                                                                                                                      
+    A[Login] --> B[Recebe Tokens]                                                                                                                                             
+    B --> C[Armazena em LocalStorage]                                                                                                                                         
+    C --> D[Busca Dados do Usuário]                                                                                                                                           
+    D --> E[Usuário Autenticado]                                                                                                                                              
+    E --> F{Token Expirando?}                                                                                                                                                 
+    F -->|Sim| G[Renova Token]                                                                                                                                                
+    F -->|Não| H[Continua Usando]                                                                                                                                             
+    G --> E                                                                                                                                                                   
+                                                                                                                                                                              
+
+Proteção de Rotas                                                                                                                                                             
+
+Middleware auth                                                                                                                                                               
+
+Protege rotas que requerem autenticação:                                                                                                                                      
+
+                                                                                                                                                                              
+definePageMeta({                                                                                                                                                              
+  middleware: "auth",                                                                                                                                                         
+});                                                                                                                                                                           
+                                                                                                                                                                              
+
+Middleware staff                                                                                                                                                              
+
+Protege rotas administrativas:                                                                                                                                                
+
+                                                                                                                                                                              
+definePageMeta({                                                                                                                                                              
+  middleware: ["auth", "staff"],                                                                                                                                              
+});                                                                                                                                                                           
+                                                                                                                                                                              
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+🌍 Internacionalização                                                                                                                                                        
+
+Idiomas Disponíveis                                                                                                                                                           
+
+                                             
+  Idioma               Código   Status       
+ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 
+  Português (Brasil)   pt-BR    ✅ Completo  
+  Inglês (EUA)         en-US    ✅ Completo  
+                                             
+
+Estrutura de Tradução                                                                                                                                                         
+
+                                                                                                                                                                              
+{                                                                                                                                                                             
+  "components_nav-bar_home": "Home",                                                                                                                                          
+  "pages_login_title": "Entre com sua conta:",                                                                                                                                
+  "pages_staff_products_title": "Gerenciar Produtos"                                                                                                                          
+}                                                                                                                                                                             
+                                                                                                                                                                              
+
+Convenção de Nomenclatura                                                                                                                                                     
+
+                                                                                                                                                                              
+{categoria}_{componente/página}_{chave}                                                                                                                                       
+                                                                                                                                                                              
+
+Exemplos:                                                                                                                                                                     
+
+ • components_nav-bar_logout - Componente NavBar                                                                                                                              
+ • pages_profile_title - Página de perfil                                                                                                                                     
+ • composables_use-requests_unauthorized - Composable useRequests                                                                                                             
+
+Uso no Código                                                                                                                                                                 
+
+                                                                                                                                                                              
+<script setup>                                                                                                                                                                
+const { t } = useI18n();                                                                                                                                                      
+</script>                                                                                                                                                                     
+                                                                                                                                                                              
+<template>                                                                                                                                                                    
+  <h1>{{ t("pages_profile_title") }}</h1>                                                                                                                                     
+</template>                                                                                                                                                                   
+                                                                                                                                                                              
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+🔌 API e Serviços                                                                                                                                                             
+
+Endpoints Principais                                                                                                                                                          
+
+                                                                      
+  Serviço       Endpoint Base              Descrição                  
+ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 
+  Auth          /api/auth/                 Autenticação e cadastro    
+  Products      /api/products/             Gerenciamento de produtos  
+  Orders        /api/orders/               Gerenciamento de pedidos   
+  Order Items   /api/order-items/          Itens de pedidos           
+  Addresses     /api/delivery-addresses/   Endereços de entrega       
+  Users         /api/users/me              Dados do usuário           
+                                                                      
+
+Serviços Implementados                                                                                                                                                        
+
+ProductService                                                                                                                                                                
+
+                                                                                                                                                                              
+// Listar todos os produtos                                                                                                                                                   
+await productService.getAllProducts()                                                                                                                                         
+                                                                                                                                                                              
+// Buscar produto específico                                                                                                                                                  
+await productService.getProductByUuid(uuid)                                                                                                                                   
+                                                                                                                                                                              
+// Criar produto (staff)                                                                                                                                                      
+await productService.createProduct(productData)                                                                                                                               
+                                                                                                                                                                              
+// Atualizar produto (staff)                                                                                                                                                  
+await productService.updateProduct(uuid, productData)                                                                                                                         
+                                                                                                                                                                              
+// Excluir produto (staff)                                                                                                                                                    
+await productService.deleteProductByUuid(uuid)                                                                                                                                
+                                                                                                                                                                              
+
+OrderService                                                                                                                                                                  
+
+                                                                                                                                                                              
+// Criar pedido                                                                                                                                                               
+await orderService.createOrder(orderData)                                                                                                                                     
+                                                                                                                                                                              
+// Atualizar pedido                                                                                                                                                           
+await orderService.updateOrder(uuid, orderData)                                                                                                                               
+                                                                                                                                                                              
+// Confirmar pedido                                                                                                                                                           
+await orderService.confirmOrder(uuid)                                                                                                                                         
+                                                                                                                                                                              
+
+DeliveryAddressService                                                                                                                                                        
+
+                                                                                                                                                                              
+// Listar endereços do usuário                                                                                                                                                
+await deliveryAddressService.getAllDeliveryAddresses()                                                                                                                        
+                                                                                                                                                                              
+// Criar endereço                                                                                                                                                             
+await deliveryAddressService.createDeliveryAddress(addressData)                                                                                                               
+                                                                                                                                                                              
+// Atualizar endereço                                                                                                                                                         
+await deliveryAddressService.updateDeliveryAddress(uuid, addressData)                                                                                                         
+                                                                                                                                                                              
+// Excluir endereço                                                                                                                                                           
+await deliveryAddressService.deleteDeliveryAddress(uuid)                                                                                                                      
+                                                                                                                                                                              
+
+UserService                                                                                                                                                                   
+
+                                                                                                                                                                              
+// Buscar dados do usuário                                                                                                                                                    
+await userService.fetchMyUserData()                                                                                                                                           
+                                                                                                                                                                              
+// Atualizar dados                                                                                                                                                            
+await userService.updateMyUserData(userData)                                                                                                                                  
+                                                                                                                                                                              
+// Alterar senha                                                                                                                                                              
+await userService.changeMyPassword(passwordData)                                                                                                                              
+                                                                                                                                                                              
+
+Mapeamento de Dados                                                                                                                                                           
+
+A aplicação converte automaticamente entre os formatos do backend (snake_case) e frontend (camelCase):                                                                        
+
+                                                                                                                                                                              
+// Backend (snake_case)                                                                                                                                                       
+{                                                                                                                                                                             
+  first_name: "João",                                                                                                                                                         
+  last_name: "Silva",                                                                                                                                                         
+  delivery_address: {...}                                                                                                                                                     
+}                                                                                                                                                                             
+                                                                                                                                                                              
+// Frontend (camelCase)                                                                                                                                                       
+{                                                                                                                                                                             
+  firstName: "João",                                                                                                                                                          
+  lastName: "Silva",                                                                                                                                                          
+  deliveryAddress: {...}                                                                                                                                                      
+}                                                                                                                                                                             
+                                                                                                                                                                              
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+🎨 Componentes Principais                                                                                                                                                     
+
+NavBar                                                                                                                                                                        
+
+Barra de navegação principal com:                                                                                                                                             
+
+ • Logo e menu de navegação                                                                                                                                                   
+ • Dropdown do usuário (quando autenticado)                                                                                                                                   
+ • Links para perfil, pedidos e endereços                                                                                                                                     
+ • Área administrativa (apenas para staff)                                                                                                                                    
+ • Carrinho com badge de quantidade                                                                                                                                           
+ • Modais de login e cadastro                                                                                                                                                 
+
+ProductDataView                                                                                                                                                               
+
+Visualização de produtos com:                                                                                                                                                 
+
+ • Alternância entre lista e grid                                                                                                                                             
+ • Imagens com altura padronizada                                                                                                                                             
+ • Badge de promoção                                                                                                                                                          
+ • Botões de adicionar ao carrinho e comprar                                                                                                                                  
+ • Seleção de quantidade                                                                                                                                                      
+ • Navegação por âncora                                                                                                                                                       
+
+HeroSection                                                                                                                                                                   
+
+Seção de destaque com:                                                                                                                                                        
+
+ • Banner promocional                                                                                                                                                         
+ • 3 produtos em promoção                                                                                                                                                     
+ • Cards clicáveis                                                                                                                                                            
+ • Navegação direta para produtos                                                                                                                                             
+
+Modais                                                                                                                                                                        
+
+LoginModal                                                                                                                                                                    
+
+ • Autenticação de usuário                                                                                                                                                    
+ • Validação de credenciais                                                                                                                                                   
+ • Link para cadastro                                                                                                                                                         
+
+SignupModal                                                                                                                                                                   
+
+ • Cadastro de novo usuário                                                                                                                                                   
+ • Validação de campos                                                                                                                                                        
+ • Formatação automática de CPF                                                                                                                                               
+ • Confirmação de senha                                                                                                                                                       
+
+AboutModal                                                                                                                                                                    
+
+ • História da empresa                                                                                                                                                        
+ • Missão e valores                                                                                                                                                           
+ • Localização e diferenciais                                                                                                                                                 
+
+ContactModal                                                                                                                                                                  
+
+ • Informações de contato                                                                                                                                                     
+ • Formulário de mensagem                                                                                                                                                     
+ • Validação e formatação                                                                                                                                                     
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+🔄 Estados de Pedido                                                                                                                                                          
+
+Fluxo Completo                                                                                                                                                                
+
+                                                                                                                                                                              
+DRAFT (Rascunho)                                                                                                                                                              
+  ↓                                                                                                                                                                           
+PENDING (Pendente)                                                                                                                                                            
+  ↓                                                                                                                                                                           
+WAITING_PAYMENT (Aguardando Pagamento)                                                                                                                                        
+  ↓                                                                                                                                                                           
+CONFIRMED (Confirmado)                                                                                                                                                        
+  ↓                                                                                                                                                                           
+PREPARATION (Em Preparação)                                                                                                                                                   
+  ↓                                                                                                                                                                           
+DELIVERY (Em Entrega)                                                                                                                                                         
+  ↓                                                                                                                                                                           
+DELIVERED (Entregue)                                                                                                                                                          
+  ↓                                                                                                                                                                           
+FINISHED (Finalizado)                                                                                                                                                         
+                                                                                                                                                                              
+
+Status Especial                                                                                                                                                               
+
+ • CANCELED - Pedido cancelado (pode ocorrer em qualquer etapa)                                                                                                               
+
+Cores por Status                                                                                                                                                              
+
+                                                         
+  Status            Cor       Significado                
+ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 
+  DRAFT             Cinza     Temporário/Não finalizado  
+  PENDING           Amarelo           Em espera                  
+  WAITING_PAYMENT   Laranja           Ação pendente              
+  CONFIRMED         Azul              Confirmado                 
+  PREPARATION       Roxo              Em processamento           
+  DELIVERY          Índigo            Em transporte              
+  DELIVERED         Verde             Entregue                   
+  FINISHED          Verde Esmeralda   Concluído                  
+  CANCELED          Vermelho          Cancelado                  
+                                                                 
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+🎨 Design System                                                                                                                                                              
+
+Paleta de Cores                                                                                                                                                               
+
+                                                                                                                                                                              
+/* Cores Principais */                                                                                                                                                        
+--primary-dark: #20004b;                                                                                                                                                      
+--primary-light: #3c0074;                                                                                                                                                     
+--secondary: #fbbf24;                                                                                                                                                         
+                                                                                                                                                                              
+/* Estados */                                                                                                                                                                 
+--success: #10b981;                                                                                                                                                           
+--error: #ef4444;                                                                                                                                                             
+--warning: #f59e0b;                                                                                                                                                           
+--info: #3b82f6;                                                                                                                                                              
+                                                                                                                                                                              
+
+Padrões Visuais                                                                                                                                                               
+
+ • Gradientes: from-[#20004b] to-[#3c0074]                                                                                                                                    
+ • Bordas: border-[#ffffff22]                                                                                                                                                 
+ • Backgrounds: bg-[#ffffff11]                                                                                                                                                
+ • Sombras: shadow-2xl                                                                                                                                                        
+ • Arredondamento: rounded-lg                                                                                                                                                 
+
+Responsividade                                                                                                                                                                
+
+                                            
+  Breakpoint   Tamanho   Uso                
+ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 
+  sm           640px     Tablets pequenos   
+  md           768px     Tablets            
+  lg           1024px    Desktops pequenos  
+  xl           1280px    Desktops grandes   
+                                            
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+🔒 Segurança                                                                                                                                                                  
+
+Medidas Implementadas                                                                                                                                                         
+
+ • ✅ Autenticação JWT - Tokens seguros                                                                                                                                       
+ • ✅ Middleware de Proteção - Rotas protegidas                                                                                                                               
+ • ✅ Validação Client-Side - Prevenção de dados inválidos                                                                                                                    
+ • ✅ Sanitização de Dados - Limpeza de inputs                                                                                                                                
+ • ✅ HTTPS Ready - Preparado para produção segura                                                                                                                            
+ • ✅ Logout Automático - Em caso de token inválido                                                                                                                           
+ • ✅ Renovação de Tokens - Sessão contínua e segura                                                                                                                          
+
+Boas Práticas                                                                                                                                                                 
+
+                                                                                                                                                                              
+// Tokens armazenados de forma segura                                                                                                                                         
+localStorage.setItem("access_token", token);                                                                                                                                  
+                                                                                                                                                                              
+// Renovação automática antes da expiração                                                                                                                                    
+if (isTokenExpiringSoon(token)) {                                                                                                                                             
+  await refreshAccessToken();                                                                                                                                                 
+}                                                                                                                                                                             
+                                                                                                                                                                              
+// Logout em caso de erro 401                                                                                                                                                 
+if (error.response?.status === 401) {                                                                                                                                         
+  auth.logout();                                                                                                                                                              
+}                                                                                                                                                                             
+                                                                                                                                                                              
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+📊 Fluxos de Uso                                                                                                                                                              
+
+Fluxo de Compra                                                                                                                                                               
+
+                                                                                                                                                                              
+1. Usuário navega pelo catálogo                                                                                                                                               
+   ↓                                                                                                                                                                          
+2. Adiciona produtos ao carrinho                                                                                                                                              
+   ↓                                                                                                                                                                          
+3. Acessa o carrinho                                                                                                                                                          
+   ↓                                                                                                                                                                          
+4. Seleciona endereço de entrega                                                                                                                                              
+   ↓                                                                                                                                                                          
+5. Escolhe método de pagamento                                                                                                                                                
+   ↓                                                                                                                                                                          
+6. Confirma o pedido                                                                                                                                                          
+   ↓                                                                                                                                                                          
+7. Pedido criado com status PENDING                                                                                                                                           
+   ↓                                                                                                                                                                          
+8. Carrinho limpo                                                                                                                                                             
+   ↓                                                                                                                                                                          
+9. Redirecionado para histórico de pedidos                                                                                                                                    
+                                                                                                                                                                              
+
+Fluxo Administrativo                                                                                                                                                          
+
+                                                                                                                                                                              
+1. Staff faz login                                                                                                                                                            
+   ↓                                                                                                                                                                          
+2. Acessa área administrativa                                                                                                                                                 
+   ↓                                                                                                                                                                          
+3. Gerencia produtos/pedidos                                                                                                                                                  
+   ↓                                                                                                                                                                          
+4. Atualiza status de pedidos                                                                                                                                                 
+   ↓                                                                                                                                                                          
+5. Clientes recebem atualizações                                                                                                                                              
+                                                                                                                                                                              
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+🧪 Validações Implementadas                                                                                                                                                   
+
+Formulários                                                                                                                                                                   
+
+Cadastro de Usuário                                                                                                                                                           
+
+ • Username obrigatório                                                                                                                                                       
+ • Email válido                                                                                                                                                               
+ • CPF formatado (11 dígitos)                                                                                                                                                 
+ • Senhas coincidentes                                                                                                                                                        
+ • Todos os campos obrigatórios                                                                                                                                               
+
+Produto                                                                                                                                                                       
+
+ • Nome obrigatório                                                                                                                                                           
+ • Descrição obrigatória                                                                                                                                                      
+ • Preço > 0                                                                                                                                                                  
+ • Imagem obrigatória (máx. 5MB)                                                                                                                                              
+ • Quantidade em estoque ≥ 0                                                                                                                                                  
+
+Endereço                                                                                                                                                                      
+
+ • Nome do endereço obrigatório                                                                                                                                               
+ • Endereço completo obrigatório                                                                                                                                              
+ • Cidade e estado obrigatórios                                                                                                                                               
+ • CEP obrigatório                                                                                                                                                            
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+📱 Recursos Mobile                                                                                                                                                            
+
+Otimizações                                                                                                                                                                   
+
+ • ✅ Design responsivo em todas as páginas                                                                                                                                   
+ • ✅ Touch-friendly (áreas clicáveis adequadas)                                                                                                                              
+ • ✅ Imagens otimizadas                                                                                                                                                      
+ • ✅ Formulários adaptados para mobile                                                                                                                                       
+ • ✅ Navegação simplificada                                                                                                                                                  
+ • ✅ Modais com scroll otimizado                                                                                                                                             
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+🎯 Métodos de Pagamento                                                                                                                                                       
+
+A plataforma suporta os seguintes métodos:                                                                                                                                    
+
+ • 💳 Cartão de Crédito                                                                                                                                                       
+ • 💳 Cartão de Débito                                                                                                                                                        
+ • 📄 Boleto Bancário                                                                                                                                                         
+ • 📱 PIX                                                                                                                                                                     
+ • 💵 Dinheiro                                                                                                                                                                
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+🤝 Contribuindo                                                                                                                                                               
+
+Contribuições são bem-vindas! Para contribuir:                                                                                                                                
+
+ 1 Fork o projeto                                                                                                                                                             
+ 2 Crie uma branch para sua feature (git checkout -b feature/MinhaFeature)                                                                                                    
+ 3 Commit suas mudanças (git commit -m 'Adiciona MinhaFeature')                                                                                                               
+ 4 Push para a branch (git push origin feature/MinhaFeature)                                                                                                                  
+ 5 Abra um Pull Request                                                                                                                                                       
+
+Padrões de Código                                                                                                                                                             
+
+ • Use Composition API do Vue 3                                                                                                                                               
+ • Siga a convenção de nomenclatura existente                                                                                                                                 
+ • Adicione traduções para novas strings                                                                                                                                      
+ • Documente funções complexas                                                                                                                                                
+ • Teste em diferentes resoluções                                                                                                                                             
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+🐛 Reportar Bugs                                                                                                                                                              
+
+Encontrou um bug? Abra uma issue com:                                                                                                                                         
+
+ • Descrição clara do problema                                                                                                                                                
+ • Passos para reproduzir                                                                                                                                                     
+ • Comportamento esperado vs atual                                                                                                                                            
+ • Screenshots (se aplicável)                                                                                                                                                 
+ • Informações do ambiente (navegador, SO, etc.)                                                                                                                              
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+📝 Changelog                                                                                                                                                                  
+
+Versão 1.0.0 (2025)                                                                                                                                                           
+
+✨ Funcionalidades                                                                                                                                                            
+
+ • Sistema completo de e-commerce                                                                                                                                             
+ • Autenticação com JWT                                                                                                                                                       
+ • Gerenciamento de produtos                                                                                                                                                  
+ • Gerenciamento de pedidos                                                                                                                                                   
+ • Carrinho de compras                                                                                                                                                        
+ • Múltiplos endereços de entrega                                                                                                                                             
+ • Área administrativa                                                                                                                                                        
+ • Internacionalização (PT-BR e EN-US)                                                                                                                                        
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+📄 Licença                                                                                                                                                                    
+
+Este projeto é proprietário da Galaxy Cupcakes.                                                                                                                               
+
+Todos os direitos reservados © 2025 Galaxy Cupcakes                                                                                                                           
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+👥 Equipe                                                                                                                                                                     
+
+Desenvolvido com ❤️ e muito ☕ pela equipe Galaxy Cupcakes                                                                                                                     
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+🙏 Agradecimentos                                                                                                                                                             
+
+ • Comunidade Nuxt.js                                                                                                                                                         
+ • Comunidade Vue.js                                                                                                                                                          
+ • PrimeVue Team                                                                                                                                                              
+ • Tailwind CSS Team                                                                                                                                                          
+ • Todos os contribuidores open-source                                                                                                                                        
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+🧁 Galaxy Cupcakes - Sabor que vem das estrelas ⭐                                                                                                                            
+
+Website • Documentação • Suporte                                                                                                                                              
+
+Feito em Santa Rita do Sapucaí, MG 🇧🇷 
