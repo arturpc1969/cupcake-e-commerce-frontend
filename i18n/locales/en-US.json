@@ -22,6 +22,7 @@
   "components_product-data-view_add-to-cart": "Add to Cart",
   "components_product-data-view_added-to-cart": "Product Added",
   "components_product-data-view_added-to-cart-message": "The product was successfully added to the cart",
+  "components_product-data-view_promotion": "Sale",
 
   "composables_use-requests_unauthorized": "Unauthorized",
   "composables_use-requests_request-error": "Error in request:",
@@ -220,7 +221,7 @@
   "pages_staff_products_new_title": "Add Product",
   "pages_staff_products_new_subtitle": "Fill in the new product details",
   "pages_staff_products_new_name": "Product Name",
-  "pages_staff_products_new_name-placeholder": "Ex: Legendary Sword",
+  "pages_staff_products_new_name-placeholder": "Ex: Chocolate Cupcake",
   "pages_staff_products_new_description": "Description",
   "pages_staff_products_new_description-placeholder": "Describe the product in detail...",
   "pages_staff_products_new_price": "Price",
