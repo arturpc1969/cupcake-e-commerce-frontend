@@ -459,5 +459,7 @@
   "components_contact_modal_error-email-required": "Email is required",
   "components_contact_modal_error-email-invalid": "Please enter a valid email",
   "components_contact_modal_error-subject-required": "Subject is required",
-  "components_contact_modal_error-message-required": "Message is required"
+  "components_contact_modal_error-message-required": "Message is required",
+
+  "components_hero_section_modal_destak-text": "Week Sale"
 }

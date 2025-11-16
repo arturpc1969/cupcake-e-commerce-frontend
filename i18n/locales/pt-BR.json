@@ -457,5 +457,7 @@
   "components_contact_modal_error-email-required": "O e-mail é obrigatório",
   "components_contact_modal_error-email-invalid": "Por favor, insira um e-mail válido",
   "components_contact_modal_error-subject-required": "O assunto é obrigatório",
-  "components_contact_modal_error-message-required": "A mensagem é obrigatória"
+  "components_contact_modal_error-message-required": "A mensagem é obrigatória",
+
+  "components_hero_section_modal_destak-text": "Promoções da Semana"
 }

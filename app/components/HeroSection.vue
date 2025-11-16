@@ -1,3 +1,10 @@
+<script setup>
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
+
+</script>
+
 <template>
   <section class="relative bg-gradient-to-b from-[#20004b] to-[#3c0074] text-white pb-20">
     <div class="flex flex-col items-center">
@@ -12,7 +19,7 @@
 
       <!-- Texto de destaque -->
       <h2 class="text-5xl font-bold mt-10 italic text-yellow-300 drop-shadow-sm">
-        Weekend Sale
+        {{ t("components_hero_section_modal_destak-text") }}
       </h2>
 
       <!-- Espaços reservados para produtos -->
