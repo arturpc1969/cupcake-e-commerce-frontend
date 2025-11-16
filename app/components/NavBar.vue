@@ -6,6 +6,7 @@ import { onClickOutside } from "@vueuse/core";
 
 const { t } = useI18n();
 
+const { openAboutModal } = useAboutModal();
 const { openLoginModal } = useLoginModal();
 const { isAuthenticated, user, logout, isStaff } = useAuth();
 const { cartItemCount } = useCart();
@@ -89,6 +90,7 @@ const goToCart = () => {
           <a
             href="#"
             class="hover:text-yellow-300 bg-[#ffffff22] px-6 py-2 rounded-full backdrop-blur w-48 text-center"
+            @click.prevent="openAboutModal"
           >
             {{ t("components_nav-bar_about") }}
           </a>
@@ -334,6 +336,8 @@ const goToCart = () => {
       </div>
     </div>
   </header>
+  <!-- Adicionar o modal no final do template -->
+  <AboutModal v-model="useAboutModal().isOpen.value" />
 </template>
 
 <style scoped>
