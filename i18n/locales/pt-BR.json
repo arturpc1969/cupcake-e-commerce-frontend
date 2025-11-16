@@ -22,6 +22,7 @@
   "components_product-data-view_add-to-cart": "Adicionar ao Carrinho",
   "components_product-data-view_added-to-cart": "Produto Adicionado",
   "components_product-data-view_added-to-cart-message": "O produto foi adicionado ao carrinho com sucesso",
+  "components_product-data-view_promotion": "Promoção",
 
   "composables_use-requests_unauthorized": "Não autorizado",
   "composables_use-requests_request-error": "Erro na requisição:",
@@ -220,7 +221,7 @@
   "pages_staff_products_new_title": "Adicionar Produto",
   "pages_staff_products_new_subtitle": "Preencha os dados do novo produto",
   "pages_staff_products_new_name": "Nome do Produto",
-  "pages_staff_products_new_name-placeholder": "Ex: Espada Lendária",
+  "pages_staff_products_new_name-placeholder": "Ex: Cupcake de Chocolate",
   "pages_staff_products_new_description": "Descrição",
   "pages_staff_products_new_description-placeholder": "Descreva o produto em detalhes...",
   "pages_staff_products_new_price": "Preço",
@@ -457,5 +458,7 @@
   "components_contact_modal_error-email-required": "O e-mail é obrigatório",
   "components_contact_modal_error-email-invalid": "Por favor, insira um e-mail válido",
   "components_contact_modal_error-subject-required": "O assunto é obrigatório",
-  "components_contact_modal_error-message-required": "A mensagem é obrigatória"
+  "components_contact_modal_error-message-required": "A mensagem é obrigatória",
+
+  "components_hero_section_modal_destak-text": "Promoções da Semana"
 }

@@ -30,7 +30,7 @@ const handleAddToCart = (product) => {
     });
     return;
   }
-  
+
   addToCart(product, quantity.value);
 
   toast.add({
@@ -70,7 +70,11 @@ const handleBuyNow = (product) => {
     <DataView :value="products" :layout="layout">
       <template #header>
         <div class="flex justify-end">
-          <SelectButton v-model="layout" :options="options" :allow-empty="false">
+          <SelectButton
+            v-model="layout"
+            :options="options"
+            :allow-empty="false"
+          >
             <template #option="{ option }">
               <i :class="[option === 'list' ? 'pi pi-bars' : 'pi pi-table']" />
             </template>
@@ -80,17 +84,28 @@ const handleBuyNow = (product) => {
 
       <template #list="slotProps">
         <div class="flex flex-col">
-          <div v-for="(item, index) in slotProps.items" :key="index">
+          <div
+            v-for="(item, index) in slotProps.items"
+            :id="item.uuid"
+            :key="index"
+          >
             <div
               class="flex flex-col sm:flex-row sm:items-center p-6 gap-4 bg-[#ffffff11] backdrop-blur rounded-lg mb-4"
               :class="{ 'border-t border-[#ffffff22]': index !== 0 }"
             >
               <div class="md:w-40 relative">
                 <img
-                  class="block xl:block mx-auto rounded w-full"
+                  class="block xl:block mx-auto rounded w-full h-40 object-cover"
                   :src="item.image"
                   :alt="item.name"
                 >
+                <!-- Badge de Promoção -->
+                <div
+                  v-if="item.promotion"
+                  class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold"
+                >
+                  {{ t("components_product-data-view_promotion") }}
+                </div>
               </div>
               <div
                 class="flex flex-col md:flex-row justify-between md:items-center flex-1 gap-6"
@@ -159,34 +174,43 @@ const handleBuyNow = (product) => {
         <div class="grid grid-cols-12 gap-4">
           <div
             v-for="(item, index) in slotProps.items"
+            :id="item.uuid"
             :key="index"
             class="col-span-12 sm:col-span-6 md:col-span-4 xl:col-span-3 p-2"
           >
             <div
-              class="p-6 border border-[#ffffff22] bg-[#ffffff11] backdrop-blur rounded-lg flex flex-col"
+              class="p-6 border border-[#ffffff22] bg-[#ffffff11] backdrop-blur rounded-lg flex flex-col h-full"
             >
-              <div class="bg-[#ffffff11] flex justify-center rounded p-4">
-                <div class="relative mx-auto">
+              <div
+                class="bg-[#ffffff11] flex justify-center rounded p-4 relative"
+              >
+                <div class="relative mx-auto w-full">
                   <img
-                    class="rounded w-full"
+                    class="rounded w-full h-64 object-cover"
                     :src="item.image"
                     :alt="item.name"
-                    style="max-width: 300px"
                   >
+                  <!-- Badge de Promoção -->
+                  <div
+                    v-if="item.promotion"
+                    class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold"
+                  >
+                    {{ t("components_product-data-view_promotion") }}
+                  </div>
                 </div>
               </div>
-              <div class="pt-6">
+              <div class="pt-6 flex flex-col flex-1">
                 <div class="flex flex-row justify-between items-start gap-2">
                   <div>
                     <div class="text-lg font-medium mt-1 text-white">
                       {{ item.name }}
                     </div>
-                    <div class="text-sm text-gray-300 mt-1">
+                    <div class="text-sm text-gray-300 mt-1 line-clamp-2">
                       {{ item.description }}
                     </div>
                   </div>
                 </div>
-                <div class="flex flex-col gap-6 mt-6">
+                <div class="flex flex-col gap-6 mt-auto pt-6">
                   <span class="text-2xl font-semibold text-yellow-300"
                     >R${{ item.price }}</span
                   >
@@ -236,3 +260,14 @@ const handleBuyNow = (product) => {
     </DataView>
   </div>
 </template>
+
+<style scoped>
+/* Limitar linhas de texto */
+.line-clamp-2 {
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+</style>
