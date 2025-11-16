@@ -65,7 +65,7 @@ const formatPrice = (price) => {
 
 // Calcular subtotal de um produto
 const calculateProductSubtotal = (product) => {
-  const price = product.promotion || product.price || 0;
+  const price = product.price || 0;
   const quantity = product.quantity || 1;
   return price * quantity;
 };
@@ -82,12 +82,15 @@ const calculateOrderTotal = computed(() => {
 // Obter cor do status
 const getStatusColor = (status) => {
   const statusColors = {
-    pending: "bg-yellow-500/20 text-yellow-300 border-yellow-500/30",
-    confirmed: "bg-blue-500/20 text-blue-300 border-blue-500/30",
-    processing: "bg-purple-500/20 text-purple-300 border-purple-500/30",
-    shipped: "bg-indigo-500/20 text-indigo-300 border-indigo-500/30",
-    delivered: "bg-green-500/20 text-green-300 border-green-500/30",
-    cancelled: "bg-red-500/20 text-red-300 border-red-500/30",
+    DRAFT: "bg-gray-500/20 text-gray-300 border-gray-500/30",
+    PENDING: "bg-yellow-500/20 text-yellow-300 border-yellow-500/30",
+    CONFIRMED: "bg-blue-500/20 text-blue-300 border-blue-500/30",
+    PREPARATION: "bg-purple-500/20 text-purple-300 border-purple-500/30",
+    DELIVERY: "bg-indigo-500/20 text-indigo-300 border-indigo-500/30",
+    WAITING_PAYMENT: "bg-orange-500/20 text-orange-300 border-orange-500/30",
+    DELIVERED: "bg-green-500/20 text-green-300 border-green-500/30",
+    FINISHED: "bg-emerald-500/20 text-emerald-300 border-emerald-500/30",
+    CANCELED: "bg-red-500/20 text-red-300 border-red-500/30",
   };
 
   return (
@@ -98,12 +101,15 @@ const getStatusColor = (status) => {
 // Traduzir status
 const translateStatus = (status) => {
   const statusTranslations = {
-    pending: t("pages_profile_orders_status_pending"),
-    confirmed: t("pages_profile_orders_status_confirmed"),
-    processing: t("pages_profile_orders_status_processing"),
-    shipped: t("pages_profile_orders_status_shipped"),
-    delivered: t("pages_profile_orders_status_delivered"),
-    cancelled: t("pages_profile_orders_status_cancelled"),
+    DRAFT: t("pages_profile_orders_status_draft"),
+    PENDING: t("pages_profile_orders_status_pending"),
+    CONFIRMED: t("pages_profile_orders_status_confirmed"),
+    PREPARATION: t("pages_profile_orders_status_preparation"),
+    DELIVERY: t("pages_profile_orders_status_delivery"),
+    WAITING_PAYMENT: t("pages_profile_orders_status_waiting_payment"),
+    DELIVERED: t("pages_profile_orders_status_delivered"),
+    FINISHED: t("pages_profile_orders_status_finished"),
+    CANCELED: t("pages_profile_orders_status_canceled"),
   };
 
   return statusTranslations[status] || status;
@@ -112,11 +118,11 @@ const translateStatus = (status) => {
 // Traduzir método de pagamento
 const translatePaymentMethod = (method) => {
   const paymentTranslations = {
-    credit_card: t("pages_profile_orders_payment_credit_card"),
-    debit_card: t("pages_profile_orders_payment_debit_card"),
-    pix: t("pages_profile_orders_payment_pix"),
-    boleto: t("pages_profile_orders_payment_bank_slip"),
-    cash: t("pages_profile_orders_payment_cash"),
+    CREDIT_CARD: t("pages_profile_orders_payment_credit_card"),
+    DEBIT_CARD: t("pages_profile_orders_payment_debit_card"),
+    BANK_SLIP: t("pages_profile_orders_payment_bank_slip"),
+    PIX: t("pages_profile_orders_payment_pix"),
+    CASH: t("pages_profile_orders_payment_cash"),
   };
 
   return paymentTranslations[method] || method;
@@ -362,7 +368,7 @@ onMounted(() => {
                     <span class="text-sm text-gray-300">
                       {{ t("pages_profile_orders_details_unit_price") }}:
                       <span class="font-semibold text-white">{{
-                        formatPrice(product.promotion || product.price)
+                        formatPrice(product.price)
                       }}</span>
                     </span>
                   </div>
@@ -375,12 +381,6 @@ onMounted(() => {
                   </p>
                   <p class="text-xl text-yellow-300 font-bold">
                     {{ formatPrice(calculateProductSubtotal(product)) }}
-                  </p>
-                  <p
-                    v-if="product.promotion"
-                    class="text-xs text-gray-400 line-through mt-1"
-                  >
-                    {{ formatPrice(product.price * (product.quantity || 1)) }}
                   </p>
                 </div>
               </div>
