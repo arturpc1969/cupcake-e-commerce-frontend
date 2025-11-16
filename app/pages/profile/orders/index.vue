@@ -114,11 +114,11 @@ const translateStatus = (status) => {
 // Traduzir método de pagamento
 const translatePaymentMethod = (method) => {
   const paymentTranslations = {
-    CREDIT_CARD: t("pages_staff_orders_payment_credit_card"),
-    DEBIT_CARD: t("pages_staff_orders_payment_debit_card"),
-    BANK_SLIP: t("pages_staff_orders_payment_bank_slip"),
-    PIX: t("pages_staff_orders_payment_pix"),
-    CASH: t("pages_staff_orders_payment_cash"),
+    CREDIT_CARD: t("pages_profile_orders_payment_credit_card"),
+    DEBIT_CARD: t("pages_profile_orders_payment_debit_card"),
+    BANK_SLIP: t("pages_profile_orders_payment_bank_slip"),
+    PIX: t("pages_profile_orders_payment_pix"),
+    CASH: t("pages_profile_orders_payment_cash"),
   };
 
   return paymentTranslations[method] || method;
