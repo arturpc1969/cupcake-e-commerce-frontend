@@ -80,7 +80,11 @@ const handleBuyNow = (product) => {
 
       <template #list="slotProps">
         <div class="flex flex-col">
-          <div v-for="(item, index) in slotProps.items" :key="index">
+          <div 
+            v-for="(item, index) in slotProps.items" 
+            :id="item.uuid"
+            :key="index" 
+          >
             <div
               class="flex flex-col sm:flex-row sm:items-center p-6 gap-4 bg-[#ffffff11] backdrop-blur rounded-lg mb-4"
               :class="{ 'border-t border-[#ffffff22]': index !== 0 }"
@@ -159,6 +163,7 @@ const handleBuyNow = (product) => {
         <div class="grid grid-cols-12 gap-4">
           <div
             v-for="(item, index) in slotProps.items"
+            :id="item.uuid"
             :key="index"
             class="col-span-12 sm:col-span-6 md:col-span-4 xl:col-span-3 p-2"
           >
