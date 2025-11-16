@@ -39,14 +39,7 @@ Frontend for the cupcake e-commerce project
                                                                                                                                                                               
 **Galaxy Cupcakes** é uma plataforma completa de e-commerce especializada em cupcakes gourmet artesanais. Desenvolvida com as mais modernas tecnologias web, oferece uma      
 experiência de compra intuitiva e agradável.                                                                                                                                  
-                                                                                                                                                                              
-### 🏢 Sobre a Empresa                                                                                                                                                        
-                                                                                                                                                                              
-- **Nome**: Galaxy Cupcakes                                                                                                                                                   
-- **Fundação**: 2025                                                                                                                                                          
-- **Localização**: Santa Rita do Sapucaí, MG, Brasil                                                                                                                          
-- **Segmento**: E-commerce de cupcakes gourmet                                                                                                                                
-- **Missão**: Proporcionar momentos de felicidade através de cupcakes artesanais de alta qualidade                                                                            
+                                                                                                                                                                                                                                    
                                                                                                                                                                               
 ---                                                                                                                                                                           
                                                                                                                                                                               
@@ -134,25 +127,92 @@ experiência de compra intuitiva e agradável.
 ## 📁 Estrutura do Projeto                                                                                                                                                    
                                                                                                                                                                               
 
-galaxy-cupcakes/ │ ├── app/ │   ├── components/              # Componentes Vue reutilizáveis │   │   ├── AboutModal.vue       # Modal "Sobre Nós" │   │   ├── ContactModal.vue
-# Modal de contato │   │   ├── HeroSection.vue      # Seção hero com produtos em destaque │   │   ├── LoginModal.vue       # Modal de login │   │   ├── NavBar.vue           #
-Barra de navegação │   │   ├── ProductDataView.vue  # Visualização de produtos │   │   └── SignupModal.vue      # Modal de cadastro │   │ │   ├── composables/             #  
-Lógica reutilizável │   │   ├── useAboutModal.js     # Controle do modal "Sobre" │   │   ├── useAuth.js           # Autenticação e autorização │   │   ├── useCart.js         
-# Gerenciamento do carrinho │   │   ├── useContactModal.js   # Controle do modal de contato │   │   ├── useLoginModal.js     # Controle do modal de login │   │   ├──         
-useMapEndpointResponse.js  # Mapeamento de dados da API │   │   ├── useRequests.js       # Requisições HTTP │   │   ├── useServices.js       # Injeção de serviços │   │   └──
-useSignupModal.js    # Controle do modal de cadastro │   │ │   ├── middleware/              # Middlewares de rota │   │   ├── auth.js              # Proteção de rotas        
-autenticadas │   │   └── staff.js             # Proteção de rotas administrativas │   │ │   ├── pages/                   # Páginas da aplicação │   │   ├── product/ │   │   │
-└── index.vue        # Catálogo de produtos │   │   ├── order/ │   │   │   └── index.vue        # Finalização de pedido │   │   ├── profile/ │   │   │   ├── index.vue        
-# Perfil do usuário │   │   │   ├── edit.vue         # Editar perfil │   │   │   ├── addresses/ │   │   │   │   ├── index.vue    # Lista de endereços │   │   │   │   └──     
-new.vue      # Adicionar endereço │   │   │   └── orders/ │   │   │       ├── index.vue    # Histórico de pedidos │   │   │       └── [uuid].vue   # Detalhes do pedido │   │ 
-└── staff/ │   │       ├── products/ │   │       │   ├── index.vue    # Gerenciar produtos │   │       │   ├── new.vue      # Adicionar produto │   │       │   └── edit/ │   
-│       │       └── [uuid].vue  # Editar produto │   │       └── orders/ │   │           ├── index.vue    # Gerenciar pedidos │   │           └── [uuid].vue   # Editar pedido
-│   │ │   ├── services/                # Serviços de API │   │   ├── authService.js │   │   └── entity/ │   │       ├── deliveryAddressService.js │   │       ├──             
-orderItemsService.js │   │       ├── orderService.js │   │       ├── productService.js │   │       └── userService.js │   │ │   └── utils/                   # Utilitários │  
-└── jwt.js               # Funções para manipulação de JWT │ ├── i18n/                        # Internacionalização │   └── locales/ │       ├── pt-BR.json │       └──       
-en-US.json │ └── public/                      # Arquivos estáticos ├── banner.png ├── cart.svg ├── logo.svg └── imagotipo.svg                                                 
-
-                                                                                                                                                                              
+galaxy-cupcakes/                                                                                                                                                              
+│                                                                                                                                                                             
+├── app/                                                                                                                                                                      
+│   │                                                                                                                                                                         
+│   ├── components/                    # Componentes Vue reutilizáveis                                                                                                        
+│   │   ├── AboutModal.vue             # Modal "Sobre Nós"                                                                                                                    
+│   │   ├── ContactModal.vue           # Modal de contato                                                                                                                     
+│   │   ├── HeroSection.vue            # Seção hero com produtos em destaque                                                                                                  
+│   │   ├── LoginModal.vue             # Modal de login                                                                                                                       
+│   │   ├── NavBar.vue                 # Barra de navegação                                                                                                                   
+│   │   ├── ProductDataView.vue        # Visualização de produtos                                                                                                             
+│   │   └── SignupModal.vue            # Modal de cadastro                                                                                                                    
+│   │                                                                                                                                                                         
+│   ├── composables/                   # Lógica reutilizável                                                                                                                  
+│   │   ├── useAboutModal.js           # Controle do modal "Sobre"                                                                                                            
+│   │   ├── useAuth.js                 # Autenticação e autorização                                                                                                           
+│   │   ├── useCart.js                 # Gerenciamento do carrinho                                                                                                            
+│   │   ├── useContactModal.js         # Controle do modal de contato                                                                                                         
+│   │   ├── useLoginModal.js           # Controle do modal de login                                                                                                           
+│   │   ├── useMapEndpointResponse.js  # Mapeamento de dados da API                                                                                                           
+│   │   ├── useRequests.js             # Requisições HTTP                                                                                                                     
+│   │   ├── useServices.js             # Injeção de serviços                                                                                                                  
+│   │   └── useSignupModal.js          # Controle do modal de cadastro                                                                                                        
+│   │                                                                                                                                                                         
+│   ├── middleware/                    # Middlewares de rota                                                                                                                  
+│   │   ├── auth.js                    # Proteção de rotas autenticadas                                                                                                       
+│   │   └── staff.js                   # Proteção de rotas administrativas                                                                                                    
+│   │                                                                                                                                                                         
+│   ├── pages/                         # Páginas da aplicação                                                                                                                 
+│   │   ├── product/                                                                                                                                                          
+│   │   │   └── index.vue              # Catálogo de produtos                                                                                                                 
+│   │   │                                                                                                                                                                     
+│   │   ├── order/                                                                                                                                                            
+│   │   │   └── index.vue              # Finalização de pedido                                                                                                                
+│   │   │                                                                                                                                                                     
+│   │   ├── profile/                                                                                                                                                          
+│   │   │   ├── index.vue              # Perfil do usuário                                                                                                                    
+│   │   │   ├── edit.vue               # Editar perfil                                                                                                                        
+│   │   │   │                                                                                                                                                                 
+│   │   │   ├── addresses/                                                                                                                                                    
+│   │   │   │   ├── index.vue          # Lista de endereços                                                                                                                   
+│   │   │   │   └── new.vue            # Adicionar endereço                                                                                                                   
+│   │   │   │                                                                                                                                                                 
+│   │   │   └── orders/                                                                                                                                                       
+│   │   │       ├── index.vue          # Histórico de pedidos                                                                                                                 
+│   │   │       └── [uuid].vue         # Detalhes do pedido                                                                                                                   
+│   │   │                                                                                                                                                                     
+│   │   └── staff/                                                                                                                                                            
+│   │       ├── products/                                                                                                                                                     
+│   │       │   ├── index.vue          # Gerenciar produtos                                                                                                                   
+│   │       │   ├── new.vue            # Adicionar produto                                                                                                                    
+│   │       │   └── edit/                                                                                                                                                     
+│   │       │       └── [uuid].vue     # Editar produto                                                                                                                       
+│   │       │                                                                                                                                                                 
+│   │       └── orders/                                                                                                                                                       
+│   │           ├── index.vue          # Gerenciar pedidos                                                                                                                    
+│   │           └── [uuid].vue         # Editar pedido                                                                                                                        
+│   │                                                                                                                                                                         
+│   ├── services/                      # Serviços de API                                                                                                                      
+│   │   ├── authService.js                                                                                                                                                    
+│   │   └── entity/                                                                                                                                                           
+│   │       ├── deliveryAddressService.js                                                                                                                                     
+│   │       ├── orderItemsService.js                                                                                                                                          
+│   │       ├── orderService.js                                                                                                                                               
+│   │       ├── productService.js                                                                                                                                             
+│   │       └── userService.js                                                                                                                                                
+│   │                                                                                                                                                                         
+│   └── utils/                         # Utilitários                                                                                                                          
+│       └── jwt.js                     # Funções para manipulação de JWT                                                                                                      
+│                                                                                                                                                                             
+├── i18n/                              # Internacionalização                                                                                                                  
+│   └── locales/                                                                                                                                                              
+│       ├── pt-BR.json                 # Traduções em português                                                                                                               
+│       └── en-US.json                 # Traduções em inglês                                                                                                                  
+│                                                                                                                                                                             
+├── public/                            # Arquivos estáticos                                                                                                                   
+│   ├── banner.png                                                                                                                                                            
+│   ├── cart.svg                                                                                                                                                              
+│   ├── logo.svg                                                                                                                                                              
+│   └── imagotipo.svg                                                                                                                                                         
+│                                                                                                                                                                             
+├── .env                               # Variáveis de ambiente                                                                                                                
+├── nuxt.config.ts                     # Configuração do Nuxt                                                                                                                 
+├── tailwind.config.js                 # Configuração do Tailwind                                                                                                             
+└── package.json                       # Dependências do projeto                                                                                                              
+           
                                                                                                                                                                               
 ---                                                                                                                                                                           
                                                                                                                                                                               
