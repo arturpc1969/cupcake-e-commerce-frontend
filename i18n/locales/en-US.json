@@ -462,5 +462,30 @@
   "components_contact_modal_error-subject-required": "Subject is required",
   "components_contact_modal_error-message-required": "Message is required",
 
-  "components_hero_section_modal_destak-text": "Week Sale"
+  "components_hero_section_modal_destak-text": "Week Sale",
+
+  "pages_delivery_address-edit-title": "Edit Address",
+  "pages_delivery_address-edit-loading": "Loading address...",
+  "pages_delivery_address-edit-success": "Address successfully updated!",
+  "pages_delivery_address-edit-error-loading": "Error loading address",
+  "pages_delivery_address-edit-error-saving": "Error saving address",
+  "pages_delivery_address-edit-form-name": "Address Name",
+  "pages_delivery_address-edit-form-name-placeholder": "Ex: House, Work, Apartment...",
+  "pages_delivery_address-edit-form-description": "Full Address",
+  "pages_delivery_address-edit-form-description-placeholder": "Street, number, additional information...",
+  "pages_delivery_address-edit-form-city": "City",
+  "pages_delivery_address-edit-form-city-placeholder": "Ex: São Paulo",
+  "pages_delivery_address-edit-form-state": "State",
+  "pages_delivery_address-edit-form-state-placeholder": "Ex: SP",
+  "pages_delivery_address-edit-form-zipcode": "ZIP code",
+  "pages_delivery_address-edit-form-zipcode-placeholder": "00000-000",
+  "pages_delivery_address-edit-error-name-required": "Address name is required",
+  "pages_delivery_address-edit-error-description-required": "Full address is required",
+  "pages_delivery_address-edit-error-city-required": "City is required",
+  "pages_delivery_address-edit-error-state-required": "State is required",
+  "pages_delivery_address-edit-error-zipcode-required": "ZIP code is required",
+  "pages_delivery_address-edit-error-zipcode-invalid": "Invalid postal code. Use the format 00000-000",
+  "pages_delivery_address-edit-form-cancel": "Cancel",
+  "pages_delivery_address-edit-form-save": "Save Changes",
+  "pages_delivery_address-edit-form-saving": "Saving..."
 }

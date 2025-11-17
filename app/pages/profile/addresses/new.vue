@@ -22,6 +22,27 @@ const loading = ref(false);
 const error = ref("");
 const success = ref(false);
 
+// Formatar CEP para exibição (00000-000)
+const formatZipCode = (value) => {
+  if (!value) return "";
+  const numbers = value.replace(/\D/g, "");
+  if (numbers.length <= 5) {
+    return numbers;
+  }
+  return `${numbers.slice(0, 5)}-${numbers.slice(5, 8)}`;
+};
+
+// Remover formatação do CEP (apenas dígitos)
+const unformatZipCode = (value) => {
+  return value.replace(/\D/g, "");
+};
+
+// Handler para input do CEP
+const handleZipCodeInput = (event) => {
+  const formatted = formatZipCode(event.target.value);
+  formData.value.zip_code = formatted;
+};
+
 // Service
 const { deliveryAddressService } = useServices();
 
@@ -36,7 +57,13 @@ const saveAddress = async () => {
   loading.value = true;
 
   try {
-    await deliveryAddressService.createDeliveryAddress(formData.value);
+    // CRIAR OBJETO COM CEP SEM FORMATAÇÃO
+    const dataToSend = {
+      ...formData.value,
+      zip_code: unformatZipCode(formData.value.zip_code), // REMOVER FORMATAÇÃO
+    };
+
+    await deliveryAddressService.createDeliveryAddress(dataToSend);
 
     success.value = true;
 
@@ -46,8 +73,7 @@ const saveAddress = async () => {
     }, 1500);
   } catch (err) {
     console.error("Erro ao criar endereço:", err);
-    error.value =
-      t("pages_profile_addresses_new_error");
+    error.value = t("pages_profile_addresses_new_error");
   } finally {
     loading.value = false;
   }
@@ -55,12 +81,14 @@ const saveAddress = async () => {
 
 // Validação básica
 const isFormValid = computed(() => {
+  const zipCodeValid = /^\d{5}-\d{3}$/.test(formData.value.zip_code); // VALIDAR FORMATO
+
   return (
     formData.value.address_name.trim() !== "" &&
     formData.value.address_description.trim() !== "" &&
     formData.value.city.trim() !== "" &&
     formData.value.state.trim() !== "" &&
-    formData.value.zip_code.trim() !== ""
+    zipCodeValid // USAR VALIDAÇÃO DO FORMATO
   );
 });
 </script>
@@ -76,9 +104,9 @@ const isFormValid = computed(() => {
         <!-- Cabeçalho -->
         <div class="flex items-center gap-4 mb-8">
           <button
-          class="text-gray-300 hover:text-white transition-colors"
-          :disabled="loading"
-          @click="goBack"
+            class="text-gray-300 hover:text-white transition-colors"
+            :disabled="loading"
+            @click="goBack"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -148,7 +176,7 @@ const isFormValid = computed(() => {
             <span>{{ error }}</span>
           </div>
 
-          <form class="space-y-6" @submit.prevent="saveAddress" >
+          <form class="space-y-6" @submit.prevent="saveAddress">
             <!-- Nome do Endereço -->
             <div>
               <label
@@ -262,6 +290,7 @@ const isFormValid = computed(() => {
                 maxlength="9"
                 :disabled="loading || success"
                 class="w-full px-4 py-3 bg-[#ffffff11] border border-[#ffffff22] text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:border-transparent transition disabled:bg-[#ffffff05] disabled:cursor-not-allowed"
+                @input="handleZipCodeInput"
               >
             </div>
 
@@ -332,8 +361,12 @@ const isFormValid = computed(() => {
                     d="M5 13l4 4L19 7"
                   />
                 </svg>
-                <span v-if="loading">{{ t("pages_profile_addresses_new_saving") }}</span>
-                <span v-else-if="success">{{ t("pages_profile_addresses_new_saved") }}</span>
+                <span v-if="loading">{{
+                  t("pages_profile_addresses_new_saving")
+                }}</span>
+                <span v-else-if="success">{{
+                  t("pages_profile_addresses_new_saved")
+                }}</span>
                 <span v-else>{{ t("pages_profile_addresses_new_save") }}</span>
               </button>
             </div>

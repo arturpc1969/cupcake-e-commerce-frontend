@@ -460,5 +460,30 @@
   "components_contact_modal_error-subject-required": "O assunto é obrigatório",
   "components_contact_modal_error-message-required": "A mensagem é obrigatória",
 
-  "components_hero_section_modal_destak-text": "Promoções da Semana"
+  "components_hero_section_modal_destak-text": "Promoções da Semana",
+
+  "pages_delivery_address-edit-title": "Editar Endereço",
+  "pages_delivery_address-edit-loading": "Carregando endereço...",
+  "pages_delivery_address-edit-success": "Endereço atualizado com sucesso!",
+  "pages_delivery_address-edit-error-loading": "Erro ao carregar endereço",
+  "pages_delivery_address-edit-error-saving": "Erro ao salvar endereço",
+  "pages_delivery_address-edit-form-name": "Nome do Endereço",
+  "pages_delivery_address-edit-form-name-placeholder": "Ex: Casa, Trabalho, Apartamento...",
+  "pages_delivery_address-edit-form-description": "Endereço Completo",
+  "pages_delivery_address-edit-form-description-placeholder": "Rua, número, complemento...",
+  "pages_delivery_address-edit-form-city": "Cidade",
+  "pages_delivery_address-edit-form-city-placeholder": "Ex: São Paulo",
+  "pages_delivery_address-edit-form-state": "Estado",
+  "pages_delivery_address-edit-form-state-placeholder": "Ex: SP",
+  "pages_delivery_address-edit-form-zipcode": "CEP",
+  "pages_delivery_address-edit-form-zipcode-placeholder": "00000-000",
+  "pages_delivery_address-edit-error-name-required": "Nome do endereço é obrigatório",
+  "pages_delivery_address-edit-error-description-required": "Endereço completo é obrigatório",
+  "pages_delivery_address-edit-error-city-required": "Cidade é obrigatória",
+  "pages_delivery_address-edit-error-state-required": "Estado é obrigatório",
+  "pages_delivery_address-edit-error-zipcode-required": "CEP é obrigatório",
+  "pages_delivery_address-edit-error-zipcode-invalid": "CEP inválido. Use o formato 00000-000",
+  "pages_delivery_address-edit-form-cancel": "Cancelar",
+  "pages_delivery_address-edit-form-save": "Salvar Alterações",
+  "pages_delivery_address-edit-form-saving": "Salvando..."
 }
