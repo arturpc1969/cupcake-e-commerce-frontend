@@ -19,6 +19,16 @@ const addressToDelete = ref(null);
 // Service
 const { deliveryAddressService } = useServices();
 
+// Formatar CEP para exibição (00000-000)
+const formatZipCode = (value) => {
+  if (!value) return "";
+  const numbers = value.replace(/\D/g, "");
+  if (numbers.length <= 5) {
+    return numbers;
+  }
+  return `${numbers.slice(0, 5)}-${numbers.slice(5, 8)}`;
+};
+
 // Carregar endereços
 const loadAddresses = async () => {
   loading.value = true;
@@ -151,7 +161,9 @@ onMounted(() => {
           <div
             class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-yellow-400"
           />
-          <p class="text-gray-300 mt-4">{{ t("pages_delivery_address-loading") }}</p>
+          <p class="text-gray-300 mt-4">
+            {{ t("pages_delivery_address-loading") }}
+          </p>
         </div>
 
         <!-- Erro -->
@@ -260,7 +272,9 @@ onMounted(() => {
               <div
                 class="bg-[#ffffff11] border border-[#ffffff22] p-3 rounded-lg"
               >
-                <p class="text-sm text-gray-300 mb-1">{{ t("pages_delivery_address-form-description") }}</p>
+                <p class="text-sm text-gray-300 mb-1">
+                  {{ t("pages_delivery_address-form-description") }}
+                </p>
                 <p class="text-white">{{ address.addressDescription }}</p>
               </div>
 
@@ -268,14 +282,18 @@ onMounted(() => {
                 <div
                   class="bg-[#ffffff11] border border-[#ffffff22] p-3 rounded-lg"
                 >
-                  <p class="text-sm text-gray-300 mb-1">{{ t("pages_delivery_address-form-city") }}</p>
+                  <p class="text-sm text-gray-300 mb-1">
+                    {{ t("pages_delivery_address-form-city") }}
+                  </p>
                   <p class="text-white">{{ address.city }}</p>
                 </div>
 
                 <div
                   class="bg-[#ffffff11] border border-[#ffffff22] p-3 rounded-lg"
                 >
-                  <p class="text-sm text-gray-300 mb-1">{{ t("pages_delivery_address-form-state") }}</p>
+                  <p class="text-sm text-gray-300 mb-1">
+                    {{ t("pages_delivery_address-form-state") }}
+                  </p>
                   <p class="text-white">{{ address.state }}</p>
                 </div>
               </div>
@@ -283,8 +301,10 @@ onMounted(() => {
               <div
                 class="bg-[#ffffff11] border border-[#ffffff22] p-3 rounded-lg"
               >
-                <p class="text-sm text-gray-300 mb-1">{{ t("pages_delivery_address-form-zip-code") }}</p>
-                <p class="text-white">{{ address.zipCode }}</p>
+                <p class="text-sm text-gray-300 mb-1">
+                  {{ t("pages_delivery_address-form-zip-code") }}
+                </p>
+                <p class="text-white">{{ formatZipCode(address.zipCode) }}</p>
               </div>
             </div>
 
@@ -373,14 +393,18 @@ onMounted(() => {
                 {{ t("pages_delivery_address-delete-confirmation") }}
               </h3>
               <p class="text-gray-300">
-                {{ t("pages_delivery_address-delete-confirmation-modal-message") }}
+                {{
+                  t("pages_delivery_address-delete-confirmation-modal-message")
+                }}
                 <span class="font-semibold text-white">{{
                   addressToDelete?.addressName
                 }}</span
                 >?
               </p>
               <p class="text-gray-400 text-sm mt-2">
-                {{ t("pages_delivery_address-delete-confirmation-modal-warning") }}
+                {{
+                  t("pages_delivery_address-delete-confirmation-modal-warning")
+                }}
               </p>
             </div>
 
@@ -389,13 +413,17 @@ onMounted(() => {
                 class="flex-1 px-4 py-3 bg-[#ffffff11] border border-[#ffffff22] text-white font-semibold rounded-lg hover:bg-[#ffffff22] transition-colors"
                 @click="cancelDelete"
               >
-                {{ t("pages_delivery_address-delete-confirmation-modal-cancel") }}
+                {{
+                  t("pages_delivery_address-delete-confirmation-modal-cancel")
+                }}
               </button>
               <button
                 class="flex-1 px-4 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition-colors"
                 @click="deleteAddress"
               >
-                {{ t("pages_delivery_address-delete-confirmation-modal-confirm") }}
+                {{
+                  t("pages_delivery_address-delete-confirmation-modal-confirm")
+                }}
               </button>
             </div>
           </div>
