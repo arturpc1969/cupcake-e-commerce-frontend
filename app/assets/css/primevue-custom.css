@@ -3,6 +3,7 @@
   --p-dataview-content-background: transparent !important;
   --p-dataview-header-background: transparent !important;
   --p-togglebutton-background: transparent !important;
+  --p-card-background: transparent !important;
 }
 
 /* Para modo escuro também */
@@ -10,4 +11,10 @@
   --p-dataview-content-background: transparent !important;
   --p-dataview-header-background: transparent !important;
   --p-togglebutton-background: transparent !important;
+  --p-card-background: transparent !important;
+}
+
+/* Forçar background transparente no Card */                                                                                                                                  
+.p-card {                                                                                                                                                                     
+  background: transparent !important;                                                                                                                                         
 }
