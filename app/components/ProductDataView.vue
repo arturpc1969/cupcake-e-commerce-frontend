@@ -64,7 +64,7 @@ const handleBuyNow = (product) => {
 
 <template>
   <div
-    class="min-h-screen bg-gradient-to-b from-[#20004b] to-[#3c0074] pb-12 px-4"
+    class="min-h-screen bg-brand-gradient pb-12 px-4"
   >
     <Toast />
     <DataView :value="products" :layout="layout">
@@ -90,8 +90,8 @@ const handleBuyNow = (product) => {
             :key="index"
           >
             <div
-              class="flex flex-col sm:flex-row sm:items-center p-6 gap-4 bg-[#ffffff11] backdrop-blur rounded-lg mb-4"
-              :class="{ 'border-t border-[#ffffff22]': index !== 0 }"
+              class="flex flex-col sm:flex-row sm:items-center p-6 gap-4 bg-white/[0.067] backdrop-blur rounded-lg mb-4"
+              :class="{ 'border-t border-white/[0.133]': index !== 0 }"
             >
               <div class="md:w-40 relative">
                 <img
@@ -179,10 +179,10 @@ const handleBuyNow = (product) => {
             class="col-span-12 sm:col-span-6 md:col-span-4 xl:col-span-3 p-2"
           >
             <div
-              class="p-6 border border-[#ffffff22] bg-[#ffffff11] backdrop-blur rounded-lg flex flex-col h-full"
+              class="p-6 border border-white/[0.133] bg-white/[0.067] backdrop-blur rounded-lg flex flex-col h-full"
             >
               <div
-                class="bg-[#ffffff11] flex justify-center rounded p-4 relative"
+                class="bg-white/[0.067] flex justify-center rounded p-4 relative"
               >
                 <div class="relative mx-auto w-full">
                   <img
