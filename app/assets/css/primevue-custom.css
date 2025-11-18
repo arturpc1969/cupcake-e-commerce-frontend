@@ -1,0 +1,13 @@
+/* Customizações do PrimeVue */
+:root {
+  --p-dataview-content-background: transparent !important;
+  --p-dataview-header-background: transparent !important;
+  --p-togglebutton-background: transparent !important;
+}
+
+/* Para modo escuro também */
+.dark {
+  --p-dataview-content-background: transparent !important;
+  --p-dataview-header-background: transparent !important;
+  --p-togglebutton-background: transparent !important;
+}
