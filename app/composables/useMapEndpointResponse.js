@@ -1,9 +1,4 @@
-// import { useDayjs } from '#dayjs'
-
 export const useMapEndpointResponse = () => {
-  const config = useRuntimeConfig()
-  const baseUrl = config.public.apiBase
-  // const dayjs = useDayjs()
 
   const mapProductFromEndpointBody = (product) => ({
     uuid: product?.uuid,
@@ -11,7 +6,7 @@ export const useMapEndpointResponse = () => {
     description: product?.description,
     price: product?.price,
     promotion: product?.promotion,
-    image: `${baseUrl}/${product.image}`,
+    image: product.image,
     quantity: product?.quantity ?? null,
   })
 
