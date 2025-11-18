@@ -151,13 +151,13 @@ const cancelOrder = () => {
 </script>
 
 <template>
-  <div class="page-content-with-navbar min-h-screen bg-gradient-to-b from-[#20004b] to-[#3c0074]">
+  <div class="page-content-with-navbar min-h-screen bg-brand-gradient">
     <NavBar />
     <Toast />
 
     <div class="container mx-auto px-4 py-8">
       <div class="max-w-6xl mx-auto">
-        <Card class="bg-[#ffffff11] backdrop-blur border border-[#ffffff22]">
+        <Card class="bg-white/[0.067] backdrop-blur border border-white/[0.133]">
           <template #title>
             <h1 class="text-3xl font-bold text-white">
               {{ t("pages_order_cart_title") }}
@@ -171,7 +171,7 @@ const cancelOrder = () => {
                 <div
                   v-for="item in cartItems"
                   :key="item.productUuid"
-                  class="bg-[#ffffff11] border border-[#ffffff22] rounded-lg p-4"
+                  class="bg-white/[0.067] border border-white/[0.133] rounded-lg p-4"
                 >
                   <div class="flex gap-4">
                     <img
@@ -236,7 +236,7 @@ const cancelOrder = () => {
               <div class="space-y-6">
                 <!-- Endereço de Entrega -->
                 <div
-                  class="bg-[#ffffff11] border border-[#ffffff22] rounded-lg p-4"
+                  class="bg-white/[0.067] border border-white/[0.133] rounded-lg p-4"
                 >
                   <h3 class="text-lg font-semibold text-white mb-4">
                     {{ t("pages_order_delivery_address") }}
@@ -254,7 +254,7 @@ const cancelOrder = () => {
 
                 <!-- Método de Pagamento -->
                 <div
-                  class="bg-[#ffffff11] border border-[#ffffff22] rounded-lg p-4"
+                  class="bg-white/[0.067] border border-white/[0.133] rounded-lg p-4"
                 >
                   <h3 class="text-lg font-semibold text-white mb-4">
                     {{ t("pages_order_payment_method") }}
@@ -271,7 +271,7 @@ const cancelOrder = () => {
 
                 <!-- Total -->
                 <div
-                  class="bg-[#ffffff11] border border-[#ffffff22] rounded-lg p-4"
+                  class="bg-white/[0.067] border border-white/[0.133] rounded-lg p-4"
                 >
                   <div class="space-y-2">
                     <div class="flex justify-between text-white">

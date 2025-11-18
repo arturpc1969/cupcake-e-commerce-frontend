@@ -17,6 +17,10 @@ export default {
         accent: {
           yellow: "#fcd34d", // yellow-300
         },
+        glass: {
+          bg: "rgba(255, 255, 255, 0.067)",
+          border: "rgba(255, 255, 255, 0.133)",
+        },
       },
       backgroundImage: {
         "brand-gradient": "linear-gradient(to bottom, #20004b, #3c0074)",
