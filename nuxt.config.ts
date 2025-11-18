@@ -97,7 +97,10 @@ export default defineNuxtConfig({
     },
   },
 
-  css: ["primeicons/primeicons.css"],
+  css: [
+    "primeicons/primeicons.css",
+    "~/assets/css/primevue-custom.css",
+  ],
 
   i18n: {
     locales: [
