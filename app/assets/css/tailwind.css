@@ -71,11 +71,4 @@
     @apply bg-[#ffffff22] border-white text-white;
   }
 
-  /* Cards dos produtos - NÃO aplica background aqui */
-  /* Deixa o Tailwind do componente controlar */
-
-  /* Espaçamento para conteúdo com navbar fixa */
-  .page-content-with-navbar {
-    @apply pt-24;
-  }
 }

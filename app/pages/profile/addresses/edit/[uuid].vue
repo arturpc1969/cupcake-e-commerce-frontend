@@ -192,7 +192,7 @@ onMounted(() => {
 
 <template>
   <div
-    class="page-content-with-navbar min-h-screen bg-gradient-to-b from-[#20004b] to-[#3c0074]"
+    class="min-h-screen bg-gradient-to-b from-[#20004b] to-[#3c0074]"
   >
     <NavBar />
 

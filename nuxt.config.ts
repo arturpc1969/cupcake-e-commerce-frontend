@@ -100,6 +100,7 @@ export default defineNuxtConfig({
   css: [
     "primeicons/primeicons.css",
     "~/assets/css/primevue-custom.css",
+    "~/assets/css/main.css",
   ],
 
   i18n: {
