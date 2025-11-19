@@ -1,0 +1,27 @@
+/* CSS Global para ajustes da navbar */
+
+/* Garantir que o html e body ocupem toda a altura */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Definir valor padrão para a variável CSS da altura da navbar */
+:root {
+  --navbar-height: 88px;
+}
+
+/* Ajustes responsivos padrão caso o JavaScript não execute */
+@media (min-width: 768px) {
+  :root {
+    --navbar-height: 104px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --navbar-height: 120px;
+  }
+}

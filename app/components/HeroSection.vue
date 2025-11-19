@@ -51,40 +51,46 @@ onMounted(() => {
 
 <template>
   <section
-    class="relative bg-gradient-to-b from-[#20004b] to-[#3c0074] text-white pb-20"
+    class="relative bg-gradient-to-b from-[#20004b] to-[#3c0074] text-white pb-12 md:pb-16 lg:pb-20"
   >
-    <div class="flex flex-col items-center">
+    <div class="flex flex-col items-center px-4 md:px-6 lg:px-8">
       <!-- Banner principal -->
-      <div class="w-full flex justify-center mt-8">
+      <div class="w-full flex justify-center mt-6 md:mt-8">
         <img
           src="/banner.png"
           alt="Promoção"
-          class="rounded-2xl shadow-2xl max-w-4xl border border-purple-600"
+          class="rounded-xl md:rounded-2xl shadow-2xl w-full max-w-sm md:max-w-2xl lg:max-w-4xl border border-purple-600 object-cover"
         >
       </div>
 
       <!-- Texto de destaque -->
       <h2
-        class="text-5xl font-bold mt-10 italic text-yellow-300 drop-shadow-sm"
+        class="text-3xl md:text-4xl lg:text-5xl font-bold mt-6 md:mt-8 lg:mt-10 italic text-yellow-300 drop-shadow-sm text-center px-4"
       >
         {{ t("components_hero_section_modal_destak-text") }}
       </h2>
 
       <!-- Loading -->
-      <div v-if="loading" class="flex justify-center gap-8 mt-10">
+      <div
+        v-if="loading"
+        class="flex flex-wrap justify-center gap-4 md:gap-6 lg:gap-8 mt-6 md:mt-8 lg:mt-10 w-full max-w-6xl"
+      >
         <div
           v-for="i in 3"
           :key="i"
-          class="w-64 h-48 bg-[#ffffff22] rounded-2xl backdrop-blur shadow-lg animate-pulse"
+          class="w-full sm:w-64 h-48 bg-[#ffffff22] rounded-2xl backdrop-blur shadow-lg animate-pulse"
         />
       </div>
 
       <!-- Cards de Produtos em Promoção -->
-      <div v-else class="flex justify-center gap-8 mt-10 flex-wrap">
+      <div
+        v-else
+        class="flex flex-wrap justify-center gap-4 md:gap-6 lg:gap-8 mt-6 md:mt-8 lg:mt-10 w-full max-w-6xl"
+      >
         <div
           v-for="product in promotionProducts"
           :key="product.uuid"
-          class="w-64 h-48 bg-gradient-to-b from-[#20004b] to-[#3c0074] border border-[#ffffff22] rounded-2xl backdrop-blur shadow-lg hover:shadow-2xl transition-all cursor-pointer hover:scale-105 overflow-hidden"
+          class="w-full sm:w-64 h-48 bg-gradient-to-b from-[#20004b] to-[#3c0074] border border-[#ffffff22] rounded-2xl backdrop-blur shadow-lg hover:shadow-2xl transition-all cursor-pointer hover:scale-105 overflow-hidden"
           @click="goToProduct(product.uuid)"
         >
           <!-- Imagem do Produto -->
@@ -106,7 +112,7 @@ onMounted(() => {
             <!-- Preço -->
             <div class="flex items-center justify-between">
               <div>
-                <p class="text-yellow-300 font-bold text-lg">
+                <p class="text-yellow-300 font-bold text-base md:text-lg">
                   {{ formatPrice(product.price) }}
                 </p>
               </div>
@@ -132,7 +138,7 @@ onMounted(() => {
         <div
           v-for="i in Math.max(0, 3 - promotionProducts.length)"
           :key="`placeholder-${i}`"
-          class="w-64 h-48 bg-[#ffffff22] rounded-2xl backdrop-blur shadow-lg flex items-center justify-center"
+          class="w-full sm:w-64 h-48 bg-[#ffffff22] rounded-2xl backdrop-blur shadow-lg flex items-center justify-center"
         >
           <p class="text-gray-400 text-sm text-center px-4">Produto em breve</p>
         </div>
