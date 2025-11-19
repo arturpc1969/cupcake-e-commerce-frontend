@@ -63,9 +63,7 @@ const handleBuyNow = (product) => {
 </script>
 
 <template>
-  <div
-    class="min-h-screen bg-brand-gradient pb-12 px-4"
-  >
+  <div class="min-h-screen bg-brand-gradient pb-12 px-4">
     <Toast />
     <DataView :value="products" :layout="layout">
       <template #header>
@@ -122,22 +120,23 @@ const handleBuyNow = (product) => {
                     </div>
                   </div>
                 </div>
-                <div class="flex flex-col md:items-end gap-8">
-                  <span class="text-xl font-semibold text-yellow-300"
+                <div class="flex flex-col md:items-end gap-4 md:gap-6 lg:gap-8">
+                  <span class="text-lg md:text-xl font-semibold text-yellow-300"
                     >R${{ item.price }}</span
                   >
 
-                  <div>
-                    <label class="block text-white mb-2 font-semibold">{{
-                      t("pages_order_quantity")
-                    }}</label>
+                  <div class="w-full md:w-auto">
+                    <label
+                      class="block text-white mb-2 text-sm md:text-base font-semibold"
+                      >{{ t("pages_order_quantity") }}</label
+                    >
                     <InputNumber
                       v-model="quantity"
                       :min="1"
                       :max="99"
                       show-buttons
                       button-layout="horizontal"
-                      class="w-full"
+                      class="w-full md:w-32"
                     >
                       <template #incrementicon>
                         <span class="pi pi-plus" />
@@ -148,20 +147,26 @@ const handleBuyNow = (product) => {
                     </InputNumber>
                   </div>
 
-                  <div class="flex flex-row-reverse md:flex-row gap-2">
+                  <div class="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
                     <Button
                       icon="pi pi-shopping-cart"
-                      :label="t('components_product-data-view_add-to-cart')"
-                      class="flex-auto md:flex-initial whitespace-nowrap"
+                      class="flex-1 sm:flex-initial text-sm md:text-base"
                       @click="handleAddToCart(item)"
-                    />
+                    >
+                      <span class="hidden sm:inline ml-2">{{
+                        t("components_product-data-view_add-to-cart")
+                      }}</span>
+                    </Button>
                     <Button
                       icon="pi pi-bolt"
-                      :label="t('components_product-data-view_buy-now')"
-                      class="flex-auto md:flex-initial whitespace-nowrap"
                       severity="success"
+                      class="flex-1 sm:flex-initial text-sm md:text-base"
                       @click="handleBuyNow(item)"
-                    />
+                    >
+                      <span class="hidden sm:inline ml-2">{{
+                        t("components_product-data-view_buy-now")
+                      }}</span>
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -215,23 +220,25 @@ const handleBuyNow = (product) => {
                     >R${{ item.price }}</span
                   >
 
-                  <div>
-                    <label class="block text-white mb-2 font-semibold">{{
-                      t("pages_order_quantity")
-                    }}</label>
+                  <div class="w-full overflow-hidden">
+                    <label
+                      class="block text-white mb-2 text-sm md:text-base font-semibold"
+                      >{{ t("pages_order_quantity") }}</label
+                    >
                     <InputNumber
                       v-model="quantity"
                       :min="1"
                       :max="99"
                       show-buttons
                       button-layout="horizontal"
-                      class="w-full"
+                      class="w-full max-w-full"
+                      input-class="!text-sm md:!text-base"
                     >
                       <template #incrementicon>
-                        <span class="pi pi-plus" />
+                        <span class="pi pi-plus text-xs md:text-sm" />
                       </template>
                       <template #decrementicon>
-                        <span class="pi pi-minus" />
+                        <span class="pi pi-minus text-xs md:text-sm" />
                       </template>
                     </InputNumber>
                   </div>
