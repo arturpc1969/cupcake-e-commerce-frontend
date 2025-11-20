@@ -9,36 +9,42 @@ Frontend for the cupcake e-commerce project
                                                                                                                                                                               
   ### Sabor que vem das estrelas ⭐                                                                                                                                           
                                                                                                                                                                               
-  [![Nuxt 4](https://img.shields.io/badge/Nuxt-4.x-00DC82?style=for-the-badge&logo=nuxt.js&logoColor=white)](https://nuxt.com/)                                               
-  [![Vue 3](https://img.shields.io/badge/Vue-3.x-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white)](https://vuejs.org/)                                                 
-  [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.x-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)                         
-  [![PrimeVue](https://img.shields.io/badge/PrimeVue-Latest-41B883?style=for-the-badge)](https://primevue.org/)                                                               
+  [![Nuxt 4](https://img.shields.io/badge/Nuxt-4.x-00DC82?logo=nuxt.js&logoColor=white)](https://nuxt.com/)                                               
+  [![Vue 3](https://img.shields.io/badge/Vue-3.x-4FC08D?logo=vue.js&logoColor=white)](https://vuejs.org/)                                                 
+  [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.x-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)                         
+  [![PrimeVue](https://img.shields.io/badge/PrimeVue-Latest-41B883)](https://primevue.org/)                                                               
 </div>                                                                                                                                                                        
                                                                                                                                                                               
 ---                                                                                                                                                                           
                                                                                                                                                                               
-## 📋 Índice                                                                                                                                                                  
+## 📋 Índice
                                                                                                                                                                               
 - [Sobre o Projeto](#-sobre-o-projeto)                                                                                                                                        
-- [Funcionalidades](#-funcionalidades)                                                                                                                                        
-- [Tecnologias](#-tecnologias)                                                                                                                                                
+- [Funcionalidades](#-funcionalidades)
+- [Tecnologias](#%EF%B8%8F-tecnologias)
 - [Estrutura do Projeto](#-estrutura-do-projeto)                                                                                                                              
 - [Instalação](#-instalação)                                                                                                                                                  
-- [Configuração](#-configuração)                                                                                                                                              
+- [Configuração](#%EF%B8%8F-configura%C3%A7%C3%A3o)                                                                                                                                              
 - [Como Usar](#-como-usar)                                                                                                                                                    
 - [Autenticação](#-autenticação)                                                                                                                                              
 - [Internacionalização](#-internacionalização)                                                                                                                                
-- [API e Serviços](#-api-e-serviços)                                                                                                                                          
-- [Capturas de Tela](#-capturas-de-tela)                                                                                                                                      
-- [Contribuindo](#-contribuindo)                                                                                                                                              
-- [Licença](#-licença)                                                                                                                                                        
+- [API e Serviços](#-api-e-serviços)
+- [Componentes Principais](#-componentes-principais)
+- [Estados de Pedido](#-estados-de-pedido)
+- [Design System](design-system)
+- [Segurança](#-segurança)
+- [Fluxos de Uso](#-fluxos-de-uso)
+- [Validações Implementadas](#-validações-implementadas)
+- [Recursos Mobile](#-recursos-mobile)
+- [Métodos de Pagamento](#-métodos-de-pagamento)
+- [Autor](#-autor)                                                                                                        
+                                                                                                                                                        
                                                                                                                                                                               
 ---                                                                                                                                                                           
                                                                                                                                                                               
 ## 🎯 Sobre o Projeto                                                                                                                                                         
                                                                                                                                                                               
-**Galaxy Cupcakes** é uma plataforma completa de e-commerce especializada em cupcakes gourmet artesanais. Desenvolvida com as mais modernas tecnologias web, oferece uma      
-experiência de compra intuitiva e agradável.                                                                                                                                  
+**Galaxy Cupcakes** é uma plataforma completa de e-commerce especializada em cupcakes gourmet artesanais. Desenvolvida com as mais modernas tecnologias web, oferece uma experiência de compra intuitiva e agradável.
                                                                                                                                                                                                                                     
                                                                                                                                                                               
 ---                                                                                                                                                                           
@@ -103,10 +109,10 @@ experiência de compra intuitiva e agradável.
 - [x] Estados de loading                                                                                                                                                      
 - [x] Tratamento de erros                                                                                                                                                     
                                                                                                                                                                               
----                                                                                                                                                                           
-                                                                                                                                                                              
-## 🛠️ Tecnologias                                                                                                                                                             
-                                                                                                                                                                              
+---
+
+## 🛠️ Tecnologias
+
 ### Frontend                                                                                                                                                                  
 - **[Nuxt 4](https://nuxt.com/)** - Framework Vue.js para aplicações web                                                                                                      
 - **[Vue 3](https://vuejs.org/)** - Framework JavaScript progressivo                                                                                                          
@@ -225,31 +231,39 @@ galaxy-cupcakes/
 - **Backend API** rodando (Django Ninja)                                                                                                                             
                                                                                                                                                                               
 ### Passos                                                                                                                                                                    
+                                                                                                                                                                      
+1. Clonar o repositório
+```bash                                                                                                                                                     
+git clone https://github.com/seu-usuario/galaxy-cupcakes.git
+```                                                                                                                 
+
+
+2. Entrar no diretório
+```bash
+cd galaxy-cupcakes
+```                                                                                                                                                            
                                                                                                                                                                               
-```bash                                                                                                                                                                       
-# 1. Clonar o repositório                                                                                                                                                     
-git clone https://github.com/seu-usuario/galaxy-cupcakes.git                                                                                                                  
+3. Instalar dependências
+```bash
+npm install
+```                                                                                                                                                                   
                                                                                                                                                                               
-# 2. Entrar no diretório                                                                                                                                                      
-cd galaxy-cupcakes                                                                                                                                                            
-                                                                                                                                                                              
-# 3. Instalar dependências                                                                                                                                                    
-npm install                                                                                                                                                                   
-                                                                                                                                                                              
-# 4. Configurar variáveis de ambiente                                                                                                                                         
-cp .env.example .env                                                                                                                                                          
+4. Configurar variáveis de ambiente
+```bash
+cp .env.example .env
+```                                                                                                                                                          
                                                                                                                                                                               
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-⚙️ Configuração                                                                                                                                                               
+## ⚙️ Configuração                                                                                                                                                               
 
 Variáveis de Ambiente                                                                                                                                                         
 
 Crie um arquivo .env na raiz do projeto:                                                                                                                                      
 
                                                                                                                                                                               
-# URL base da API                                                                                                                                                             
+URL base da API                                                                                                                                                             
 NUXT_PUBLIC_API_BASE=http://localhost:8000                                                                                                                                    
                                                                                                                                                                               
 
@@ -257,50 +271,50 @@ Configuração do Nuxt
 
 O arquivo nuxt.config.ts já está configurado com:                                                                                                                             
 
- • PrimeVue                                                                                                                                                                   
- • Tailwind CSS                                                                                                                                                               
- • Vue I18n                                                                                                                                                                   
- • Runtime config                                                                                                                                                             
+-  PrimeVue                                                                                                                                                                   
+-  Tailwind CSS                                                                                                                                                               
+-  Vue I18n                                                                                                                                                                   
+-  Runtime config                                                                                                                                                             
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-💻 Como Usar                                                                                                                                                                  
+## 💻 Como Usar                                                                                                                                                                  
 
 Desenvolvimento                                                                                                                                                               
 
                                                                                                                                                                               
-# Iniciar servidor de desenvolvimento                                                                                                                                         
+Iniciar servidor de desenvolvimento                                                                                                                                         
 npm run dev                                                                                                                                                                   
                                                                                                                                                                               
-# Aplicação disponível em http://localhost:3000                                                                                                                               
+Aplicação disponível em http://localhost:3000                                                                                                                               
                                                                                                                                                                               
 
 Produção                                                                                                                                                                      
 
                                                                                                                                                                               
-# Gerar build de produção                                                                                                                                                     
+Gerar build de produção                                                                                                                                                     
 npm run build                                                                                                                                                                 
                                                                                                                                                                               
-# Iniciar servidor de produção                                                                                                                                                
+Iniciar servidor de produção                                                                                                                                                
 npm run start                                                                                                                                                                 
                                                                                                                                                                               
-# Preview do build                                                                                                                                                            
+Preview do build                                                                                                                                                            
 npm run preview                                                                                                                                                               
                                                                                                                                                                               
 
 Linting                                                                                                                                                                       
 
                                                                                                                                                                               
-# Verificar código                                                                                                                                                            
+Verificar código                                                                                                                                                            
 npm run lint                                                                                                                                                                  
                                                                                                                                                                               
-# Corrigir problemas automaticamente                                                                                                                                          
+Corrigir problemas automaticamente                                                                                                                                          
 npm run lint:fix                                                                                                                                                              
                                                                                                                                                                               
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-🔐 Autenticação                                                                                                                                                               
+## 🔐 Autenticação                                                                                                                                                               
 
 Sistema de Tokens JWT                                                                                                                                                         
 
@@ -308,15 +322,15 @@ A aplicação utiliza um sistema de autenticação baseado em JWT com dois tipos
 
 Access Token                                                                                                                                                                  
 
- • Duração: Curta (geralmente 15-60 minutos)                                                                                                                                  
- • Uso: Autenticação de requisições à API                                                                                                                                     
- • Renovação: Automática quando próximo da expiração                                                                                                                          
+-  Duração: Curta (geralmente 15-60 minutos)                                                                                                                                  
+-  Uso: Autenticação de requisições à API                                                                                                                                     
+-  Renovação: Automática quando próximo da expiração                                                                                                                          
 
 Refresh Token                                                                                                                                                                 
 
- • Duração: Longa (geralmente 7-30 dias)                                                                                                                                      
- • Uso: Renovar o access token                                                                                                                                                
- • Armazenamento: LocalStorage                                                                                                                                                
+-  Duração: Longa (geralmente 7-30 dias)                                                                                                                                      
+-  Uso: Renovar o access token                                                                                                                                                
+-  Armazenamento: LocalStorage                                                                                                                                                
 
 Fluxo de Autenticação                                                                                                                                                         
 
@@ -356,16 +370,15 @@ definePageMeta({
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-🌍 Internacionalização                                                                                                                                                        
+## 🌍 Internacionalização                                                                                                                                                        
 
 Idiomas Disponíveis                                                                                                                                                           
 
-                                             
-  Idioma               Código   Status       
- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 
-  Português (Brasil)   pt-BR    ✅ Completo  
-  Inglês (EUA)         en-US    ✅ Completo  
-                                             
+| Idioma             | Código | Status     |
+|--------------------|--------|------------|
+| Português (Brasil) | pt-BR  | ✅ Completo |
+| Inglês (EUA)       | en-US  | ✅ Completo |
+
 
 Estrutura de Tradução                                                                                                                                                         
 
@@ -385,37 +398,38 @@ Convenção de Nomenclatura
 
 Exemplos:                                                                                                                                                                     
 
- • components_nav-bar_logout - Componente NavBar                                                                                                                              
- • pages_profile_title - Página de perfil                                                                                                                                     
- • composables_use-requests_unauthorized - Composable useRequests                                                                                                             
+-  components_nav-bar_logout - Componente NavBar                                                                                                                              
+-  pages_profile_title - Página de perfil                                                                                                                                     
+-  composables_use-requests_unauthorized - Composable useRequests                                                                                                             
 
 Uso no Código                                                                                                                                                                 
 
-                                                                                                                                                                              
+```vue                                                                                                                                                                              
 <script setup>                                                                                                                                                                
 const { t } = useI18n();                                                                                                                                                      
-</script>                                                                                                                                                                     
-                                                                                                                                                                              
+</script>
+```                                                                                                                                                                     
+```vue                                                                                                                                                                              
 <template>                                                                                                                                                                    
   <h1>{{ t("pages_profile_title") }}</h1>                                                                                                                                     
-</template>                                                                                                                                                                   
+</template>
+```                                                                                                                                                                   
                                                                                                                                                                               
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-🔌 API e Serviços                                                                                                                                                             
+## 🔌 API e Serviços                                                                                                                                                             
 
 Endpoints Principais                                                                                                                                                          
 
-                                                                      
-  Serviço       Endpoint Base              Descrição                  
- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 
-  Auth          /api/auth/                 Autenticação e cadastro    
-  Products      /api/products/             Gerenciamento de produtos  
-  Orders        /api/orders/               Gerenciamento de pedidos   
-  Order Items   /api/order-items/          Itens de pedidos           
-  Addresses     /api/delivery-addresses/   Endereços de entrega       
-  Users         /api/users/me              Dados do usuário           
+| Serviço     | Endpoint Base            | Descrição                 |
+|-------------|---------------------------|----------------------------|
+| Auth        | /api/auth/                | Autenticação e cadastro    |
+| Products    | /api/products/            | Gerenciamento de produtos  |
+| Orders      | /api/orders/              | Gerenciamento de pedidos   |
+| Order Items | /api/order-items/         | Itens de pedidos           |
+| Addresses   | /api/delivery-addresses/  | Endereços de entrega       |
+| Users       | /api/users/me             | Dados do usuário           |
                                                                       
 
 Serviços Implementados                                                                                                                                                        
@@ -503,69 +517,69 @@ A aplicação converte automaticamente entre os formatos do backend (snake_case)
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-🎨 Componentes Principais                                                                                                                                                     
+## 🎨 Componentes Principais                                                                                                                                                     
 
 NavBar                                                                                                                                                                        
 
 Barra de navegação principal com:                                                                                                                                             
 
- • Logo e menu de navegação                                                                                                                                                   
- • Dropdown do usuário (quando autenticado)                                                                                                                                   
- • Links para perfil, pedidos e endereços                                                                                                                                     
- • Área administrativa (apenas para staff)                                                                                                                                    
- • Carrinho com badge de quantidade                                                                                                                                           
- • Modais de login e cadastro                                                                                                                                                 
+-  Logo e menu de navegação                                                                                                                                                   
+-  Dropdown do usuário (quando autenticado)                                                                                                                                   
+-  Links para perfil, pedidos e endereços                                                                                                                                     
+-  Área administrativa (apenas para staff)                                                                                                                                    
+-  Carrinho com badge de quantidade                                                                                                                                           
+-  Modais de login e cadastro                                                                                                                                                 
 
 ProductDataView                                                                                                                                                               
 
 Visualização de produtos com:                                                                                                                                                 
 
- • Alternância entre lista e grid                                                                                                                                             
- • Imagens com altura padronizada                                                                                                                                             
- • Badge de promoção                                                                                                                                                          
- • Botões de adicionar ao carrinho e comprar                                                                                                                                  
- • Seleção de quantidade                                                                                                                                                      
- • Navegação por âncora                                                                                                                                                       
+-  Alternância entre lista e grid                                                                                                                                             
+-  Imagens com altura padronizada                                                                                                                                             
+-  Badge de promoção                                                                                                                                                          
+-  Botões de adicionar ao carrinho e comprar                                                                                                                                  
+-  Seleção de quantidade                                                                                                                                                      
+-  Navegação por âncora                                                                                                                                                       
 
 HeroSection                                                                                                                                                                   
 
 Seção de destaque com:                                                                                                                                                        
 
- • Banner promocional                                                                                                                                                         
- • 3 produtos em promoção                                                                                                                                                     
- • Cards clicáveis                                                                                                                                                            
- • Navegação direta para produtos                                                                                                                                             
+-  Banner promocional                                                                                                                                                         
+-  3 produtos em promoção                                                                                                                                                     
+-  Cards clicáveis                                                                                                                                                            
+-  Navegação direta para produtos                                                                                                                                             
 
 Modais                                                                                                                                                                        
 
 LoginModal                                                                                                                                                                    
 
- • Autenticação de usuário                                                                                                                                                    
- • Validação de credenciais                                                                                                                                                   
- • Link para cadastro                                                                                                                                                         
+-  Autenticação de usuário                                                                                                                                                    
+-  Validação de credenciais                                                                                                                                                   
+-  Link para cadastro                                                                                                                                                         
 
 SignupModal                                                                                                                                                                   
 
- • Cadastro de novo usuário                                                                                                                                                   
- • Validação de campos                                                                                                                                                        
- • Formatação automática de CPF                                                                                                                                               
- • Confirmação de senha                                                                                                                                                       
+-  Cadastro de novo usuário                                                                                                                                                   
+-  Validação de campos                                                                                                                                                        
+-  Formatação automática de CPF                                                                                                                                               
+-  Confirmação de senha                                                                                                                                                       
 
 AboutModal                                                                                                                                                                    
 
- • História da empresa                                                                                                                                                        
- • Missão e valores                                                                                                                                                           
- • Localização e diferenciais                                                                                                                                                 
+-  História da empresa                                                                                                                                                        
+-  Missão e valores                                                                                                                                                           
+-  Localização e diferenciais                                                                                                                                                 
 
 ContactModal                                                                                                                                                                  
 
- • Informações de contato                                                                                                                                                     
- • Formulário de mensagem                                                                                                                                                     
- • Validação e formatação                                                                                                                                                     
+-  Informações de contato                                                                                                                                                     
+-  Formulário de mensagem                                                                                                                                                     
+-  Validação e formatação                                                                                                                                                     
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-🔄 Estados de Pedido                                                                                                                                                          
+## 🔄 Estados de Pedido                                                                                                                                                          
 
 Fluxo Completo                                                                                                                                                                
 
@@ -594,22 +608,22 @@ Status Especial
 Cores por Status                                                                                                                                                              
 
                                                          
-  Status            Cor       Significado                
- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 
-  DRAFT             Cinza     Temporário/Não finalizado  
-  PENDING           Amarelo           Em espera                  
-  WAITING_PAYMENT   Laranja           Ação pendente              
-  CONFIRMED         Azul              Confirmado                 
-  PREPARATION       Roxo              Em processamento           
-  DELIVERY          Índigo            Em transporte              
-  DELIVERED         Verde             Entregue                   
-  FINISHED          Verde Esmeralda   Concluído                  
-  CANCELED          Vermelho          Cancelado                  
+| Status          | Cor             | Significado               |         
+|-----------------|-----------------|---------------------------|
+| DRAFT           | Cinza           | Temporário/Não finalizado | 
+| PENDING         | Amarelo         | Em espera                 |
+| WAITING_PAYMENT | Laranja         | Ação pendente             | 
+| CONFIRMED       | Azul            | Confirmado                | 
+| PREPARATION     | Roxo            | Em processamento          | 
+| DELIVERY        | Índigo          | Em transporte             | 
+| DELIVERED       | Verde           | Entregue                  | 
+| FINISHED        | Verde Esmeralda | Concluído                 | 
+| CANCELED        | Vermelho        | Cancelado                 |
                                                                  
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-🎨 Design System                                                                                                                                                              
+## 🎨 Design System                                                                                                                                                              
 
 Paleta de Cores                                                                                                                                                               
 
@@ -628,36 +642,36 @@ Paleta de Cores
 
 Padrões Visuais                                                                                                                                                               
 
- • Gradientes: from-[#20004b] to-[#3c0074]                                                                                                                                    
- • Bordas: border-[#ffffff22]                                                                                                                                                 
- • Backgrounds: bg-[#ffffff11]                                                                                                                                                
- • Sombras: shadow-2xl                                                                                                                                                        
- • Arredondamento: rounded-lg                                                                                                                                                 
+-  Gradientes: from-[#20004b] to-[#3c0074]                                                                                                                                    
+-  Bordas: border-[#ffffff22]                                                                                                                                                 
+-  Backgrounds: bg-[#ffffff11]                                                                                                                                                
+-  Sombras: shadow-2xl                                                                                                                                                        
+-  Arredondamento: rounded-lg                                                                                                                                                 
 
 Responsividade                                                                                                                                                                
 
                                             
-  Breakpoint   Tamanho   Uso                
- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 
-  sm           640px     Tablets pequenos   
-  md           768px     Tablets            
-  lg           1024px    Desktops pequenos  
-  xl           1280px    Desktops grandes   
+| Breakpoint | Tamanho | Uso               | 
+|------------|---------|-------------------|                                                                                                                                                               
+| sm         | 640px   | Tablets pequenos  |                                                                                                                                                               
+| md         | 768px   | Tablets           |                                                                                                                                                               
+| lg         | 1024px  | Desktops pequenos |                                                                                                                                                               
+| xl         | 1280px  | Desktops grandes  |                                                                                                                                                               
                                             
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-🔒 Segurança                                                                                                                                                                  
+## 🔒 Segurança                                                                                                                                                                  
 
 Medidas Implementadas                                                                                                                                                         
 
- • ✅ Autenticação JWT - Tokens seguros                                                                                                                                       
- • ✅ Middleware de Proteção - Rotas protegidas                                                                                                                               
- • ✅ Validação Client-Side - Prevenção de dados inválidos                                                                                                                    
- • ✅ Sanitização de Dados - Limpeza de inputs                                                                                                                                
- • ✅ HTTPS Ready - Preparado para produção segura                                                                                                                            
- • ✅ Logout Automático - Em caso de token inválido                                                                                                                           
- • ✅ Renovação de Tokens - Sessão contínua e segura                                                                                                                          
+✅ Autenticação JWT - Tokens seguros                                                                                                                                       
+✅ Middleware de Proteção - Rotas protegidas                                                                                                                               
+✅ Validação Client-Side - Prevenção de dados inválidos                                                                                                                    
+✅ Sanitização de Dados - Limpeza de inputs                                                                                                                                
+✅ HTTPS Ready - Preparado para produção segura                                                                                                                            
+✅ Logout Automático - Em caso de token inválido                                                                                                                           
+✅ Renovação de Tokens - Sessão contínua e segura                                                                                                                          
 
 Boas Práticas                                                                                                                                                                 
 
@@ -678,9 +692,9 @@ if (error.response?.status === 401) {
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-📊 Fluxos de Uso                                                                                                                                                              
+## 📊 Fluxos de Uso                                                                                                                                                              
 
-Fluxo de Compra                                                                                                                                                               
+-  Fluxo de Compra                                                                                                                                                               
 
                                                                                                                                                                               
 1. Usuário navega pelo catálogo                                                                                                                                               
@@ -702,7 +716,7 @@ Fluxo de Compra
 9. Redirecionado para histórico de pedidos                                                                                                                                    
                                                                                                                                                                               
 
-Fluxo Administrativo                                                                                                                                                          
+-  Fluxo Administrativo                                                                                                                                                          
 
                                                                                                                                                                               
 1. Staff faz login                                                                                                                                                            
@@ -718,76 +732,61 @@ Fluxo Administrativo
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-🧪 Validações Implementadas                                                                                                                                                   
+## 🧪 Validações Implementadas                                                                                                                                                   
 
 Formulários                                                                                                                                                                   
 
 Cadastro de Usuário                                                                                                                                                           
 
- • Username obrigatório                                                                                                                                                       
- • Email válido                                                                                                                                                               
- • CPF formatado (11 dígitos)                                                                                                                                                 
- • Senhas coincidentes                                                                                                                                                        
- • Todos os campos obrigatórios                                                                                                                                               
+-  Username obrigatório                                                                                                                                                       
+-  Email válido                                                                                                                                                               
+-  CPF formatado (11 dígitos)                                                                                                                                                 
+-  Senhas coincidentes                                                                                                                                                        
+-  Todos os campos obrigatórios                                                                                                                                               
 
 Produto                                                                                                                                                                       
 
- • Nome obrigatório                                                                                                                                                           
- • Descrição obrigatória                                                                                                                                                      
- • Preço > 0                                                                                                                                                                  
- • Imagem obrigatória (máx. 5MB)                                                                                                                                              
+-  Nome obrigatório                                                                                                                                                           
+-  Descrição obrigatória                                                                                                                                                      
+-  Preço > 0                                                                                                                                                                  
+-  Imagem obrigatória (máx. 5MB)                                                                                                                                              
  
 
 Endereço                                                                                                                                                                      
 
- • Nome do endereço obrigatório                                                                                                                                               
- • Endereço completo obrigatório                                                                                                                                              
- • Cidade e estado obrigatórios                                                                                                                                               
- • CEP obrigatório                                                                                                                                                            
+-  Nome do endereço obrigatório                                                                                                                                               
+-  Endereço completo obrigatório                                                                                                                                              
+-  Cidade e estado obrigatórios                                                                                                                                               
+-  CEP obrigatório                                                                                                                                                            
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-📱 Recursos Mobile                                                                                                                                                            
+## 📱 Recursos Mobile                                                                                                                                                            
 
 Otimizações                                                                                                                                                                   
 
- • ✅ Design responsivo em todas as páginas                                                                                                                                   
- • ✅ Touch-friendly (áreas clicáveis adequadas)                                                                                                                              
- • ✅ Imagens otimizadas                                                                                                                                                      
- • ✅ Formulários adaptados para mobile                                                                                                                                       
- • ✅ Navegação simplificada                                                                                                                                                  
- • ✅ Modais com scroll otimizado                                                                                                                                             
+✅ Design responsivo em todas as páginas                                                                                                                                                                   
+✅ Touch-friendly (áreas clicáveis adequadas)                                                                                                                                                              
+✅ Imagens otimizadas                                                                                                                                                                                      
+✅ Formulários adaptados para mobile                                                                                                                                                                       
+✅ Navegação simplificada                                                                                                                                                                                  
+✅ Modais com scroll otimizado                                                                                                                                                                             
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-🎯 Métodos de Pagamento                                                                                                                                                       
+## 🎯 Métodos de Pagamento                                                                                                                                                       
 
 A plataforma suporta os seguintes métodos:                                                                                                                                    
 
- • 💳 Cartão de Crédito                                                                                                                                                       
- • 💳 Cartão de Débito                                                                                                                                                        
- • 📄 Boleto Bancário                                                                                                                                                         
- • 📱 PIX                                                                                                                                                                     
- • 💵 Dinheiro                                                                                                                                                                
+-  💳 Cartão de Crédito                                                                                                                                                       
+-  💳 Cartão de Débito                                                                                                                                                        
+-  📄 Boleto Bancário                                                                                                                                                         
+-  📱 PIX                                                                                                                                                                     
+-  💵 Dinheiro                                                                                                                                                                
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────                                                                                                                                                     
-
-✨ Funcionalidades                                                                                                                                                            
-
- • Sistema completo de e-commerce                                                                                                                                             
- • Autenticação com JWT                                                                                                                                                       
- • Gerenciamento de produtos                                                                                                                                                  
- • Gerenciamento de pedidos                                                                                                                                                   
- • Carrinho de compras                                                                                                                                                        
- • Múltiplos endereços de entrega                                                                                                                                             
- • Área administrativa                                                                                                                                                        
- • Internacionalização (PT-BR e EN-US)                                                                                                                                        
-
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-👥 Autor
-
- • Nome: Artur de Paula Coutinho
- • RGM: 29655960
- • Curso: Engenharia de Software
- • Instituição: UNICID
+## 👥 Autor
+-  Nome: Artur de Paula Coutinho
+-  RGM: 29655960
+-  Curso: Engenharia de Software
+-  Instituição: UNICID
