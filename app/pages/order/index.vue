@@ -153,7 +153,7 @@ const cancelOrder = () => {
 </script>
 
 <template>
-  <div class="page-content-with-navbar min-h-screen bg-brand-gradient">
+  <div class="min-h-screen bg-gradient-to-b from-[#20004b] to-[#3c0074">
     <NavBar />
     <Toast />
 
@@ -198,32 +198,40 @@ const cancelOrder = () => {
                         <div
                           class="flex items-center gap-2 sm:gap-4 w-full sm:w-auto"
                         >
-                          <InputNumber
-                            :model-value="item.quantity"
-                            :min="1"
-                            :max="99"
-                            show-buttons
-                            button-layout="horizontal"
-                            class="w-24 sm:w-32 flex-shrink-0"
-                            @update:model-value="
-                              (val) =>
-                                handleQuantityChange(item.productUuid, val)
-                            "
-                          >
-                            <template #incrementicon>
-                              <span class="pi pi-plus" />
-                            </template>
-                            <template #decrementicon>
-                              <span class="pi pi-minus" />
-                            </template>
-                          </InputNumber>
+                          <div class="w-36 sm:w-48 md:w-64 relative">
+                            <InputNumber
+                              :model-value="item.quantity"
+                              :min="1"
+                              :max="99"
+                              show-buttons
+                              button-layout="horizontal"
+                              @update:model-value="
+                                (val) =>
+                                  handleQuantityChange(item.productUuid, val)
+                              "
+                            >
+                              <template #incrementicon>
+                                <span class="pi pi-plus" />
+                              </template>
+                              <template #decrementicon>
+                                <span class="pi pi-minus" />
+                              </template>
+                            </InputNumber>
 
-                          <Button
-                            icon="pi pi-trash"
-                            severity="danger"
-                            text
-                            @click="handleRemoveItem(item.productUuid)"
-                          />
+                            <!-- Botão posicionado sobre o InputNumber -->
+                            <div
+                              class="absolute inset-0 flex items-center justify-center pointer-events-none"
+                            >
+                              <Button
+                                icon="pi pi-trash"
+                                severity="danger"
+                                text
+                                rounded
+                                class="pointer-events-auto z-10"
+                                @click="handleRemoveItem(item.productUuid)"
+                              />
+                            </div>
+                          </div>
                         </div>
 
                         <div class="text-right w-full sm:w-auto">
@@ -338,7 +346,7 @@ const cancelOrder = () => {
   </div>
 </template>
 
-<style scoped>
+<!-- <style scoped>
 /* Força a largura no componente raiz */
 :deep(.p-inputnumber) {
   width: 6rem !important;
@@ -361,5 +369,30 @@ const cancelOrder = () => {
 /* Garante que os botões não quebrem o layout */
 :deep(.p-inputnumber .p-inputnumber-button) {
   width: 2rem !important;
+}
+</style> -->
+
+<style scoped>
+/* Força o InputNumber a ocupar 100% do container */
+:deep(.p-inputnumber) {
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+:deep(.p-inputnumber.p-component) {
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+/* Garante que o input interno também seja responsivo */
+:deep(.p-inputnumber .p-inputtext) {
+  width: 100% !important;
+  padding-inline: 0.5rem !important;
+}
+
+/* Ajusta os botões */
+:deep(.p-inputnumber .p-inputnumber-button) {
+  width: 2rem !important;
+  flex-shrink: 0;
 }
 </style>
