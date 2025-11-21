@@ -195,14 +195,16 @@ const cancelOrder = () => {
                       <div
                         class="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-4 gap-3"
                       >
-                        <div class="flex items-center gap-2 sm:gap-4">
+                        <div
+                          class="flex items-center gap-2 sm:gap-4 w-full sm:w-auto"
+                        >
                           <InputNumber
                             :model-value="item.quantity"
                             :min="1"
                             :max="99"
                             show-buttons
                             button-layout="horizontal"
-                            class="w-28 sm:w-32"
+                            class="w-24 sm:w-32 flex-shrink-0"
                             @update:model-value="
                               (val) =>
                                 handleQuantityChange(item.productUuid, val)
@@ -335,3 +337,63 @@ const cancelOrder = () => {
     </div>
   </div>
 </template>
+
+<!-- <style scoped>
+/* Força a largura no componente raiz */
+:deep(.p-inputnumber) {
+  width: 6rem !important;
+  max-width: 6rem !important;
+}
+
+/* Responsivo para telas maiores */
+@media (min-width: 640px) {
+  :deep(.p-inputnumber) {
+    width: 8rem !important;
+    max-width: 8rem !important;
+  }
+}
+
+/* Ajusta o padding interno do input */
+:deep(.p-inputnumber .p-inputtext) {
+  padding-inline: 0.5rem !important;
+}
+
+/* Garante que os botões não quebrem o layout */
+:deep(.p-inputnumber .p-inputnumber-button) {
+  width: 2rem !important;
+}
+</style> -->
+
+<style scoped>
+/* Força a largura no componente raiz - mobile first */
+:deep(.p-inputnumber) {
+  width: 5rem !important;
+  max-width: 5rem !important;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  :deep(.p-inputnumber) {
+    width: 7rem !important;
+    max-width: 7rem !important;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  :deep(.p-inputnumber) {
+    width: 9rem !important;
+    max-width: 9rem !important;
+  }
+}
+
+/* Ajusta o padding interno do input */
+:deep(.p-inputnumber .p-inputtext) {
+  padding-inline: 0.5rem !important;
+}
+
+/* Garante que os botões não quebrem o layout */
+:deep(.p-inputnumber .p-inputnumber-button) {
+  width: 2rem !important;
+}
+</style>
