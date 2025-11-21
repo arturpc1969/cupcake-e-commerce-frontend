@@ -153,7 +153,7 @@ const cancelOrder = () => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-gradient-to-b from-[#20004b] to-[#3c0074">
+  <div class="min-h-screen bg-brand-gradient">
     <NavBar />
     <Toast />
 
