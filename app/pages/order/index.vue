@@ -272,13 +272,26 @@ const cancelOrder = () => {
                     <p class="text-gray-300 text-sm">
                       {{ t("pages_order_no_addresses") }}
                     </p>
-                    <Button
-                      :label="t('pages_order_add_address')"
-                      icon="pi pi-plus"
-                      class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold w-full"
-                      severity="info"
+                    <button
+                      class="px-6 py-3 bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold rounded-lg transition-colors flex items-center justify-center gap-2 w-full"
                       @click="navigateTo('/profile/addresses/new')"
-                    />
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M12 4v16m8-8H4"
+                        />
+                      </svg>
+                      {{ t("pages_order_add_address") }}
+                    </button>
                   </div>
                 </div>
 
@@ -345,32 +358,6 @@ const cancelOrder = () => {
     </div>
   </div>
 </template>
-
-<!-- <style scoped>
-/* Força a largura no componente raiz */
-:deep(.p-inputnumber) {
-  width: 6rem !important;
-  max-width: 6rem !important;
-}
-
-/* Responsivo para telas maiores */
-@media (min-width: 640px) {
-  :deep(.p-inputnumber) {
-    width: 8rem !important;
-    max-width: 8rem !important;
-  }
-}
-
-/* Ajusta o padding interno do input */
-:deep(.p-inputnumber .p-inputtext) {
-  padding-inline: 0.5rem !important;
-}
-
-/* Garante que os botões não quebrem o layout */
-:deep(.p-inputnumber .p-inputnumber-button) {
-  width: 2rem !important;
-}
-</style> -->
 
 <style scoped>
 /* Força o InputNumber a ocupar 100% do container */
