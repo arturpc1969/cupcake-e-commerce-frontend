@@ -338,7 +338,7 @@ const cancelOrder = () => {
   </div>
 </template>
 
-<!-- <style scoped>
+<style scoped>
 /* Força a largura no componente raiz */
 :deep(.p-inputnumber) {
   width: 6rem !important;
@@ -350,40 +350,6 @@ const cancelOrder = () => {
   :deep(.p-inputnumber) {
     width: 8rem !important;
     max-width: 8rem !important;
-  }
-}
-
-/* Ajusta o padding interno do input */
-:deep(.p-inputnumber .p-inputtext) {
-  padding-inline: 0.5rem !important;
-}
-
-/* Garante que os botões não quebrem o layout */
-:deep(.p-inputnumber .p-inputnumber-button) {
-  width: 2rem !important;
-}
-</style> -->
-
-<style scoped>
-/* Força a largura no componente raiz - mobile first */
-:deep(.p-inputnumber) {
-  width: 5rem !important;
-  max-width: 5rem !important;
-}
-
-/* Tablet */
-@media (min-width: 768px) {
-  :deep(.p-inputnumber) {
-    width: 7rem !important;
-    max-width: 7rem !important;
-  }
-}
-
-/* Desktop */
-@media (min-width: 1024px) {
-  :deep(.p-inputnumber) {
-    width: 9rem !important;
-    max-width: 9rem !important;
   }
 }
 
