@@ -291,10 +291,10 @@ onUnmounted(() => {
                   <p class="text-sm text-gray-400 mb-1">
                     {{ t("components_contact_modal_email") }}
                   </p>
-                  <p class="text-white font-semibold">
+                  <p class="text-white font-semibold break-all">
                     contato@galaxycupcakes.com.br
                   </p>
-                  <p class="text-white font-semibold">
+                  <p class="text-white font-semibold break-all">
                     vendas@galaxycupcakes.com.br
                   </p>
                 </div>
