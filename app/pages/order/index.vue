@@ -33,6 +33,8 @@ const paymentMethods = [
   { label: t("pages_order_payment_cash"), value: "CASH" },
 ];
 
+const hasDeliveryAddresses = computed(() => deliveryAddresses.value.length > 0);
+
 onMounted(async () => {
   initCart();
 
@@ -157,7 +159,9 @@ const cancelOrder = () => {
 
     <div class="container mx-auto px-4 py-8">
       <div class="max-w-6xl mx-auto">
-        <Card class="bg-white/[0.067] backdrop-blur border border-white/[0.133]">
+        <Card
+          class="bg-white/[0.067] backdrop-blur border border-white/[0.133]"
+        >
           <template #title>
             <h1 class="text-3xl font-bold text-white">
               {{ t("pages_order_cart_title") }}
@@ -188,15 +192,17 @@ const cancelOrder = () => {
                         {{ item.description }}
                       </p>
 
-                      <div class="flex items-center justify-between mt-4">
-                        <div class="flex items-center gap-4">
+                      <div
+                        class="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-4 gap-3"
+                      >
+                        <div class="flex items-center gap-2 sm:gap-4">
                           <InputNumber
                             :model-value="item.quantity"
                             :min="1"
                             :max="99"
                             show-buttons
                             button-layout="horizontal"
-                            class="w-32"
+                            class="w-28 sm:w-32"
                             @update:model-value="
                               (val) =>
                                 handleQuantityChange(item.productUuid, val)
@@ -218,7 +224,7 @@ const cancelOrder = () => {
                           />
                         </div>
 
-                        <div class="text-right">
+                        <div class="text-right w-full sm:w-auto">
                           <div class="text-yellow-300 text-xl font-bold">
                             R${{ (item.price * item.quantity).toFixed(2) }}
                           </div>
@@ -243,6 +249,7 @@ const cancelOrder = () => {
                   </h3>
 
                   <Select
+                    v-if="hasDeliveryAddresses"
                     v-model="selectedAddress"
                     :options="deliveryAddresses"
                     option-label="addressName"
@@ -250,6 +257,19 @@ const cancelOrder = () => {
                     :placeholder="t('pages_order_select_address')"
                     class="w-full"
                   />
+
+                  <div v-else class="text-center space-y-3">
+                    <p class="text-gray-300 text-sm">
+                      {{ t("pages_order_no_addresses") }}
+                    </p>
+                    <Button
+                      :label="t('pages_order_add_address')"
+                      icon="pi pi-plus"
+                      class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold w-full"
+                      severity="info"
+                      @click="navigateTo('/profile/addresses/new')"
+                    />
+                  </div>
                 </div>
 
                 <!-- Método de Pagamento -->

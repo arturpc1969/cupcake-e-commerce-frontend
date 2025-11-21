@@ -114,6 +114,8 @@
   "pages_order_error-loading-addresses-message": "Não foi possível carregar os endereços de entrega",
   "pages_order_error-creating-order": "Erro ao Criar Pedido",
   "pages_order_error-creating-order-message": "Não foi possível criar o pedido. Tente novamente.",
+  "pages_order_no_addresses": "Você ainda não possui endereços de entrega cadastrados",
+  "pages_order_add_address": "Cadastrar Endereço",
 
   "pages_delivery_address-title": "Meus Endereços de Entrega",
   "pages_delivery_address-add-new": "Adicionar Endereço",
