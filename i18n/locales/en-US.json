@@ -114,6 +114,8 @@
   "pages_order_error-loading-addresses-message": "Delivery addresses could not be loaded",
   "pages_order_error-creating-order": "Error Creating Order",
   "pages_order_error-creating-order-message": "We were unable to create the order. Please try again.",
+  "pages_order_no_addresses": "You don't have any delivery addresses registered yet",
+  "pages_order_add_address": "Register Address",
 
   "pages_delivery_address-title": "My Delivery Addresses",
   "pages_delivery_address-add-new": "Add Address",
