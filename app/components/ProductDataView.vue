@@ -9,15 +9,27 @@ const toast = useToast();
 const { addToCart } = useCart();
 
 onMounted(() => {
-  productService
-    .getAllProducts()
-    .then((data) => (products.value = data.slice(0, 12)));
+  productService.getAllProducts().then((data) => {
+    products.value = data.slice(0, 12);
+    // Inicializa a quantidade para cada produto
+    data.slice(0, 12).forEach((product) => {
+      quantities.value[product.uuid] = 1;
+    });
+  });
 });
 
 const products = ref();
 const layout = ref("grid");
 const options = ref(["list", "grid"]);
-const quantity = ref(1);
+const quantities = ref({});
+
+const getQuantity = (productUuid) => {
+  return quantities.value[productUuid] || 1;
+};
+
+const setQuantity = (productUuid, value) => {
+  quantities.value[productUuid] = value;
+};
 
 // Modificar a função handleBuyNow para handleAddToCart
 const handleAddToCart = (product) => {
@@ -31,7 +43,8 @@ const handleAddToCart = (product) => {
     return;
   }
 
-  addToCart(product, quantity.value);
+  const quantity = getQuantity(product.uuid);
+  addToCart(product, quantity);
 
   toast.add({
     severity: "success",
@@ -41,7 +54,7 @@ const handleAddToCart = (product) => {
   });
 
   // Resetar quantidade após adicionar
-  quantity.value = 1;
+  setQuantity(product.uuid, 1);
 };
 
 // Manter handleBuyNow para compra direta (opcional)
@@ -57,7 +70,8 @@ const handleBuyNow = (product) => {
   }
 
   // Adiciona ao carrinho e vai direto para a página do carrinho
-  addToCart(product, quantity.value);
+  const quantity = getQuantity(product.uuid);
+  addToCart(product, quantity);
   navigateTo("/order");
 };
 </script>
@@ -91,7 +105,7 @@ const handleBuyNow = (product) => {
               class="flex flex-col sm:flex-row sm:items-center p-6 gap-4 bg-white/[0.067] backdrop-blur rounded-lg mb-4"
               :class="{ 'border-t border-white/[0.133]': index !== 0 }"
             >
-              <div class="md:w-40 relative">
+              <div class="md:w-40 relative flex-shrink-0">
                 <img
                   class="block xl:block mx-auto rounded w-full h-40 object-cover"
                   :src="item.image"
@@ -105,68 +119,67 @@ const handleBuyNow = (product) => {
                   {{ t("components_product-data-view_promotion") }}
                 </div>
               </div>
-              <div
-                class="flex flex-col md:flex-row justify-between md:items-center flex-1 gap-6"
-              >
-                <div
-                  class="flex flex-row md:flex-col justify-between items-start gap-2"
-                >
-                  <div>
-                    <div class="text-lg font-medium mt-2 text-white">
-                      {{ item.name }}
-                    </div>
-                    <div class="text-sm text-gray-300 mt-1">
-                      {{ item.description }}
-                    </div>
+              <div class="flex flex-col justify-between flex-1 gap-4">
+                <div class="flex flex-col gap-2">
+                  <div class="text-lg font-medium text-white">
+                    {{ item.name }}
+                  </div>
+                  <div class="text-sm text-gray-300">
+                    {{ item.description }}
                   </div>
                 </div>
-                <div class="flex flex-col md:items-end gap-4 md:gap-6 lg:gap-8">
-                  <span class="text-lg md:text-xl font-semibold text-yellow-300"
-                    >R${{ item.price }}</span
+
+                <div
+                  class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4"
+                >
+                  <span
+                    class="text-xl md:text-2xl font-semibold text-yellow-300"
                   >
+                    R${{ item.price }}
+                  </span>
 
-                  <div class="w-full md:w-auto">
-                    <label
-                      class="block text-white mb-2 text-sm md:text-base font-semibold"
-                      >{{ t("pages_order_quantity") }}</label
-                    >
-                    <InputNumber
-                      v-model="quantity"
-                      :min="1"
-                      :max="99"
-                      show-buttons
-                      button-layout="horizontal"
-                      class="w-full md:w-32"
-                    >
-                      <template #incrementicon>
-                        <span class="pi pi-plus" />
-                      </template>
-                      <template #decrementicon>
-                        <span class="pi pi-minus" />
-                      </template>
-                    </InputNumber>
-                  </div>
+                  <div
+                    class="flex flex-col md:flex-row items-stretch md:items-end gap-4"
+                  >
+                    <div class="w-full md:w-auto">
+                      <label
+                        class="block text-white mb-2 text-sm font-semibold"
+                      >
+                        {{ t("pages_order_quantity") }}
+                      </label>
+                      <InputNumber
+                        :model-value="getQuantity(item.uuid)"
+                        :min="1"
+                        :max="99"
+                        show-buttons
+                        button-layout="horizontal"
+                        class="w-full"
+                        @update:model-value="setQuantity(item.uuid, $event)"
+                      >
+                        <template #incrementicon>
+                          <span class="pi pi-plus text-xs" />
+                        </template>
+                        <template #decrementicon>
+                          <span class="pi pi-minus text-xs" />
+                        </template>
+                      </InputNumber>
+                    </div>
 
-                  <div class="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
-                    <Button
-                      icon="pi pi-shopping-cart"
-                      class="flex-1 sm:flex-initial text-sm md:text-base"
-                      @click="handleAddToCart(item)"
-                    >
-                      <span class="hidden sm:inline ml-2">{{
-                        t("components_product-data-view_add-to-cart")
-                      }}</span>
-                    </Button>
-                    <Button
-                      icon="pi pi-bolt"
-                      severity="success"
-                      class="flex-1 sm:flex-initial text-sm md:text-base"
-                      @click="handleBuyNow(item)"
-                    >
-                      <span class="hidden sm:inline ml-2">{{
-                        t("components_product-data-view_buy-now")
-                      }}</span>
-                    </Button>
+                    <div class="flex flex-col sm:flex-row gap-2 md:pb-0">
+                      <Button
+                        icon="pi pi-shopping-cart"
+                        :label="t('components_product-data-view_add-to-cart')"
+                        class="whitespace-nowrap text-sm"
+                        @click="handleAddToCart(item)"
+                      />
+                      <Button
+                        icon="pi pi-bolt"
+                        :label="t('components_product-data-view_buy-now')"
+                        severity="success"
+                        class="whitespace-nowrap text-sm"
+                        @click="handleBuyNow(item)"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -226,13 +239,14 @@ const handleBuyNow = (product) => {
                       >{{ t("pages_order_quantity") }}</label
                     >
                     <InputNumber
-                      v-model="quantity"
+                      :model-value="getQuantity(item.uuid)"
                       :min="1"
                       :max="99"
                       show-buttons
                       button-layout="horizontal"
                       class="w-full max-w-full"
                       input-class="!text-sm md:!text-base"
+                      @update:model-value="setQuantity(item.uuid, $event)"
                     >
                       <template #incrementicon>
                         <span class="pi pi-plus text-xs md:text-sm" />
