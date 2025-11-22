@@ -9,8 +9,9 @@ Frontend for the cupcake e-commerce project
 
 [![Nuxt 4](https://img.shields.io/badge/Nuxt-4.x-00DC82?logo=nuxt.js&logoColor=white)](https://nuxt.com/)
 [![Vue 3](https://img.shields.io/badge/Vue-3.x-4FC08D?logo=vue.js&logoColor=white)](https://vuejs.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.x-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![NodeJS](https://img.shields.io/badge/Node.js-22-cyan?logo=node.js&color=rgb(63,138,61))](https://nodejs.org/)
 [![PrimeVue](https://img.shields.io/badge/PrimeVue-Latest-41B883)](https://primevue.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.x-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
 </div>
 
